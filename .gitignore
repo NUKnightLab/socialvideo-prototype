@@ -57,3 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+# ignore completed videos outside of media folder
+*.mp4
+

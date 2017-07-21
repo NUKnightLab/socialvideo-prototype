@@ -8,6 +8,9 @@ function openFinder() {
 	open("", "finder");
 }
 
+var videoNames = [];
+var mediaPaths = [];
+
 //function from https://stackoverflow.com/questions/2189615/how-to-get-file-name-when-user-select-a-file-via-input-type-file
 function GetFileSizeNameAndType() {
 	var fi = document.getElementById('file'); // GET THE FILE INPUT AS VARIABLE.
@@ -20,6 +23,8 @@ function GetFileSizeNameAndType() {
 		for (var i = 0; i <= fi.files.length - 1; i++)
 		{
 			//ACCESS THE SIZE PROPERTY OF THE ITEM OBJECT IN FILES COLLECTION. IN THIS WAY ALSO GET OTHER PROPERTIES LIKE FILENAME AND FILETYPE
+			videoNames.push(fi.files.item(i));
+			mediaPaths.push(fi.files.item(i).path);
 			var fsize = fi.files.item(i).size;
 			totalFileSize = totalFileSize + fsize;
 			document.getElementById('fp').innerHTML =
@@ -30,16 +35,17 @@ function GetFileSizeNameAndType() {
 		}
 	}
 	document.getElementById('divTotalSize').innerHTML = "Total File(s) Size is <b>" + Math.round(totalFileSize / 1024) + "</b> KB";
+	console.log(videoNames);
+	console.log(videoNames.length);
+	console.log(mediaPaths);
 }
 
-
-
 function makeVideo() {
-	var input1 = document.getElementById('video1').value;
-	var input2 = document.getElementById('video2').value;
-	videoNames.push(input1);
-	videoNames.push(input2);
-	videoNames.forEach(function(videoName){
+	//var input1 = document.getElementById('video1').value;
+	//var input2 = document.getElementById('video2').value;
+	//videoNames.push(input1);
+	//videoNames.push(input2);
+	mediaPaths.forEach(function(videoName){
 	    mergedVideo = mergedVideo.addInput(videoName);
 	});
 
