@@ -34,31 +34,10 @@ function createWindow () {
   })
 }
 
-function makeVideo(vid1, vid2) {
-  var fluent_ffmpeg = require("fluent-ffmpeg");
-
-  var mergedVideo = fluent_ffmpeg();
-  var videoNames = [vid1, vid2];
-
-  videoNames.forEach(function(videoName){
-      mergedVideo = mergedVideo.addInput(videoName);
-  });
-
-  mergedVideo.mergeToFile('./mergedVideo.mp4', './tmp/')
-  .on('error', function(err) {
-      console.log('Error ' + err.message);
-  })
-  .on('end', function() {
-      console.log('Finished!');
-  });
-}
-
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow)
-
-
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
