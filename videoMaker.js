@@ -35,18 +35,28 @@ function GetFileSizeNameAndType() {
 		}
 	}
 	document.getElementById('divTotalSize').innerHTML = "Total File(s) Size is <b>" + Math.round(totalFileSize / 1024) + "</b> KB";
-	console.log(videoNames);
-	console.log(videoNames.length);
-	console.log(mediaPaths);
+}
+
+function move() {
+    var elem = document.getElementById("myBar"); 
+    var width = .01;
+    var id = setInterval(frame, 60);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+        }
+    }
 }
 
 function makeVideo() {
-	//var input1 = document.getElementById('video1').value;
-	//var input2 = document.getElementById('video2').value;
-	//videoNames.push(input1);
-	//videoNames.push(input2);
+	document.getElementById('processing').innerHTML = "We're making your video! Give us a few.";
+	move();
+
 	mediaPaths.forEach(function(videoName){
-	    mergedVideo = mergedVideo.addInput(videoName);
+		mergedVideo = mergedVideo.addInput(videoName);
 	});
 
 	mergedVideo.mergeToFile('./mergedVideo.mp4', './tmp/')
