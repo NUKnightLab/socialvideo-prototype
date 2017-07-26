@@ -1,8 +1,17 @@
 var fluent_ffmpeg = require("fluent-ffmpeg");
-//var open = require("open");
+var fs = require("fs");
+var open = require("open");
 
 var mergedVideo = fluent_ffmpeg();
 var videoNames = [];
+
+function openFinder() {
+	open("", "finder");
+}
+
+var ii = 0;
+var jj = 0;
+
 var videoNames = [];
 var mediaPaths = [];
 
@@ -35,15 +44,15 @@ function GetFileSizeNameAndType() {
 
 //moves the "progress" bar. Timing currently has nothing to do with video process timing.
 function move() {
-    var elem = document.getElementById("myBar"); 
+    var elem = document.getElementById("myBar");
     var width = .01;
     var id = setInterval(frame, 60);
     function frame() {
         if (width >= 100) {
             clearInterval(id);
         } else {
-            width++; 
-            elem.style.width = width + '%'; 
+            width++;
+            elem.style.width = width + '%';
         }
     }
 }
@@ -54,14 +63,52 @@ function makeVideo() {
 	move();
 
 	mediaPaths.forEach(function(videoName){
-		mergedVideo = mergedVideo.addInput(videoName);
+		var outStream = fs.createWriteStream('output' + ii + '.mov');
+
+		fluent_ffmpeg(videoName)
+			.videoFilters({
+					filter: 'drawtext',
+					options: {
+							fontfile:'Verdana.ttf',
+							text: 'sample text',
+							fontsize: 20,
+							fontcolor: 'red',
+							x: 100,
+							y: 200,
+							shadowcolor: 'black',
+							shadowx: 2,
+							shadowy: 2
+					}
+			})
+			.videoCodec('libx264')
+    	.audioCodec('libmp3lame')
+			.format('mov')
+			.outputOptions('-movflags frag_keyframe+empty_moov')
+		  .on('error', function(err) {
+		    console.log('An error occurred: ' + err.message);
+		  })
+		  .on('end', function() {
+		    console.log('Processing finished !');
+				console.log(ii, jj);
+				mergedVideo = mergedVideo.addInput('output' + jj + '.mov');
+				jj++;
+				if (jj == 2) {
+					mergedVideo.mergeToFile('./mergedVideo.mov', './tmp/')
+					.videoCodec('libx264')
+		    	.audioCodec('libmp3lame')
+					.format('mov')
+					.outputOptions('-movflags frag_keyframe+empty_moov')
+					.on('error', function(err) {
+					    console.log('Error ' + err.message);
+					})
+					.on('end', function() {
+					    document.getElementById('processing').innerHTML = "Finished!";
+					});
+				}
+		  })
+		  .pipe(outStream, { end: true });
+
+		ii++;
 	});
 
-	mergedVideo.mergeToFile('./mergedVideo.mp4', './tmp/')
-	.on('error', function(err) {
-	    console.log('Error ' + err.message);
-	})
-	.on('end', function() {
-	    console.log('Finished!');
-	});
 }
