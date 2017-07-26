@@ -16,6 +16,7 @@ var videoNames = [];
 var mediaPaths = [];
 
 //function from https://stackoverflow.com/questions/2189615/how-to-get-file-name-when-user-select-a-file-via-input-type-file
+//Reads the file type
 function GetFileSizeNameAndType() {
 	var fi = document.getElementById('file'); // GET THE FILE INPUT AS VARIABLE.
 
@@ -41,6 +42,7 @@ function GetFileSizeNameAndType() {
 	document.getElementById('divTotalSize').innerHTML = "Total File(s) Size is <b>" + Math.round(totalFileSize / 1024) + "</b> KB";
 }
 
+//moves the "progress" bar. Timing currently has nothing to do with video process timing.
 function move() {
     var elem = document.getElementById("myBar");
     var width = .01;
@@ -55,6 +57,7 @@ function move() {
     }
 }
 
+//merges and outputs arbitrary number of input clips
 function makeVideo() {
 	document.getElementById('processing').innerHTML = "We're making your video! Give us a few.";
 	move();

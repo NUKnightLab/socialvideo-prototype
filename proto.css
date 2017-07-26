@@ -1,3 +1,11 @@
+h2 {
+	font-family: sans-serif;
+}
+
+#chunkedArea {
+	height: 30px;
+}
+
 #myBar {
     width: 0%;
     height: 30px;
