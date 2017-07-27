@@ -9,14 +9,10 @@ var tmpobj = tmp.dirSync({unsafeCleanup: true});
 //console.log(tmpobj.name);
 
 var mergedVideo = fluent_ffmpeg();
-var videoNames = [];
 
 function openFinder() {
 	open("", "finder");
 }
-
-var ii = 0;
-var jj = 0;
 
 var videoNames = [];
 var mediaPaths = [];
@@ -67,9 +63,13 @@ function move() {
 function makeVideo() {
 	var fi = document.getElementById('file');
 	var videoCount = fi.files.length;
+	var ii = 0;
+	var jj = 0;
+
 
 	document.getElementById('processing').innerHTML = "We're making your video! Give us a few.";
 	move();
+
 
 	mediaPaths.forEach(function(videoName){
 		var outStream = fs.createWriteStream(tmpobj.name +'/' + ii + '.mov');
