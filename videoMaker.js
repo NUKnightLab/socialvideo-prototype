@@ -5,7 +5,7 @@ var open = require("open");
 var tmp = require('tmp');
 // synchronous directory creation
 var tmpobj = tmp.dirSync({unsafeCleanup: true});
-//getting directory path for testing purposes 
+//getting directory path for testing purposes
 //console.log(tmpobj.name);
 
 var mergedVideo = fluent_ffmpeg();
@@ -14,6 +14,10 @@ function openFinder() {
 	open("", "finder");
 }
 
+var videoNames = [];
+var mediaPaths = [];
+var textSegments;
+var timingArray;
 var app = {};
 app.videoNames = [];
 app.mediaPaths = [];
@@ -95,12 +99,44 @@ function move() {
     }
 }
 
+function createSegmentObjects() {
+	timingArray = [];
+	textSegments = [];
+	var segments = ["Yo this is the first clip", "Yo this is the second clip"];
+	setTiming(segments);
+	for (var i = 0; i < segments.length; i++) {
+		var obj = {text: segments[i], positionX: 100, positionY: 200, time: timingArray[i]};
+		textSegments.push(obj);
+	}
+}
+
+// Assigns a time to each segment of words.
+function setTiming(array) {
+	var wpm = 180;
+	var word_length = 5;
+	var delay = 1500;
+	var bonus = 1000;
+
+	for (var i = 0; i <= array.length - 1; i++) {
+		var words = (countWords(array[i]))/word_length;
+		var words_time = ((words/wpm) * 60) * 1000;
+		total_time = (delay + words_time + bonus)/100;
+		timingArray.push(total_time);
+	}
+}
+
+function countWords(sentence) {
+	var sentenceWords = sentence.split(" ");
+	return sentenceWords.length;
+}
+
 //merges and outputs arbitrary number of input clips
 function makeVideo() {
 	var fi = document.getElementById('file');
 	var videoCount = fi.files.length;
 	var ii = 0;
 	var jj = 0;
+	createSegmentObjects();
 
 
 	document.getElementById('processing').innerHTML = "We're making your video! Give us a few.";
@@ -114,20 +150,20 @@ function makeVideo() {
 			.videoFilters({
 					filter: 'drawtext',
 					options: {
-						fontfile:'Verdana.ttf',
-						text: 'sample text',
-						fontsize: 20,
-						fontcolor: 'red',
-						x: 100,
-						y: 200,
-						shadowcolor: 'black',
-						shadowx: 2,
-						shadowy: 2
+							fontfile:'Verdana.ttf',
+							text: textSegments[ii].text,
+							fontsize: 50,
+							fontcolor: 'white',
+							x: textSegments[ii].positionX,
+							y: textSegments[ii].positionY,
+							shadowcolor: 'black',
+							shadowx: 2,
+							shadowy: 2
 					}
 			})
 			.videoCodec('libx264')
     		.audioCodec('libmp3lame')
-			.size('320x240')
+			.size('420x340')
 			.format('mov')
 			.outputOptions('-movflags frag_keyframe+empty_moov')
 		  	.on('error', function(err) {
