@@ -14,8 +14,9 @@ function openFinder() {
 	open("", "finder");
 }
 
-var videoNames = [];
-var mediaPaths = [];
+var app = {};
+app.videoNames = [];
+app.mediaPaths = [];
 
 //function from https://stackoverflow.com/questions/2189615/how-to-get-file-name-when-user-select-a-file-via-input-type-file
 //Reads the file type
@@ -30,8 +31,8 @@ function GetFileSizeNameAndType() {
 		for (var i = 0; i <= fi.files.length - 1; i++)
 		{
 			//ACCESS THE SIZE PROPERTY OF THE ITEM OBJECT IN FILES COLLECTION. IN THIS WAY ALSO GET OTHER PROPERTIES LIKE FILENAME AND FILETYPE
-			videoNames.push(fi.files.item(i));
-			mediaPaths.push(fi.files.item(i).path);
+			app.videoNames.push(fi.files.item(i));
+			app.mediaPaths.push(fi.files.item(i).path);
 			var fsize = fi.files.item(i).size;
 			totalFileSize = totalFileSize + fsize;
 			document.getElementById('fp').innerHTML =
@@ -106,7 +107,7 @@ function makeVideo() {
 	move();
 
 
-	mediaPaths.forEach(function(videoName){
+	app.mediaPaths.forEach(function(videoName){
 		var outStream = fs.createWriteStream(tmpobj.name +'/' + ii + '.mov');
 
 		fluent_ffmpeg(videoName)
