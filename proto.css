@@ -2,8 +2,49 @@ h2 {
 	font-family: sans-serif;
 }
 
-#chunkedArea {
-	height: 30px;
+
+
+/*flexbox wrapper for the text chunking textbox and its output chunks/timing section*/
+.text-area-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	align-content: stretch;
+}
+
+/*flexbox wrapper for drag video area and the text chunks next to it*/
+.output-text-area {
+	align-self: flex-start;
+	padding-right: 3%;
+	
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: stretch;
+	width: 100%;
+}
+
+#output {
+	white-space: pre-wrap;
+	width: 40%;
+}
+
+.holdVideo {
+	border: solid;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.textPlusTime {
+	white-space: pre-wrap;
+	border: solid;
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	padding-top: 10px;
 }
 
 #myBar {

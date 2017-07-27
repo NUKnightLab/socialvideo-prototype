@@ -238,22 +238,39 @@ function outputChunks() {
 
 	for (var i = 0; i <= chunkArray.length - 1; i++) {
 		var chunkDiv = document.createElement("div");
-		chunkDiv.setAttribute("id", "chunk-part")
+		chunkDiv.setAttribute("class", "chunk-part")
 
-		var chunkP = document.createElement("P");
+		var chunkP = document.createElement("TEXTAREA");
 		chunkP.setAttribute("class", "chunk-sentence");
 		chunkP.innerHTML = chunkArray[i];
 
 		var timeP = document.createElement("P");
 		timeP.setAttribute("class", "chunk-timing");
 		timeP.innerHTML = Math.round(100*timingArray[i])/1000 + " seconds";
+    
+		var videoInput = document.createElement("div");
+		videoInput.setAttribute("class", "holdVideo");
+		videoInput.setAttribute('ondragenter', "setDragEnv()");
+		videoInput.setAttribute('ondragover', 'maintainDragEnv(event)');
+		videoInput.setAttribute('ondrop', 'maintainDragEnv(event)');
+		videoInput.setAttribute('ondrop', 'doDrop(event)');
 
 		chunkDiv.appendChild(chunkP)
 		chunkDiv.appendChild(timeP)
 
 		document.getElementById("chunkedArea").appendChild(chunkDiv);
+		document.getElementById('output').appendChild(videoInput);
 	}
 }
+
+
+/*
+Address:<br>
+<textarea id="myTextarea">
+342 Alvin Road
+Ducksburg</textarea>
+*/
+
 
 /*
 function outputTiming() {
