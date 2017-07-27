@@ -65,6 +65,9 @@ function move() {
 
 //merges and outputs arbitrary number of input clips
 function makeVideo() {
+	var fi = document.getElementById('file');
+	var videoCount = fi.files.length;
+
 	document.getElementById('processing').innerHTML = "We're making your video! Give us a few.";
 	move();
 
@@ -99,7 +102,7 @@ function makeVideo() {
 				console.log(ii, jj);
 				mergedVideo = mergedVideo.addInput(tmpobj.name + '/' + jj + '.mov');
 				jj++;
-				if (jj == 2) { // replace 2 with the number of videos that the user inputs
+				if (jj == videoCount) { // replace 2 with the number of videos that the user inputs
 					mergedVideo.mergeToFile('./mergedVideo.mov', './tmp/')
 					.videoCodec('libx264')
 		    		.audioCodec('libmp3lame')
