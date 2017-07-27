@@ -9,7 +9,6 @@ var tmpobj = tmp.dirSync({unsafeCleanup: true});
 //console.log(tmpobj.name);
 
 var mergedVideo = fluent_ffmpeg();
-var videoNames = [];
 
 function openFinder() {
 	open("", "finder");
@@ -19,6 +18,9 @@ var videoNames = [];
 var mediaPaths = [];
 var textSegments;
 var timingArray;
+var app = {};
+app.videoNames = [];
+app.mediaPaths = [];
 
 //function from https://stackoverflow.com/questions/2189615/how-to-get-file-name-when-user-select-a-file-via-input-type-file
 //Reads the file type
@@ -33,8 +35,8 @@ function GetFileSizeNameAndType() {
 		for (var i = 0; i <= fi.files.length - 1; i++)
 		{
 			//ACCESS THE SIZE PROPERTY OF THE ITEM OBJECT IN FILES COLLECTION. IN THIS WAY ALSO GET OTHER PROPERTIES LIKE FILENAME AND FILETYPE
-			videoNames.push(fi.files.item(i));
-			mediaPaths.push(fi.files.item(i).path);
+			app.videoNames.push(fi.files.item(i));
+			app.mediaPaths.push(fi.files.item(i).path);
 			var fsize = fi.files.item(i).size;
 			totalFileSize = totalFileSize + fsize;
 			document.getElementById('fp').innerHTML =
@@ -46,6 +48,41 @@ function GetFileSizeNameAndType() {
 	}
 	document.getElementById('divTotalSize').innerHTML = "Total File(s) Size is <b>" + Math.round(totalFileSize / 1024) + "</b> KB";
 }
+
+
+/**************  Functions for dragging in video     *********************/
+function setDragEnv(event) {
+	document.getElementById('output').textContent = '';
+	event.stopPropagation();
+	event.preventDefault();
+}
+
+function maintainDragEnv(event) {
+	event.stopPropagation();
+	event.preventDefault();
+}
+
+function doDrop(event)
+{
+  var dt = event.dataTransfer;
+  var files = dt.files;
+
+  var count = files.length;
+  addOutputText("File Count: " + count + "\n");
+
+    for (var i = 0; i < files.length; i++) {
+      addOutputText(" File " + i + ":\n(" + (typeof files[i]) + ") : <" + files[i] + " > " +
+             files[i].name + " " + files[i].size + "\n");
+    }
+}
+
+function addOutputText(text)
+{
+  document.getElementById("output").textContent += text;
+  //dump(text);
+}
+/**************  Functions for dragging in video     *********************/
+
 
 //moves the "progress" bar. Timing currently has nothing to do with video process timing.
 function move() {
@@ -101,10 +138,12 @@ function makeVideo() {
 	var jj = 0;
 	createSegmentObjects();
 
+
 	document.getElementById('processing').innerHTML = "We're making your video! Give us a few.";
 	move();
 
-	mediaPaths.forEach(function(videoName){
+
+	app.mediaPaths.forEach(function(videoName){
 		var outStream = fs.createWriteStream(tmpobj.name +'/' + ii + '.mov');
 
 		fluent_ffmpeg(videoName)
@@ -128,10 +167,11 @@ function makeVideo() {
 			.format('mov')
 			.outputOptions('-movflags frag_keyframe+empty_moov')
 		  	.on('error', function(err) {
-		    	console.log('An error occurred: ' + err.message);
+            console.log('An error occurred: ' + err.message);
 		  	})
 		  	.on('end', function() {
-		    	console.log('Processing finished !');
+		    console.log('Processing finished !');
+
 				console.log(ii, jj);
 				mergedVideo = mergedVideo.addInput(tmpobj.name + '/' + jj + '.mov');
 				jj++;
