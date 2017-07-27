@@ -42,6 +42,43 @@ function GetFileSizeNameAndType() {
 	document.getElementById('divTotalSize').innerHTML = "Total File(s) Size is <b>" + Math.round(totalFileSize / 1024) + "</b> KB";
 }
 
+
+
+/**************  Functions for dragging in video     *********************/
+function setDragEnv(event) {
+	document.getElementById('output').textContent = '';
+	event.stopPropagation();
+	event.preventDefault();
+}
+
+function maintainDragEnv(event) {
+	event.stopPropagation();
+	event.preventDefault();
+}
+
+function doDrop(event)
+{
+  var dt = event.dataTransfer;
+  var files = dt.files;
+
+  var count = files.length;
+  addOutputText("File Count: " + count + "\n");
+
+    for (var i = 0; i < files.length; i++) {
+      addOutputText(" File " + i + ":\n(" + (typeof files[i]) + ") : <" + files[i] + " > " +
+             files[i].name + " " + files[i].size + "\n");
+    }
+}
+
+function addOutputText(text)
+{
+  document.getElementById("output").textContent += text;
+  //dump(text);
+}
+/**************  Functions for dragging in video     *********************/
+
+
+
 //moves the "progress" bar. Timing currently has nothing to do with video process timing.
 function move() {
     var elem = document.getElementById("myBar");
@@ -69,26 +106,26 @@ function makeVideo() {
 			.videoFilters({
 					filter: 'drawtext',
 					options: {
-							fontfile:'Verdana.ttf',
-							text: 'sample text',
-							fontsize: 20,
-							fontcolor: 'red',
-							x: 100,
-							y: 200,
-							shadowcolor: 'black',
-							shadowx: 2,
-							shadowy: 2
+						fontfile:'Verdana.ttf',
+						text: 'sample text',
+						fontsize: 20,
+						fontcolor: 'red',
+						x: 100,
+						y: 200,
+						shadowcolor: 'black',
+						shadowx: 2,
+						shadowy: 2
 					}
 			})
 			.videoCodec('libx264')
-    	.audioCodec('libmp3lame')
+    		.audioCodec('libmp3lame')
 			.size('320x240')
 			.format('mov')
 			.outputOptions('-movflags frag_keyframe+empty_moov')
-		  .on('error', function(err) {
+		  	.on('error', function(err) {
 		    console.log('An error occurred: ' + err.message);
-		  })
-		  .on('end', function() {
+		  	})
+		  	.on('end', function() {
 		    console.log('Processing finished !');
 				console.log(ii, jj);
 				mergedVideo = mergedVideo.addInput('output' + jj + '.mov');

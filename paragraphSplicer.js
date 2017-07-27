@@ -12,7 +12,7 @@ Mike Korsa built one of the first WNUR sites, site playlist playlist editor link
 */
 
 // Takes a string in paragraph form and splits it up into coherent segments using helper functions:
-// First it calls a function that takes the given text and creates an array of all the sentences in the paragraph
+// First it calls a function that takeÍs the given text and creates an array of all the sentences in the paragraph
 // Then it calls a helper function which loops over every sentence and makes segments
 function splitSentences() {
 	chunkArray = [];
@@ -238,9 +238,9 @@ function outputChunks() {
 
 	for (var i = 0; i <= chunkArray.length - 1; i++) {
 		var chunkDiv = document.createElement("div");
-		chunkDiv.setAttribute("id", "chunk-part")
+		chunkDiv.setAttribute("class", "chunk-part")
 
-		var chunkP = document.createElement("P");
+		var chunkP = document.createElement("TEXTAREA");
 		chunkP.setAttribute("class", "chunk-sentence");
 		chunkP.innerHTML = chunkArray[i];
 
@@ -248,12 +248,28 @@ function outputChunks() {
 		timeP.setAttribute("class", "chunk-timing");
 		timeP.innerHTML = Math.round(100*timingArray[i])/1000 + " seconds";
 
+		var videoInput = document.createElement("div");
+		videoInput.setAttribute("class", "holdVideo");
+		videoInput.setAttribute('ondragenter', "setDragEnv()");
+		videoInput.setAttribute('ondragover', 'maintainDragEnv(event)');
+		videoInput.setAttribute('ondrop', 'maintainDragEnv(event)');
+		videoInput.setAttribute('ondrop', 'doDrop(event)');
+
 		chunkDiv.appendChild(chunkP)
 		chunkDiv.appendChild(timeP)
 
 		document.getElementById("chunkedArea").appendChild(chunkDiv);
+		document.getElementById('output').appendChild(videoInput);
 	}
 }
+
+
+/*
+Address:<br>
+<textarea id="myTextarea">
+342 Alvin Road
+Ducksburg</textarea>
+*/
 
 /*
 function outputTiming() {
