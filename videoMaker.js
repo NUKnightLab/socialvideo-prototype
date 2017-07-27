@@ -82,6 +82,7 @@ function makeVideo() {
 			})
 			.videoCodec('libx264')
     	.audioCodec('libmp3lame')
+			.size('320x240')
 			.format('mov')
 			.outputOptions('-movflags frag_keyframe+empty_moov')
 		  .on('error', function(err) {
@@ -92,7 +93,7 @@ function makeVideo() {
 				console.log(ii, jj);
 				mergedVideo = mergedVideo.addInput('output' + jj + '.mov');
 				jj++;
-				if (jj == 2) {
+				if (jj == 2) { // replace 2 with the number of videos that the user inputs
 					mergedVideo.mergeToFile('./mergedVideo.mov', './tmp/')
 					.videoCodec('libx264')
 		    	.audioCodec('libmp3lame')
