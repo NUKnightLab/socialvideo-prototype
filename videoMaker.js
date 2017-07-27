@@ -85,7 +85,7 @@ function addOutputText(text)
 
 
 //moves the "progress" bar. Timing currently has nothing to do with video process timing.
-function move() {
+/*function move() {
     var elem = document.getElementById("myBar");
     var width = .01;
     var id = setInterval(frame, 60);
@@ -97,12 +97,17 @@ function move() {
             elem.style.width = width + '%';
         }
     }
-}
+}*/
 
 function createSegmentObjects() {
 	timingArray = [];
 	textSegments = [];
-	var segments = ["Yo this is the first clip", "Yo this is the second clip"];
+	var segments = [];
+	var inputTextArray = document.getElementsByClassName('chunk-sentence');
+	for (var i = 0; i < inputTextArray.length; i++) {
+		segments[i] = inputTextArray[i].value;
+		console.log(segments[i]);
+	}
 	setTiming(segments);
 	for (var i = 0; i < segments.length; i++) {
 		var obj = {text: segments[i], positionX: 100, positionY: 200, time: timingArray[i]};
@@ -126,6 +131,7 @@ function setTiming(array) {
 }
 
 function countWords(sentence) {
+	var sentence = sentence;
 	var sentenceWords = sentence.split(" ");
 	return sentenceWords.length;
 }
@@ -140,7 +146,7 @@ function makeVideo() {
 
 
 	document.getElementById('processing').innerHTML = "We're making your video! Give us a few.";
-	move();
+	//move();
 
 
 	app.mediaPaths.forEach(function(videoName){
@@ -163,7 +169,7 @@ function makeVideo() {
 			})
 			.videoCodec('libx264')
     		.audioCodec('libmp3lame')
-			.size('420x340')
+			.size('800x660')
 			.format('mov')
 			.outputOptions('-movflags frag_keyframe+empty_moov')
 		  	.on('error', function(err) {
