@@ -3,6 +3,7 @@ h2 {
 }
 
 
+
 /*flexbox wrapper for the text chunking textbox and its output chunks/timing section*/
 .text-area-container {
 	display: flex;

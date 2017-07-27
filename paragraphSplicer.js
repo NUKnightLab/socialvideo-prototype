@@ -12,7 +12,7 @@ Mike Korsa built one of the first WNUR sites, site playlist playlist editor link
 */
 
 // Takes a string in paragraph form and splits it up into coherent segments using helper functions:
-// First it calls a function that takeÍs the given text and creates an array of all the sentences in the paragraph
+// First it calls a function that takes the given text and creates an array of all the sentences in the paragraph
 // Then it calls a helper function which loops over every sentence and makes segments
 function splitSentences() {
 	chunkArray = [];
@@ -247,7 +247,7 @@ function outputChunks() {
 		var timeP = document.createElement("P");
 		timeP.setAttribute("class", "chunk-timing");
 		timeP.innerHTML = Math.round(100*timingArray[i])/1000 + " seconds";
-
+    
 		var videoInput = document.createElement("div");
 		videoInput.setAttribute("class", "holdVideo");
 		videoInput.setAttribute('ondragenter', "setDragEnv()");
@@ -270,6 +270,7 @@ Address:<br>
 342 Alvin Road
 Ducksburg</textarea>
 */
+
 
 /*
 function outputTiming() {
