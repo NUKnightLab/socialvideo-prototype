@@ -20,9 +20,9 @@
     "electron": "~1.6.2"
   },
   "dependencies": {
-    "ffmpeg": ">=3.3.2",
     "fluent-ffmpeg": "^2.1.2",
     "fs-extra": "^4.0.0",
-    "open": "0.0.5"
+    "open": "0.0.5",
+    "tmp": "0.0.31"
   }
 }
