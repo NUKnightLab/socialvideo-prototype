@@ -99,7 +99,7 @@ function addOutputText(text)
     }
 }*/
 
-function createSegmentObjects() {
+function createSegmentObjects(videoCount) {
 	timingArray = [];
 	textSegments = [];
 	var segments = [];
@@ -107,6 +107,12 @@ function createSegmentObjects() {
 	for (var i = 0; i < inputTextArray.length; i++) {
 		segments[i] = inputTextArray[i].value;
 		console.log(segments[i]);
+	}
+	if (videoCount > segments.length) {
+		var deficit = videoCount - segments.length;
+		for (var i = 0; i < deficit; i++) {
+			segments.push("");
+		}
 	}
 	setTiming(segments);
 	for (var i = 0; i < segments.length; i++) {
@@ -142,7 +148,7 @@ function makeVideo() {
 	var videoCount = fi.files.length;
 	var ii = 0;
 	var jj = 0;
-	createSegmentObjects();
+	createSegmentObjects(videoCount);
 
 
 	document.getElementById('processing').innerHTML = "We're making your video! Give us a few.";
