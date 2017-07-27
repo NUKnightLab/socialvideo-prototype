@@ -1,6 +1,12 @@
 var fluent_ffmpeg = require("fluent-ffmpeg");
 var fs = require("fs");
 var open = require("open");
+//library that allows creation of temporary files + directories
+var tmp = require('tmp');
+// synchronous directory creation
+var tmpobj = tmp.dirSync({unsafeCleanup: true});
+//getting directory path for testing purposes 
+//console.log(tmpobj.name);
 
 var mergedVideo = fluent_ffmpeg();
 var videoNames = [];
@@ -63,7 +69,7 @@ function makeVideo() {
 	move();
 
 	mediaPaths.forEach(function(videoName){
-		var outStream = fs.createWriteStream('output' + ii + '.mov');
+		var outStream = fs.createWriteStream(tmpobj.name +'/' + ii + '.mov');
 
 		fluent_ffmpeg(videoName)
 			.videoFilters({
@@ -81,22 +87,22 @@ function makeVideo() {
 					}
 			})
 			.videoCodec('libx264')
-    	.audioCodec('libmp3lame')
+    		.audioCodec('libmp3lame')
 			.size('320x240')
 			.format('mov')
 			.outputOptions('-movflags frag_keyframe+empty_moov')
-		  .on('error', function(err) {
-		    console.log('An error occurred: ' + err.message);
-		  })
-		  .on('end', function() {
-		    console.log('Processing finished !');
+		  	.on('error', function(err) {
+		    	console.log('An error occurred: ' + err.message);
+		  	})
+		  	.on('end', function() {
+		    	console.log('Processing finished !');
 				console.log(ii, jj);
-				mergedVideo = mergedVideo.addInput('output' + jj + '.mov');
+				mergedVideo = mergedVideo.addInput(tmpobj.name + '/' + jj + '.mov');
 				jj++;
 				if (jj == 2) { // replace 2 with the number of videos that the user inputs
 					mergedVideo.mergeToFile('./mergedVideo.mov', './tmp/')
 					.videoCodec('libx264')
-		    	.audioCodec('libmp3lame')
+		    		.audioCodec('libmp3lame')
 					.format('mov')
 					.outputOptions('-movflags frag_keyframe+empty_moov')
 					.on('error', function(err) {
@@ -104,10 +110,11 @@ function makeVideo() {
 					})
 					.on('end', function() {
 					    document.getElementById('processing').innerHTML = "Finished!";
+					    tmpobj.removeCallback(); //trashes temporary directory
 					});
 				}
-		  })
-		  .pipe(outStream, { end: true });
+			})
+			.pipe(outStream, { end: true });
 
 		ii++;
 	});
