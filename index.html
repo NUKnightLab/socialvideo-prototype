@@ -32,10 +32,13 @@
     </div>
   
     <h2>STEP 2: Pick your video files.</h2>
-    <p> <input type="file" id="file" multiple onchange="GetFileSizeNameAndType()" /> </p>
+    <p> <input type="file" id="fileItem" multiple onchange="uploadFiles(this.files, 'assetList')" /> </p>
+    <!--<div id="holdFiles"></div>-->
 
-    <div id="fp"></div>
-    <div id="divTotalSize">Total File(s) Size is <span id="countTotalSize">0</span> KB</div>
+    <div id="assetList"></div>
+    <!-- Don't think total file size is important for people to know
+        <div id="divTotalSize">Total File(s) Size is <span id="countTotalSize">0</span> KB</div>
+    -->
 
     <h2>STEP 3: Make your video!</h2>
     <button id="makeVideo" onclick="makeVideo()">Make Video!</button>
