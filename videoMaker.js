@@ -61,35 +61,6 @@ function updateTotalSize(fileSize, tag) {
 }
 */
 
- 
-/*
-//Function from https://stackoverflow.com/questions/2189615/how-to-get-file-name-when-user-select-a-file-via-input-type-file
-//Reads file information and writes out selected files in a list.
-function GetFileSizeNameAndType() {
-	var fi = document.getElementById('fileItem'); // GET THE FILE INPUT AS VARIABLE.
-
-	var totalFileSize = 0;
-	// VALIDATE OR CHECK IF ANY FILE IS SELECTED.
-	if (fi.files.length > 0)
-	{
-		// RUN A LOOP TO CHECK EACH SELECTED FILE.
-		for (var i = 0; i <= fi.files.length - 1; i++)
-		{
-			//ACCESS THE SIZE PROPERTY OF THE ITEM OBJECT IN FILES COLLECTION. IN THIS WAY ALSO GET OTHER PROPERTIES LIKE FILENAME AND FILETYPE
-			app.videoNames.push(fi.files.item(i));
-			app.mediaPaths.push(fi.files.item(i).path);
-			var fsize = fi.files.item(i).size;
-			totalFileSize = totalFileSize + fsize;
-			document.getElementById('fp').innerHTML += 
-				'<br /> ' + 'File: <b>' + fi.files.item(i).name
-				+ '</b> Size: <b>' + Math.round((fsize / 1024)) //DEFAULT SIZE IS IN BYTES SO WE DIVIDING BY 1024 TO CONVERT IT IN KB
-				+ '</b> Type: <b>' + fi.files.item(i).type + "</b>.";
-		}
-	}
-	updateTotalSize(totalFileSize, 'countTotalSize');
-}
-*/
-
 //Compares number of chunked text bits to number of uploaded clips.
 //If there are more media assets than text bits, it makes empty text clips.
 function createSegmentObjects(videoCount) {
