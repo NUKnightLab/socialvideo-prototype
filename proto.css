@@ -47,6 +47,11 @@ h2 {
 	padding-top: 10px;
 }
 
+p.asset-info {
+	margin: 0;
+	padding: 0;
+}
+
 #myBar {
     width: 0%;
     height: 30px;

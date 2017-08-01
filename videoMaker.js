@@ -1,104 +1,68 @@
 var fluent_ffmpeg = require("fluent-ffmpeg");
+var mergedVideo = fluent_ffmpeg(); //FFMPEG command constructor
 var fs = require("fs");
-var open = require("open");
-//library that allows creation of temporary files + directories
-var tmp = require('tmp');
-// synchronous directory creation
-var tmpobj = tmp.dirSync({unsafeCleanup: true});
-//getting directory path for testing purposes
-//console.log(tmpobj.name);
+var tmp = require('tmp'); //Allows creation of temporary files + directories
+var tmpobj = tmp.dirSync({unsafeCleanup: true}); // Synchronous directory creation
 
-var mergedVideo = fluent_ffmpeg();
-
-function openFinder() {
-	open("", "finder");
-}
-
+//TOO MANY GLOBAL VARIABLES. CLEANING UP TODAY (7/28/17). 
 var videoNames = [];
 var mediaPaths = [];
 var textSegments;
 var timingArray;
+
+
 var app = {};
 app.videoNames = [];
 app.mediaPaths = [];
+var totalSize = 0;
 
-//function from https://stackoverflow.com/questions/2189615/how-to-get-file-name-when-user-select-a-file-via-input-type-file
-//Reads the file type
-function GetFileSizeNameAndType() {
-	var fi = document.getElementById('file'); // GET THE FILE INPUT AS VARIABLE.
 
-	var totalFileSize = 0;
-	// VALIDATE OR CHECK IF ANY FILE IS SELECTED.
-	if (fi.files.length > 0)
+function uploadFiles(FileList, tag) {
+	var uploadedAssets = [];
+	var uploadedPaths = [];
+	var uploadSize = 0;
+
+	//push file information to function holder variables
+	for (var i = 0; i < FileList.length; ++i)
 	{
-		// RUN A LOOP TO CHECK EACH SELECTED FILE.
-		for (var i = 0; i <= fi.files.length - 1; i++)
-		{
-			//ACCESS THE SIZE PROPERTY OF THE ITEM OBJECT IN FILES COLLECTION. IN THIS WAY ALSO GET OTHER PROPERTIES LIKE FILENAME AND FILETYPE
-			app.videoNames.push(fi.files.item(i));
-			app.mediaPaths.push(fi.files.item(i).path);
-			var fsize = fi.files.item(i).size;
-			totalFileSize = totalFileSize + fsize;
-			document.getElementById('fp').innerHTML =
-			document.getElementById('fp').innerHTML
-			+ '<br /> ' + 'File: <b>' + fi.files.item(i).name
-			+ '</b> Size: <b>' + Math.round((fsize / 1024)) //DEFAULT SIZE IS IN BYTES SO WE DIVIDING BY 1024 TO CONVERT IT IN KB
-			+ '</b> Type: <b>' + fi.files.item(i).type + "</b>.";
-		}
+		var asset = FileList.item(i);
+		uploadedAssets.push(asset);
+		uploadedPaths.push(asset.path);
+		uploadSize += asset.size;
+		printAssetToList(asset, tag);
 	}
-	document.getElementById('divTotalSize').innerHTML = "Total File(s) Size is <b>" + Math.round(totalFileSize / 1024) + "</b> KB";
+	//update global variables with new upload information while saving older file info
+	for (var j = 0; j < uploadedAssets.length; ++j)
+	{
+		app.videoNames.push(uploadedAssets[j]);
+		app.mediaPaths.push(uploadedPaths[j]);
+	}
+	totalSize += uploadSize;
 }
 
-
-/**************  Functions for dragging in video     *********************/
-function setDragEnv(event) {
-	document.getElementById('output').textContent = '';
-	event.stopPropagation();
-	event.preventDefault();
+//function
+function printAssetToList(asset, tag) {
+	var printedAsset = document.createElement('P');
+	printedAsset.setAttribute("class", "asset-info");
+	printedAsset.innerHTML = 
+		'File: <b>' + asset.name
+		+ '</b> Size: <b>' + Math.round(asset.size / 1024)
+		+ '</b> Type: <b>' + asset.type + '</b>.';
+	document.getElementById(tag).appendChild(printedAsset);
 }
 
-function maintainDragEnv(event) {
-	event.stopPropagation();
-	event.preventDefault();
+//Don't think total file size matters for user to know.
+/*
+//Adds up the total size of multiple files and updates the HTML
+function updateTotalSize(fileSize, tag) {
+	var newValue = Math.round(fileSize / 1024);
+	document.getElementById(tag).innerHTML =
+		parseInt(document.getElementById(tag).innerHTML) + newValue;
 }
+*/
 
-function doDrop(event)
-{
-  var dt = event.dataTransfer;
-  var files = dt.files;
-
-  var count = files.length;
-  addOutputText("File Count: " + count + "\n");
-
-    for (var i = 0; i < files.length; i++) {
-      addOutputText(" File " + i + ":\n(" + (typeof files[i]) + ") : <" + files[i] + " > " +
-             files[i].name + " " + files[i].size + "\n");
-    }
-}
-
-function addOutputText(text)
-{
-  document.getElementById("output").textContent += text;
-  //dump(text);
-}
-/**************  Functions for dragging in video     *********************/
-
-
-//moves the "progress" bar. Timing currently has nothing to do with video process timing.
-/*function move() {
-    var elem = document.getElementById("myBar");
-    var width = .01;
-    var id = setInterval(frame, 60);
-    function frame() {
-        if (width >= 100) {
-            clearInterval(id);
-        } else {
-            width++;
-            elem.style.width = width + '%';
-        }
-    }
-}*/
-
+//Compares number of chunked text bits to number of uploaded clips.
+//If there are more media assets than text bits, it makes empty text clips.
 function createSegmentObjects(videoCount) {
 	timingArray = [];
 	textSegments = [];
@@ -108,12 +72,14 @@ function createSegmentObjects(videoCount) {
 		segments[i] = inputTextArray[i].value;
 		console.log(segments[i]);
 	}
+
 	if (videoCount > segments.length) {
 		var deficit = videoCount - segments.length;
 		for (var i = 0; i < deficit; i++) {
 			segments.push("");
 		}
 	}
+	//let's section this off. 
 	setTiming(segments);
 	for (var i = 0; i < segments.length; i++) {
 		var obj = {text: segments[i], positionX: 100, positionY: 200, time: timingArray[i]};
@@ -121,7 +87,7 @@ function createSegmentObjects(videoCount) {
 	}
 }
 
-// Assigns a time to each segment of words.
+// Assigns a time to each chunk of words in an array.
 function setTiming(array) {
 	var wpm = 180;
 	var word_length = 5;
@@ -136,15 +102,16 @@ function setTiming(array) {
 	}
 }
 
+//Called in setTiming to count number of words in a text chunk.
 function countWords(sentence) {
 	var sentence = sentence;
 	var sentenceWords = sentence.split(" ");
 	return sentenceWords.length;
 }
 
-//merges and outputs arbitrary number of input clips
+//Merges and outputs arbitrary number of input clips.
 function makeVideo() {
-	var fi = document.getElementById('file');
+	var fi = document.getElementById('fileItem');
 	var videoCount = fi.files.length;
 	var ii = 0;
 	var jj = 0;
@@ -208,3 +175,67 @@ function makeVideo() {
 	});
 
 }
+
+
+
+
+
+
+
+
+
+
+
+//Maybe should move these functions somewhere else.
+//One file for uploading and a separate file for video making?
+/**************  Functions for dragging in video     *********************/
+function setDragEnv(event) {
+	document.getElementById('output').textContent = '';
+	event.stopPropagation();
+	event.preventDefault();
+}
+
+function maintainDragEnv(event) {
+	event.stopPropagation();
+	event.preventDefault();
+}
+
+function doDrop(event)
+{
+  var dt = event.dataTransfer;
+  var files = dt.files;
+
+  var count = files.length;
+  addOutputText("File Count: " + count + "\n");
+
+    for (var i = 0; i < files.length; i++) {
+      addOutputText(" File " + i + ":\n(" + (typeof files[i]) + ") : <" + files[i] + " > " +
+             files[i].name + " " + files[i].size + "\n");
+    }
+}
+
+function addOutputText(text)
+{
+  document.getElementById("output").textContent += text;
+  //dump(text);
+}
+/**************  Functions for dragging in video     *********************/
+
+
+//Makes and moves a progress bar as the video renders.
+//Commented out because timing currently has nothing to do with actual video processing timing.
+/*
+function move() {
+    var elem = document.getElementById("myBar");
+    var width = .01;
+    var id = setInterval(frame, 60);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++;
+            elem.style.width = width + '%';
+        }
+    }
+}
+*/

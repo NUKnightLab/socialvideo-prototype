@@ -7,14 +7,10 @@
 </head>
 <body>
     <script type="text/javascript" src="paragraphSplicer.js"></script>
+    <script type="text/javascript" src="videoMaker.js"></script>
 
     <h1>Make a social video!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. 
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.-->
     <h2>STEP 1: Input text to tell your video story.</h2>
-
     <div class="text-area-container">
         <div class="input-text-area">
             <textarea id="textField" rows="20" cols="50"></textarea>
@@ -36,26 +32,22 @@
     </div>
   
     <h2>STEP 2: Pick your video files.</h2>
-    <p>
-        <input type="file" id="file" multiple onchange="GetFileSizeNameAndType()" />
-    </p>
-
-    <div id="fp"></div>
-    <p>
-        <div id="divTotalSize"></div>
-    </p>
+    <p> <input type="file" id="fileItem" multiple onchange="uploadFiles(this.files, 'assetList')" /> </p>
+    <div id="assetList"></div>
 
     <h2>STEP 3: Make your video!</h2>
     <button id="makeVideo" onclick="makeVideo()">Make Video!</button>
-    <div><p id="processing"></p></div>
-    <div id="myProgress"
+    <div>
+        <p id="processing"></p>
+    </div>
+    <div id="myProgress">
       <div id="myBar"></div>
     </div>
 </body>
 
+<!--Pre-inputted by Electron quickstart template. Why?-->
 <script>
-    // You can also require other files to run in this process
-    //require('./renderer.js')
+    require('./renderer.js')
 </script>
-<script type="text/javascript" src="videoMaker.js"></script>
+
 </html>

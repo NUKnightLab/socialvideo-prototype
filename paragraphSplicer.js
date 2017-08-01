@@ -1,3 +1,5 @@
+//TOO MANY GLOBAL VARIABLES. CLEANING UP TODAY. 
+
 var paragraph = "3 ways your online shopping impacts the environment. E-commerce can lead to more trucks on the road and more greenhouse gas.";
 var listOfCutWords = ["which", "after", "with", "for", "despite", "simply"];
 var cutWords;
