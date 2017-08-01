@@ -59,4 +59,4 @@ typings/
 
 # ignore completed videos outside of media folder
 *.mp4
-
+*.mov

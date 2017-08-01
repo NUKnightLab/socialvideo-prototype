@@ -111,7 +111,7 @@ function countWords(sentence) {
 
 //Merges and outputs arbitrary number of input clips.
 function makeVideo() {
-	var fi = document.getElementById('file');
+	var fi = document.getElementById('fileItem');
 	var videoCount = fi.files.length;
 	var ii = 0;
 	var jj = 0;
