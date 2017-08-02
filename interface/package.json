@@ -12,6 +12,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "webpack": "^3.4.1",
+    "webpack-css-loaders": "^1.0.0",
     "webpack-dev-middleware": "^1.12.0"
   },
   "devDependencies": {},

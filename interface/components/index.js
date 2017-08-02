@@ -13,6 +13,9 @@ ReactDOM.render(
 //example component for testing purposes
 import React from 'react';
 import ReactDOM from 'react-dom';
+require('../www/index.css');
+//don't have css loader yet?
+
 import Counter from './Counter';
 
 document.addEventListener('DOMContentLoaded', function() {
