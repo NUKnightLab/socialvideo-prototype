@@ -1,5 +1,6 @@
 import React from 'react';
 import TextChunker from './TextChunker.jsx';
+import MyTitleType from './Title.jsx';
 
 /**
  * A counter button: tap the button to increase the count.
@@ -16,6 +17,7 @@ class Counter extends React.Component {
     return (
       <div>
         <TextChunker />
+        <MyTitleType />
         <button
           onClick={() => {
             this.setState({ count: this.state.count + 1 });
