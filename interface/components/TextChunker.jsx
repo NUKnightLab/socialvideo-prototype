@@ -1,18 +1,6 @@
 var React = require('react');
 
 class TextChunker extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 'Please write an essay about your favorite DOM element.'
-    };
-
-  }
-
-  handleClick() {
-    splitSentences();
-  }
-
 
   render() {
     return (
