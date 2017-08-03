@@ -1,0 +1,39 @@
+.selector {
+  border: none;
+  overflow:hidden;
+  width:110%;
+  box-shadow: none;
+  background: transparent url("http://i62.tinypic.com/15xvbd5.png") no-repeat scroll 319px center;
+  font-size: 20px;
+}
+#upload-choice {
+  position: relative;
+  top: 25%;
+  font-size: 20px;
+  border-left: 1px solid black;
+  padding-left: 10px;
+}
+
+#color-choice {
+  position: relative;
+  top: 25%;
+  border-left: 1px solid black;
+}
+
+#font-choice {
+  position: relative;
+  top: 25%;
+  border-left: 1px solid black;
+}
+
+#highlight-choice {
+  position: relative;
+  top: 25%;
+  border-left: 1px solid black;
+}
+
+#toolbar {
+  height: 40px;
+  background-color: #cdcdcd;
+  text-align: left;
+}
