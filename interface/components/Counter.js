@@ -2,6 +2,7 @@ import React from 'react';
 import TextChunker from './TextChunker.jsx';
 import MyTitleType from './Title.jsx';
 import SplashPage from './splash.jsx';
+import MediaLib from './mediaLibTest.jsx';
 
 /**
  * A counter button: tap the button to increase the count.
@@ -20,6 +21,7 @@ class Counter extends React.Component {
         <SplashPage />
         <TextChunker />
         <MyTitleType />
+        <MediaLib />
         <button
           onClick={() => {
             this.setState({ count: this.state.count + 1 });
