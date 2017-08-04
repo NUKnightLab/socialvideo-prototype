@@ -4,9 +4,11 @@ import '../www/index.css';
 class MediaLib extends React.Component {
 	render() {
 		return (
-			    <p> <input type="file" id="fileItem"/> </p>
+			<div>
+			    <p> <input type="file" id="fileItem" /> </p>
+			</div>
 		);
 	}
 }
 
-export default MediaLib
+export default MediaLib;
