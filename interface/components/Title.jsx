@@ -1,5 +1,6 @@
 var React = require('react');
-import './Title.css';
+//import './Title.css';
+import '../www/index.css';
 
 class MyTitleType extends React.Component {
   render() {
