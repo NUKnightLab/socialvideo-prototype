@@ -1,9 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import '../www/index.css';
 
 class SplashPage extends React.Component {
 	startButton() {
 		alert('Soon this will actually do something!');
+		//ReactDOM.unmountComponentAtNode(document.getElementById('mount'));
 	}
 
 	render() {

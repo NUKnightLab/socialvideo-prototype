@@ -42,4 +42,4 @@ class MediaLib extends React.Component {
 	}
 }
 
-export default MediaLib
+export default MediaLib;
