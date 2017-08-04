@@ -1,6 +1,7 @@
 import React from 'react';
 import TextChunker from './TextChunker.jsx';
 import MyTitleType from './Title.jsx';
+import SplashPage from './splash.jsx';
 
 /**
  * A counter button: tap the button to increase the count.
@@ -16,6 +17,7 @@ class Counter extends React.Component {
   render() {
     return (
       <div>
+        <SplashPage />
         <TextChunker />
         <MyTitleType />
         <button
