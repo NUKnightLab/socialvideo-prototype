@@ -6,7 +6,7 @@ import '../www/index.css';
 class SplashPage extends React.Component {
 	startButton() {
 		alert('Soon this will actually do something!');
-		//ReactDOM.unmountComponentAtNode(document.getElementById('mount'));
+		ReactDOM.unmountComponentAtNode(document.getElementById('title'));
 	}
 
 	render() {
