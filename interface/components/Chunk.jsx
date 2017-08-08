@@ -2,7 +2,8 @@ var React = require('react');
 import '../www/index.css';
 import Flexbox from 'flexbox-react';
 
-class Counter extends React.Component {
+
+class AppComponent extends React.Component {
 	constructor() {
 		super();
 		this.state = {
@@ -11,14 +12,23 @@ class Counter extends React.Component {
   	}
 
   	render() {
+  		const children = [];
+
+  		for (var i = 0; i < this.state.numChildren; i += 1) {
+  			children.push(<Chunk number={i} />);
+  		};
+
     	return (
-      		<button
-        		onClick={() => {
-          		this.setState({ count: this.state.count + 1 });
-          		}}>
-      			Count: {this.state.count}
-     		</button>
+     		<ChunKeeper addChild={this.onAddChild.bind(this)}>
+     			{children}
+     		</ChunKeeper>
     	);
+  	}
+
+  	onAddChild() {
+  		this.setState({
+  			numChildren: this.state.numChildren + 1
+  		});
   	}
 }
 
@@ -27,9 +37,14 @@ class ChunKeeper extends React.Component {
 	render() {
 		return (
 			<div className="ChunkPane">
-				<Chunk />
+				<p><a href="#" onClick={this.props.addChild}>
+					Add another child Component
+				</a></p>
+				<div id="children-pane">
+					{this.props.children}
+				</div>
 			</div>
-		)
+		);
 	}
 }
 
@@ -68,4 +83,5 @@ class Chunk extends React.Component {
 	}
 }
 
-export default Chunk;
+export default AppComponent;
+
