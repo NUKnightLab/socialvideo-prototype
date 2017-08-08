@@ -5,6 +5,8 @@ import TextChunker from './TextChunker.jsx';
 import MyTitleType from './Title.jsx';
 import SplashPage from './splash.jsx';
 import MediaLib from './mediaLibTest.jsx';
+import Chunk from './Chunk.jsx';
+import Counter from './ChunkCounter.jsx';
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -19,6 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render(
   	React.createElement(MediaLib),
   	document.getElementById('mount')
+  );
+  ReactDOM.render(
+    React.createElement(Chunk),
+    document.getElementById('ChunkTest')
+  );
+  ReactDOM.render(
+    React.createElement(Counter),
+    document.getElementById('ChunkCounter')
   );
 });
 

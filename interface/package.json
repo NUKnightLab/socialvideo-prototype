@@ -9,6 +9,7 @@
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "express": "^4.15.3",
+    "flexbox-react": "^4.4.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "webpack": "^3.4.1",
