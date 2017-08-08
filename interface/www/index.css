@@ -5,15 +5,62 @@ h1 {
 }
 
 #searchBar {
-  border: none;
-	border-bottom: 1px solid black;
+	border: none;
+  	border-bottom: 1px solid black;
 	background-color: transparent;
 	color: black;
 	font-size: 1.5em;
-  outline: none;
-  shadow: none;
+	outline: none;
+	shadow: none;
 }
 
 #searchBar:focus {
 	border-bottom: 1px solid black;
+}
+
+
+/********* CHUNK STYLING *********/
+.Chunk {
+	padding: 20px 40px;
+}
+
+.Chunk-thumbnail {
+	margin-right: 10px;
+}
+
+.Chunk-text-chunk {
+
+}
+
+.Chunk-text-align {
+	width: 100px;
+    height: 100px;
+}
+
+.Chunk-text-align-options {
+    width: 33px;
+    height: 33px;
+    outline: 1px solid;
+    float: left;
+}
+
+.Chunk-text-timing {
+
+}
+
+.Chunk-video-start {
+	display: flex;
+	flex-direction: row;
+	margin: 10px 0px;
+}
+
+.Chunk-video-start-input {
+	width: 20px;
+	height: 10px;
+	margin-right: 5px;
+}
+
+.Chunk-video-start-seconds {
+	padding: 0;
+	margin: 0;
 }
