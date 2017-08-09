@@ -3,6 +3,7 @@ import '../www/index.css';
 import Flexbox from 'flexbox-react';
 
 
+
 class AppComponent extends React.Component {
 	constructor() {
 		super();
@@ -14,9 +15,13 @@ class AppComponent extends React.Component {
   	render() {
   		const children = [];
 
-  		for (var i = 0; i < this.state.numChildren; i += 1) {
-  			children.push(<Chunk number={i} />);
-  		};
+  		//for (var i = 0; i < this.state.numChildren; i += 1) {
+  		//	children.push(<Chunk number={i} />);
+  		//};
+
+  		this.props.chunks.forEach(function(chunk) {
+			children.push(<Chunk number={chunk.id} text={chunk.text_chunk}/>)
+		});
 
     	return (
      		<ChunKeeper addChild={this.onAddChild.bind(this)}>
@@ -57,7 +62,7 @@ class Chunk extends React.Component {
 
 					<Flexbox flexDirection="column">
 						<textarea className="Chunk-text-chunk" rows="4" cols="100">
-							At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+							{this.props.text}
 						</textarea>
 						<div className="Chunk-text-timing"></div>
 						<div className="Chunk-video-start">
