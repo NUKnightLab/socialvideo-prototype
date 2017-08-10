@@ -1,6 +1,7 @@
 var React = require('react');
 import '../www/index.css';
 import Flexbox from 'flexbox-react';
+import TextAlignSquare from './TextAlignSquare.jsx';
 
 
 
@@ -14,14 +15,16 @@ class AppComponent extends React.Component {
 
   	render() {
   		const children = [];
-
+			const numVideoObjects = this.props.videoObjects.length;
   		//for (var i = 0; i < this.state.numChildren; i += 1) {
   		//	children.push(<Chunk number={i} />);
   		//};
+			if (numVideoObjects > 0) {
+				this.props.videoObjects.forEach(function(videoObject) {
+				children.push(<Chunk key={videoObject.id} text={videoObject.text}  />)
+				});
+			}
 
-  		this.props.chunks.forEach(function(chunk) {
-			children.push(<Chunk number={chunk.id} text={chunk.text_chunk}/>)
-		});
 
     	return (
      		<ChunKeeper addChild={this.onAddChild.bind(this)}>
@@ -61,25 +64,16 @@ class Chunk extends React.Component {
 					<img className="Chunk-thumbnail" src={'http://placehold.it/200x200'}/>
 
 					<Flexbox flexDirection="column">
-						<textarea className="Chunk-text-chunk" rows="4" cols="100">
-							{this.props.text}
+						<textarea
+							className="Chunk-text-chunk" 
+							defaultValue={this.props.text} rows="4" cols="100">
 						</textarea>
 						<div className="Chunk-text-timing"></div>
 						<div className="Chunk-video-start">
 							<textarea className="Chunk-video-start-input"></textarea>
 							<p className="Chunk-video-start-seconds"> seconds </p>
 						</div>
-						<div className="Chunk-text-align">
-							<div className="Chunk-text-align-options"></div>
-							<div className="Chunk-text-align-options"></div>
-							<div className="Chunk-text-align-options"></div>
-							<div className="Chunk-text-align-options"></div>
-							<div className="Chunk-text-align-options"></div>
-							<div className="Chunk-text-align-options"></div>
-							<div className="Chunk-text-align-options"></div>
-							<div className="Chunk-text-align-options"></div>
-							<div className="Chunk-text-align-options"></div>
-						</div>
+						<TextAlignSquare />
 					</Flexbox>
 
 				</Flexbox>
@@ -89,4 +83,3 @@ class Chunk extends React.Component {
 }
 
 export default AppComponent;
-

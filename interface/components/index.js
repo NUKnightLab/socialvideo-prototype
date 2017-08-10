@@ -8,6 +8,7 @@ import MediaLib from './mediaLibTest.jsx';
 import AppComponent from './Chunk.jsx';
 import Chunk from './Chunk.jsx';
 import Counter from './ChunkCounter.jsx';
+import VirtualConfigRenderer from './VirtualConfigRenderer.jsx'
 
 
 var chunkLites = [
@@ -38,24 +39,7 @@ var chunkLites = [
 
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render(
-    React.createElement(SplashPage),
+    React.createElement(VirtualConfigRenderer),
     document.getElementById('title')
   );
-  ReactDOM.render(
-    React.createElement(TextChunker),
-    document.getElementById('app')
-  );
-  ReactDOM.render(
-  	React.createElement(MediaLib),
-  	document.getElementById('mount')
-  );
-  ReactDOM.render(
-    <AppComponent chunks={chunkLites}/>,
-    document.getElementById('ChunkTest')
-  );
-  ReactDOM.render(
-    React.createElement(Counter),
-    document.getElementById('ChunkCounter')
-  );
 });
-
