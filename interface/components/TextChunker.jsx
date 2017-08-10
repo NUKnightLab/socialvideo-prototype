@@ -9,8 +9,9 @@ class TextChunker extends React.Component {
   handleChange(e) {
     splitSentences();
     var videoObjects = [];
+    this.props.onChunkCreation(videoObjects);
     var textSegmentsArray = [];
-    var textSegments = e.target.value;
+    var textSegments = this.refs.textArea.value;
     textSegmentsArray = textSegments.split('\n \n');
     for (var i = (textSegmentsArray.length - 1); i >= 0; i--) {
       if (textSegmentsArray[i] === "") {
@@ -38,11 +39,10 @@ class TextChunker extends React.Component {
               rows="20"
               cols="50"
               ref="textArea"
-              onChange={this.handleChange}
             >
             </textarea>
             <br/>
-            <button onClick={splitSentences}>Chunk Me</button>
+            <button onClick={this.handleChange}>Chunk Me</button>
         </div>
       </div>
     );
