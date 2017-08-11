@@ -1,14 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+// This file is required by the index.html file and will
+// be executed in the renderer process for that window.
+// All of the Node.js APIs are available in this process.
 
+const React = require('react');
+const ReactDOM = require('react-dom');
+
+import App from './app';
 import TextChunker from './TextChunker.jsx';
 import MyTitleType from './Title.jsx';
 import SplashPage from './splash.jsx';
 import MediaLib from './mediaLibTest.jsx';
 import AppComponent from './Chunk.jsx';
-import Chunk from './Chunk.jsx';
+//import Chunk from './Chunk.jsx';
 import Counter from './ChunkCounter.jsx';
-
 
 var chunkLites = [
   {
@@ -36,8 +40,12 @@ var chunkLites = [
   }
 ];
 
-document.addEventListener('DOMContentLoaded', function() {
-  ReactDOM.render(
+
+ReactDOM.render(
+  React.createElement(App),
+  document.getElementById('app'));
+
+ReactDOM.render(
     React.createElement(SplashPage),
     document.getElementById('title')
   );
@@ -46,16 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('app')
   );
   ReactDOM.render(
-  	React.createElement(MediaLib),
-  	document.getElementById('mount')
+    React.createElement(MediaLib),
+    document.getElementById('mount')
   );
-  /*ReactDOM.render(
+  ReactDOM.render(
     <AppComponent chunks={chunkLites}/>,
     document.getElementById('ChunkTest')
-  );*/
-  ReactDOM.render(
-    React.createElement(Counter),
+  );
+  ReactDOM.render(React.createElement(Counter),
     document.getElementById('ChunkCounter')
   );
-});
-
