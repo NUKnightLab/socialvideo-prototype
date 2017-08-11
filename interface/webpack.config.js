@@ -11,10 +11,10 @@ const config = {
 module.exports = {
   context: __dirname,
   entry: [
-    './src/index.js',
+    './components/index.js',
     './www/index.css',
     'babel-polyfill',
-    path.resolve(__dirname, './renderer.js'),
+    path.resolve(__dirname, './components/index.js'),
     `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr`,
 ],
   target: 'electron-renderer',
@@ -29,8 +29,8 @@ module.exports = {
       { test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         include: [
-          path.join(__dirname, 'src'),
-          path.join(__dirname, 'renderer.js')
+          path.join(__dirname, 'components'),
+          path.join(__dirname, './components/index.js')
         ],
         exclude: /node_modules/,
         query: {
@@ -88,7 +88,7 @@ module.exports = {
         name:'[name].[ext]',
         outputPath:'fonts/'
         //the fonts will be emmited to public/assets/fonts/ folder 
-        //the fonts will be put in the DOM <style> tag as eg. @font-face{ src:url(assets/fonts/font.ttf); }  
+        //the fonts will be put in the DOM <style> tag as eg. @font-face{ components:url(assets/fonts/font.ttf); }  
       }
     }
 
