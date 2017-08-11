@@ -4,7 +4,7 @@
  /**
  * A counter button: tap the button to increase the count.
  */
-class Counter extends React.Component {
+export default class Counter extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -13,15 +13,14 @@ class Counter extends React.Component {
   }
  
   render() {
-    return (
-      <button
-        onClick={() => {
-          this.setState({ count: this.state.count + 1 });
-        }}
-      >
-        Count: {this.state.count}
-      </button>
-    );
+    return (<div>
+        <button
+          onClick={() => {
+            this.setState({ count: this.state.count + 1 });
+          }}
+        >
+          Count: {this.state.count}
+        </button>
+      </div>);
   }
 }
-export default Counter;

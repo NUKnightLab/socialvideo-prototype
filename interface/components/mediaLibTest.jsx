@@ -1,7 +1,7 @@
 import React from 'react';
 import '../www/index.css';
 
-class MediaLib extends React.Component {
+export default class MediaLib extends React.Component {
 	here(e) {
   		var file = event.target.files[0];
   		var reader = new FileReader();
@@ -33,13 +33,10 @@ class MediaLib extends React.Component {
 	}*/
 
 	render() {
-		return (
-			<div>
+		return (<div>
 				<input type='file' ref='fileUpload' multiple onChange={e => this.here(e)} />
 			    <div id="assetList"></div>
 			</div>
 		);
 	}
 }
-
-export default MediaLib;
