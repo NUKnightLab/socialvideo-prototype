@@ -3,8 +3,7 @@ import '../www/index.css';
 import Flexbox from 'flexbox-react';
 import TextAlignSquare from './TextAlignSquare.jsx';
 import VideoCard from './VideoCard.jsx';
-import ColorPreset from './PresetBar.jsx';
-
+import PresetBar from './PresetBar.jsx';
 
 class AppComponent extends React.Component {
 	constructor() {
@@ -28,7 +27,7 @@ class AppComponent extends React.Component {
 
     	return (
 				<div>
-				<ColorPreset />
+				<PresetBar />
 					<button onClick={this.addVideoCard}> Add a Video Card </button>
 					{this.props.videoObjects.map(videoObject =>
 						<VideoCard key={videoObject.id} text={videoObject.text}  />
