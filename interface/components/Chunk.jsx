@@ -4,7 +4,7 @@ import Flexbox from 'flexbox-react';
 
 
 
-class AppComponent extends React.Component {
+export default class AppComponent extends React.Component {
 	constructor() {
 		super();
 		this.state = {
@@ -53,6 +53,7 @@ class ChunKeeper extends React.Component {
 	}
 }
 
+
 class Chunk extends React.Component {
 	render() {
 		return (
@@ -88,5 +89,4 @@ class Chunk extends React.Component {
 	}
 }
 
-export default AppComponent;
 

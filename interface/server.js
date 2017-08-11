@@ -1,25 +1,38 @@
-const express = require('express');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpack = require('webpack');
-const webpackConfig = require('./webpack.config.js');
-const app = express();
- 
-const compiler = webpack(webpackConfig);
- 
+//DOESN'T LOAD COMPONENTS. FIX. 
+
+var path = require('path');
+var webpack = require('webpack');
+var express = require('express');
+var config = require('./webpack.config');
+
+var app = express();
+var compiler = webpack(config);
+
+const port = process.env.PORT || 8080;
+
 app.use(express.static(__dirname + '/www'));
- 
-app.use(webpackDevMiddleware(compiler, {
+
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true, //check
+  publicPath: config.output.publicPath, //check. currently have as '/'
   hot: true,
-  filename: 'bundle.js',
-  publicPath: '/',
+  inline: true, //check
+  filename: 'bundle.js', //added
   stats: {
-    colors: true,
-  },
-  historyApiFallback: true,
+  	colors: true,
+  }, //added
+  historyApiFallback: true, //added
 }));
- 
-const server = app.listen(3000, function() {
-  const host = server.address().address;
-  const port = server.address().port;
-  console.log('Example app listening at http://%s:%s', host, port);
+
+app.use(require('webpack-hot-middleware')(compiler));
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, './www/index.html'));
 });
+
+app.listen(port, function(err) {
+  if (err) {
+    return console.error(err);
+  }
+  console.log(`Listening at http://localhost:${port}/`);
+})

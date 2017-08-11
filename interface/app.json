@@ -3,22 +3,22 @@
 	"chunKeeper": [
 		"chunk1" {
 			"text-chunk": "these are words we are using,",
-			"thumbnail": "./thumbnail1.png",
+			"thumbnail": "./media/thumbnail1.png",
 			"video-path": "not for now"
 		},
 		"chunk2" {
 			"text-chunk": "here is a second batch,",
-			"thumbnail": "./thumbnail2.png",
+			"thumbnail": "./media/thumbnail2.png",
 			"video-path": "not for now"
 		},
 		"chunk3" {
 			"text-chunk": "and here's a third.",
-			"thumbnail": "./thumbnail3.png",
+			"thumbnail": "./media/thumbnail3.png",
 			"video-path": "not for now"
 		},
 		"chunk4" {
 			"text-chunk": "Welcome to FlavorTown.",
-			"thumbnail": "./thumbnail4.png",
+			"thumbnail": "./media/thumbnail4.png",
 			"video-path": "not for now"
 		}
 	]
