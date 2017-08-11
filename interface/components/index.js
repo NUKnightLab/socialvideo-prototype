@@ -1,3 +1,17 @@
+/*
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import VirtualConfigRenderer from './VirtualConfigRenderer.jsx'
+
+document.addEventListener('DOMContentLoaded', function() {
+  ReactDOM.render(
+    React.createElement(VirtualConfigRenderer),
+    document.getElementById('title')
+  );
+});
+*/
+
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
@@ -13,8 +27,9 @@ import MediaLib from './mediaLibTest.jsx';
 import AppComponent from './Chunk.jsx';
 //import Chunk from './Chunk.jsx';
 import Counter from './ChunkCounter.jsx';
+import VirtualConfigRenderer from './VirtualConfigRenderer.jsx';
 
-var chunkLites = [
+/*var chunkLites = [
   {
     id: "1",
     text_chunk: "these are words we are using,",
@@ -38,14 +53,14 @@ var chunkLites = [
     thumbnail: "./thumbnail4.png",
     video_path: "not for now"
   }
-];
+];*/
 
 
 ReactDOM.render(
   React.createElement(App),
   document.getElementById('app'));
 
-ReactDOM.render(
+/*ReactDOM.render(
     React.createElement(SplashPage),
     document.getElementById('title')
   );
@@ -60,7 +75,7 @@ ReactDOM.render(
   ReactDOM.render(
     <AppComponent chunks={chunkLites}/>,
     document.getElementById('ChunkTest')
-  );
-  ReactDOM.render(React.createElement(Counter),
+  );*/
+  ReactDOM.render(React.createElement(VirtualConfigRenderer),
     document.getElementById('ChunkCounter')
   );
