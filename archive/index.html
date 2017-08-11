@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Video Project</title>
+    <link rel="stylesheet" type="text/css" href="proto.css">
+</head>
+<body>
+    <script type="text/javascript" src="paragraphSplicer.js"></script>
+    <script type="text/javascript" src="videoMaker.js"></script>
+
+    <h1>Make a social video!</h1>
+    <h2>STEP 1: Input text to tell your video story.</h2>
+    <div class="text-area-container">
+        <div class="input-text-area">
+            <textarea id="textField" rows="20" cols="50"></textarea>
+            <br>
+            <button onclick="splitSentences()">Chunk Me</button>
+        </div>
+
+        <div class="output-text-area">
+            <div id="output" rows="10"
+                 ondragenter="setDragEnv(event)"
+                 ondragover="maintainDragEnv(event)"
+                 ondrop="maintainDragEnv(event); doDrop(event);">
+            </div>
+            <div class="textPlusTime">
+                <div id="chunkedArea" rows="10"></div>
+                <div id="timingArea"></div>
+            </div>
+        </div>
+    </div>
+  
+    <h2>STEP 2: Pick your video files.</h2>
+    <p> <input type="file" id="fileItem" multiple onchange="uploadFiles(this.files, 'assetList')" /> </p>
+    <div id="assetList"></div>
+
+    <h2>STEP 3: Make your video!</h2>
+    <button id="makeVideo" onclick="makeVideo()">Make Video!</button>
+    <div>
+        <p id="processing"></p>
+    </div>
+    <div id="myProgress">
+      <div id="myBar"></div>
+    </div>
+</body>
+
+<!--Pre-inputted by Electron quickstart template. Why?-->
+<script>
+    require('./renderer.js')
+</script>
+
+</html>

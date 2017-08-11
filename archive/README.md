@@ -1,3 +1,6 @@
+# codename-delaware
+Summer 2017 Student Project
+
 # electron-quick-start
 
 **Clone and run for a quick way to see Electron in action.**
@@ -43,49 +46,3 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 ## License
 
 [CC0 1.0 (Public Domain)](LICENSE.md)
-
-
-
-# INTERFACE README
-
-My Project
----
- 
-Welcome.
-
-Style
----
-* Tabs = 4 spaces
-* Write detailed comments for each pull request and wait for someone on the project to give it a thumbs up to merge 
-
-
-Usage
----
- 
-Start the development server with this command:
- 
-```
-npm start
-```
- 
-  
-Setup
----
- 
-```
-npm install
-```
- 
- 
- 
-Compile
----
- 
-```
-npm run compile
-
-
-
-
-
-
