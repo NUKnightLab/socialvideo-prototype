@@ -17,8 +17,7 @@ class EditorWindow extends React.Component {
 			updatedVideoObjects.push({
 				id: (numVideoObjects),
 				text: '',
-				thumbnail: '',
-        video_path: '',
+        		video_path: '',
 			})
 			this.props.updateVideoObjects(updatedVideoObjects);
 		}

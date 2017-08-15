@@ -2,6 +2,7 @@ var React = require('react');
 import '../www/index.css';
 import Flexbox from 'flexbox-react';
 import TextAlignSquare from './TextAlignSquare.jsx';
+import FileUploadButton from './FileHandling.jsx';
 
 class VideoCard extends React.Component {
 	render() {
@@ -21,6 +22,7 @@ class VideoCard extends React.Component {
 							<p className="Chunk-video-start-seconds"> seconds </p>
 						</div>
 						<TextAlignSquare />
+						<FileUploadButton />
 					</Flexbox>
 
 				</Flexbox>
