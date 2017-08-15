@@ -12,9 +12,9 @@ class FileUploadButton extends React.Component {
     		var 
     	}
     	}
-    }*/
+    }
+    */
 	render() {
-		console.log({this.props.videoObjects});
 		return (
 			<div>
 				<input type="file" id="fileItem" />

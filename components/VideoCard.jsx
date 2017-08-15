@@ -14,7 +14,7 @@ class VideoCard extends React.Component {
 					<Flexbox flexDirection="column">
 						<textarea
 							className="Chunk-text-chunk"
-							defaultValue={this.props.videoObjects.text} rows="4" cols="100">
+							defaultValue={this.props.text} rows="4" cols="100">
 						</textarea>
 						<div className="Chunk-text-timing"></div>
 						<div className="Chunk-video-start">
@@ -22,8 +22,7 @@ class VideoCard extends React.Component {
 							<p className="Chunk-video-start-seconds"> seconds </p>
 						</div>
 						<TextAlignSquare />
-						<FileUploadButton 
-							 />
+						<FileUploadButton />
 					</Flexbox>
 
 				</Flexbox>
@@ -33,6 +32,3 @@ class VideoCard extends React.Component {
 }
 
 export default VideoCard;
-
-
-//videoObjects={this.state.videoObjects}

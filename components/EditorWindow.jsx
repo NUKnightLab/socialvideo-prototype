@@ -29,7 +29,7 @@ class EditorWindow extends React.Component {
 					<PresetBar />
 					<button onClick={this.addVideoCard}> Add a Video Card </button>
 					{this.props.videoObjects.map(videoObject =>
-						<VideoCard videoObjects={updatedVideoObjects} key={videoObject.id}   />
+						<VideoCard key={videoObject.id} text={videoObject.text}  />
 					)}
 				</div>
     	);
