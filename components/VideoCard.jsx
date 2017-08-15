@@ -2,6 +2,7 @@ var React = require('react');
 import '../www/index.css';
 import Flexbox from 'flexbox-react';
 import TextAlignSquare from './TextAlignSquare.jsx';
+import FileUploadButton from './FileHandling.jsx';
 
 class VideoCard extends React.Component {
 	render() {
@@ -13,7 +14,7 @@ class VideoCard extends React.Component {
 					<Flexbox flexDirection="column">
 						<textarea
 							className="Chunk-text-chunk"
-							defaultValue={this.props.text} rows="4" cols="100">
+							defaultValue={this.props.videoObjects.text} rows="4" cols="100">
 						</textarea>
 						<div className="Chunk-text-timing"></div>
 						<div className="Chunk-video-start">
@@ -21,6 +22,8 @@ class VideoCard extends React.Component {
 							<p className="Chunk-video-start-seconds"> seconds </p>
 						</div>
 						<TextAlignSquare />
+						<FileUploadButton 
+							 />
 					</Flexbox>
 
 				</Flexbox>
@@ -30,3 +33,6 @@ class VideoCard extends React.Component {
 }
 
 export default VideoCard;
+
+
+//videoObjects={this.state.videoObjects}

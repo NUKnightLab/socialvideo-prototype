@@ -26,7 +26,7 @@ class VirtualConfigRenderer extends React.Component {
   render() {
     return (
       <div>
-        <TextChunker onChunkCreation={this.createVideoObjects} />
+        <TextChunker createVideoObjects={this.createVideoObjects} />
         <EditorWindow
           videoObjects={this.state.videoObjects}
           updateVideoObjects={this.updateVideoObjects} />

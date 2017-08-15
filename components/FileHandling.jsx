@@ -1,8 +1,77 @@
 import React from 'react';
 import '../www/index.css';
 
-export default class MediaLib extends React.Component {
-	here(e) {
+class FileUploadButton extends React.Component {
+	/*constructor(props) {
+    	super();
+    	this.state = {
+    		mediaPath: ''
+    	
+
+    	addMediaPath() {
+    		var 
+    	}
+    	}
+    }*/
+	render() {
+		console.log({this.props.videoObjects});
+		return (
+			<div>
+				<input type="file" id="fileItem" />
+			</div>
+		)
+	}
+}
+
+export default FileUploadButton
+
+
+
+/* 
+
+constructor() {
+		super();
+		this.addVideoCard = this.addVideoCard.bind(this);
+  	}
+
+		addVideoCard() {
+			var updatedVideoObjects = this.props.videoObjects;
+			const numVideoObjects = this.props.videoObjects.length;
+			updatedVideoObjects.push({
+				id: (numVideoObjects),
+				text: '',
+				thumbnail: '',
+        		video_path: '',
+			})
+			this.props.updateVideoObjects(updatedVideoObjects);
+		}
+
+  	render() {
+
+    	return (
+				<div>
+					<PresetBar />
+					<button onClick={this.addVideoCard}> Add a Video Card </button>
+					{this.props.videoObjects.map(videoObject =>
+						<VideoCard key={videoObject.id} text={videoObject.text}  />
+					)}
+				</div>
+    	);
+  	}
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+	/*here(e) {
   		var file = event.target.files[0];
   		var reader = new FileReader();
   		reader.onload = function(event) {
@@ -13,7 +82,7 @@ export default class MediaLib extends React.Component {
  	}
 
 
-	/*listUploads() {
+	listUploads() {
 		var files = this.refs.fileUpload.getInputDOMNode().files;
 		for (let i = 0; i < files.length; ++i)
 		{
@@ -30,7 +99,7 @@ export default class MediaLib extends React.Component {
 			document.getElementById('assetList').appendChild(printedAsset);
 		}
 		alert('Soon this will actually do something!');
-	}*/
+	}
 
 	render() {
 		return (<div>
@@ -39,4 +108,4 @@ export default class MediaLib extends React.Component {
 			</div>
 		);
 	}
-}
+	*/
