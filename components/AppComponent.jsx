@@ -27,7 +27,7 @@ class AppComponent extends React.Component {
 
     	return (
 				<div>
-				<PresetBar />
+					<PresetBar />
 					<button onClick={this.addVideoCard}> Add a Video Card </button>
 					{this.props.videoObjects.map(videoObject =>
 						<VideoCard key={videoObject.id} text={videoObject.text}  />

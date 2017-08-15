@@ -8,7 +8,8 @@ class VirtualConfigRenderer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoObjects: []
+      videoObjects: [],
+      globalPresets: []
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
     this.updateVideoObjects = this.updateVideoObjects.bind(this);
