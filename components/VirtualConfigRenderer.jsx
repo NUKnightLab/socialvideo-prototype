@@ -13,6 +13,7 @@ class VirtualConfigRenderer extends React.Component {
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
     this.updateVideoObjects = this.updateVideoObjects.bind(this);
+    this.makeVideo = this.makeVideo.bind(this);
   }
 
   createVideoObjects(newVideoObjects) {
@@ -23,6 +24,10 @@ class VirtualConfigRenderer extends React.Component {
     this.setState({ videoObjects: updatedVideoObjects });
   }
 
+  makeVideo() {
+    makeVideo(this.state.videoObjects);
+  }
+
   render() {
     return (
       <div>
@@ -30,6 +35,7 @@ class VirtualConfigRenderer extends React.Component {
         <EditorWindow
           videoObjects={this.state.videoObjects}
           updateVideoObjects={this.updateVideoObjects} />
+        <button onClick={this.makeVideo}> Make Video! </button>
       </div>
     );
   }
