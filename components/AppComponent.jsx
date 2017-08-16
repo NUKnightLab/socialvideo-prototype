@@ -32,7 +32,7 @@ class AppComponent extends React.Component {
 						<VideoCard
 							key={videoObject.id}
 							text={videoObject.text}
-						 	videoObjects={videoObject}
+						 	videoObjects={this.props.videoObjects}
 							position={videoObject.id}
 							updateVideoObjects={this.props.updateVideoObjects}/>
 					)}
