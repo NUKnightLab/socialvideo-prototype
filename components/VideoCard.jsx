@@ -2,9 +2,29 @@ var React = require('react');
 import '../www/index.css';
 import Flexbox from 'flexbox-react';
 import TextAlignSquare from './TextAlignSquare.jsx';
+import Dropzone from 'react-dropzone';
 import FileUploadButton from './FileHandling.jsx';
 
 class VideoCard extends React.Component {
+	constructor(props) {
+		super(props);
+		this.addPath = this.addPath.bind(this);
+	}
+
+	addPath(file) {
+		var fileOne = file.item(0);
+		console.log(fileOne.path, this.props.position);
+	}
+
+	onDrop(files) {
+		var videoObjects = this.props.videoObjects;
+		var position = this.props.position;
+		videoObjects[position].video_path = files[0].path;
+		this.props.updateVideoObjects[videoObjects];
+		console.log(files[0].path);
+		console.log(videoObjects);
+	}
+
 	render() {
 		return (
 			<div className="Chunk">
@@ -22,7 +42,9 @@ class VideoCard extends React.Component {
 							<p className="Chunk-video-start-seconds"> seconds </p>
 						</div>
 						<TextAlignSquare />
-						<FileUploadButton />
+						<Dropzone onDrop={this.onDrop.bind(this)}>
+            	<p>Try dropping some files here, or click to select files to upload.</p>
+          	</Dropzone>
 					</Flexbox>
 
 				</Flexbox>
