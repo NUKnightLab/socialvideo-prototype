@@ -3,6 +3,7 @@ import '../www/index.css';
 import Flexbox from 'flexbox-react';
 import TextAlignSquare from './TextAlignSquare.jsx';
 import Dropzone from 'react-dropzone';
+import FileUploadButton from './FileHandling.jsx';
 
 class VideoCard extends React.Component {
 	constructor(props) {

@@ -4,8 +4,9 @@ import Flexbox from 'flexbox-react';
 import TextAlignSquare from './TextAlignSquare.jsx';
 import VideoCard from './VideoCard.jsx';
 
+import PresetBar from './PresetBar.jsx';
 
-class AppComponent extends React.Component {
+class EditorWindow extends React.Component {
 	constructor() {
 		super();
 		this.addVideoCard = this.addVideoCard.bind(this);
@@ -17,7 +18,6 @@ class AppComponent extends React.Component {
 			updatedVideoObjects.push({
 				id: (numVideoObjects),
 				text: '',
-				thumbnail: '',
         video_path: '',
 			})
 			this.props.updateVideoObjects(updatedVideoObjects);
@@ -35,10 +35,11 @@ class AppComponent extends React.Component {
 						 	videoObjects={this.props.videoObjects}
 							position={videoObject.id}
 							updateVideoObjects={this.props.updateVideoObjects}/>
+					<PresetBar />
 					)}
 				</div>
     	);
   	}
 }
 
-export default AppComponent;
+export default EditorWindow;

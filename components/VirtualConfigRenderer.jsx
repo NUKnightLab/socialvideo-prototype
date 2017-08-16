@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import TextChunker from './TextChunker.jsx';
-import AppComponent from './AppComponent.jsx';
+import EditorWindow from './EditorWindow.jsx';
 
 class VirtualConfigRenderer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoObjects: []
+      videoObjects: [],
+      globalPresets: []
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
     this.updateVideoObjects = this.updateVideoObjects.bind(this);
@@ -25,8 +26,8 @@ class VirtualConfigRenderer extends React.Component {
   render() {
     return (
       <div>
-        <TextChunker onChunkCreation={this.createVideoObjects} />
-        <AppComponent
+        <TextChunker createVideoObjects={this.createVideoObjects} />
+        <EditorWindow
           videoObjects={this.state.videoObjects}
           updateVideoObjects={this.updateVideoObjects} />
       </div>

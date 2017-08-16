@@ -33,6 +33,8 @@
     "electron": "^1.7.5",
     "express": "^4.15.3",
     "flexbox-react": "^4.4.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -45,5 +47,6 @@
   },
   "dependencies": {
     "react-dropzone": "^4.0.0"
+    "react-widgets": "^3.4.8"\
   }
 }

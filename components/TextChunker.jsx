@@ -9,7 +9,7 @@ class TextChunker extends React.Component {
   handleChange(e) {
     splitSentences();
     var videoObjects = [];
-    this.props.onChunkCreation(videoObjects);
+    this.props.createVideoObjects(videoObjects);
     var textSegmentsArray = [];
     var textSegments = this.refs.textArea.value;
     textSegmentsArray = textSegments.split('\n \n');
@@ -27,7 +27,7 @@ class TextChunker extends React.Component {
         video_path: '',
       });
     });
-    this.props.onChunkCreation(videoObjects);
+    this.props.createVideoObjects(videoObjects);
   }
 
   render() {
