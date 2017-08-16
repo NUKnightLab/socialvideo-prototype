@@ -35,7 +35,6 @@ class EditorWindow extends React.Component {
 						 	videoObjects={this.props.videoObjects}
 							position={videoObject.id}
 							updateVideoObjects={this.props.updateVideoObjects}/>
-					<PresetBar />
 					)}
 				</div>
     	);
