@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import TextChunker from './TextChunker.jsx';
 import EditorWindow from './EditorWindow.jsx';
+import PresetBar from './PresetBar.jsx';
 
 class VirtualConfigRenderer extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class VirtualConfigRenderer extends React.Component {
   render() {
     return (
       <div>
+        <PresetBar />
         <TextChunker createVideoObjects={this.createVideoObjects} />
         <EditorWindow
           videoObjects={this.state.videoObjects}

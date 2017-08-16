@@ -7,14 +7,19 @@ import Dropzone from 'react-dropzone';
 class VideoCard extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			videoPath: 'Drag and drop or click to upload a media file'
+		};
+
 		this.addPath = this.addPath.bind(this);
+	//	this.addDropText = this.addDropText.bind(this);
 	}
 
 	addPath(file) {
 		var fileOne = file.item(0);
 		console.log(fileOne.path, this.props.position);
+		this.setState({ videoPath: fileOne.path });
 	}
-
 	onDrop(files) {
 		var videoObjects = this.props.videoObjects;
 		var position = this.props.position;
@@ -22,6 +27,7 @@ class VideoCard extends React.Component {
 		this.props.updateVideoObjects[videoObjects];
 		console.log(files[0].path);
 		console.log(videoObjects);
+		this.setState({ videoPath: files[0].path });
 	}
 
 	render() {
@@ -42,8 +48,8 @@ class VideoCard extends React.Component {
 						</div>
 						<TextAlignSquare />
 						<Dropzone onDrop={this.onDrop.bind(this)}>
-            	<p>Try dropping some files here, or click to select files to upload.</p>
-          	</Dropzone>
+            				<p>{this.state.videoPath}</p>
+          				</Dropzone>
 					</Flexbox>
 
 				</Flexbox>
