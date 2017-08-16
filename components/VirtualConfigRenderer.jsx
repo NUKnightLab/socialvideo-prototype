@@ -1,9 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import Flexbox from 'flexbox-react';
 
 import TextChunker from './TextChunker.jsx';
 import EditorWindow from './EditorWindow.jsx';
 import PresetBar from './PresetBar.jsx';
+import MediaLibrary from './MediaLibrary.jsx';
 
 class VirtualConfigRenderer extends React.Component {
   constructor(props) {
@@ -32,9 +34,10 @@ class VirtualConfigRenderer extends React.Component {
   render() {
     return (
       <div>
-        <PresetBar />
-        <TextChunker createVideoObjects={this.createVideoObjects} />
-        <EditorWindow
+      <PresetBar />
+      <TextChunker createVideoObjects={this.createVideoObjects} />
+      <MediaLibrary />
+      <EditorWindow
           videoObjects={this.state.videoObjects}
           updateVideoObjects={this.updateVideoObjects} />
         <button onClick={this.makeVideo}> Make Video! </button>
@@ -44,3 +47,19 @@ class VirtualConfigRenderer extends React.Component {
 }
 
 export default VirtualConfigRenderer;
+
+
+
+
+/*
+        <Grid fluid>
+          <Row>
+            <Col xs={3}>
+              <MediaLibrary />
+            </Col>
+            <Col xs={9}>
+              <TextChunker createVideoObjects={this.createVideoObjects} />
+            </Col>
+          </Row>
+        </Grid>
+*/
