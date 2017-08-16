@@ -4,7 +4,7 @@ var fs = require("fs");
 var tmp = require('tmp'); //Allows creation of temporary files + directories
 var tmpobj = tmp.dirSync({unsafeCleanup: true}); // Synchronous directory creation
 
-//TOO MANY GLOBAL VARIABLES. CLEANING UP TODAY (7/28/17). 
+//TOO MANY GLOBAL VARIABLES. CLEANING UP TODAY (7/28/17).
 var videoNames = [];
 var mediaPaths = [];
 var textSegments;
@@ -28,6 +28,7 @@ function uploadFiles(FileList, tag) {
 		var asset = FileList.item(i);
 		uploadedAssets.push(asset);
 		uploadedPaths.push(asset.path);
+		console.log(uploadedPaths);
 		uploadSize += asset.size;
 		printAssetToList(asset, tag);
 	}
@@ -44,7 +45,7 @@ function uploadFiles(FileList, tag) {
 function printAssetToList(asset, tag) {
 	var printedAsset = document.createElement('P');
 	printedAsset.setAttribute("class", "asset-info");
-	printedAsset.innerHTML = 
+	printedAsset.innerHTML =
 		'File: <b>' + asset.name
 		+ '</b> Size: <b>' + Math.round(asset.size / 1024)
 		+ '</b> Type: <b>' + asset.type + '</b>.';
@@ -79,7 +80,7 @@ function createSegmentObjects(videoCount) {
 			segments.push("");
 		}
 	}
-	//let's section this off. 
+	//let's section this off.
 	setTiming(segments);
 	for (var i = 0; i < segments.length; i++) {
 		var obj = {text: segments[i], positionX: 100, positionY: 200, time: timingArray[i]};

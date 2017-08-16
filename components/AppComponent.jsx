@@ -29,7 +29,12 @@ class AppComponent extends React.Component {
 				<div>
 					<button onClick={this.addVideoCard}> Add a Video Card </button>
 					{this.props.videoObjects.map(videoObject =>
-						<VideoCard key={videoObject.id} text={videoObject.text}  />
+						<VideoCard
+							key={videoObject.id}
+							text={videoObject.text}
+						 	videoObjects={videoObject}
+							position={videoObject.id}
+							updateVideoObjects={this.props.updateVideoObjects}/>
 					)}
 				</div>
     	);

@@ -4,6 +4,14 @@ import Flexbox from 'flexbox-react';
 import TextAlignSquare from './TextAlignSquare.jsx';
 
 class VideoCard extends React.Component {
+	constructor(props) {
+		super(props);
+		this.addPath = this.addPath.bind(this);
+	}
+	addPath(file) {
+		console.log(file.target.value, this.props.position);
+	}
+
 	render() {
 		return (
 			<div className="Chunk">
@@ -21,6 +29,7 @@ class VideoCard extends React.Component {
 							<p className="Chunk-video-start-seconds"> seconds </p>
 						</div>
 						<TextAlignSquare />
+						<input type="file" onChange={this.addPath}></input>
 					</Flexbox>
 
 				</Flexbox>
