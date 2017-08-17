@@ -7,12 +7,10 @@ import Dropzone from 'react-dropzone';
 class VideoCard extends React.Component {
 	constructor(props) {
 		super(props);
-		this.addPath = this.addPath.bind(this);
-	}
-
-	addPath(file) {
-		var fileOne = file.item(0);
-		console.log(fileOne.path, this.props.position);
+		this.state = {
+			videoPath: '', 
+			dropped: false
+		}
 	}
 
 	onDrop(files) {
@@ -22,14 +20,33 @@ class VideoCard extends React.Component {
 		this.props.updateVideoObjects[videoObjects];
 		console.log(files[0].path);
 		console.log(videoObjects);
+		this.setState({ videoPath: files[0].path });
+		this.setState({ dropped: true })
+
 	}
 
 	render() {
+		const dropzoneStyle = {
+			borderWidth: this.state.dropped ? '0px' : '2px',
+		}
+
+		const showVideo = {
+			display: this.state.dropped ? 'inline' : 'none'
+		}
+
+		const showInstructions = {
+			display: this.state.dropped ? 'none' : 'inline'
+		}
+
 		return (
 			<div className="Chunk">
 				<Flexbox flexDirection="row">
-					<img className="Chunk-thumbnail" src={'http://placehold.it/200x200'}/>
-
+					<Dropzone className="dropzone" onDrop={this.onDrop.bind(this)} style={dropzoneStyle}>
+            				<p style={showInstructions}> Drag and drop or click here to upload a media file </p>
+            				<video style={showVideo} className="video-clip" controls>
+            					<source src={ this.state.videoPath } />
+            				</video>
+          			</Dropzone>
 					<Flexbox flexDirection="column">
 						<textarea
 							className="Chunk-text-chunk"
@@ -41,11 +58,7 @@ class VideoCard extends React.Component {
 							<p className="Chunk-video-start-seconds"> seconds </p>
 						</div>
 						<TextAlignSquare />
-						<Dropzone onDrop={this.onDrop.bind(this)}>
-            	<p>Try dropping some files here, or click to select files to upload.</p>
-          	</Dropzone>
 					</Flexbox>
-
 				</Flexbox>
 			</div>
 		)

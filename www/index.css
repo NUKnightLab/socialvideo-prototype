@@ -2,6 +2,7 @@ h1 {
 	color: green;
 	font-family: 'Avenir';
 	font-size: 20px;
+	margin: 0;
 }
 
 #searchBar {
@@ -18,10 +19,9 @@ h1 {
 	border-bottom: 1px solid black;
 }
 
-
 /********* CHUNK STYLING *********/
 .Chunk {
-	padding: 20px 40px;
+	padding: 5px;
 }
 
 .Chunk-thumbnail {
@@ -64,9 +64,53 @@ h1 {
 	padding: 0;
 	margin: 0;
 }
-
 /********* CHUNK STYLING *********/
 
 .preset {
 	margin: 20px;
 }
+
+/********* VIDEO CARD MEDIA DROP STYLING *********/
+.dropzone {
+	width: 300px;
+	border-color: rgb(102, 102, 102);
+	border-style: dashed;
+	border-radius: 5px;
+}
+
+.video-clip {
+	width: 400px;
+}
+/********* VIDEO CARD MEDIA DROP STYLING *********/
+
+/********* MEDIA LIBRARY STYLING *********/
+.media-library {
+	border: solid;
+	width: 97%;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#add-media-square {
+	border: dashed;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	font-size: 15px;
+}
+
+.vidNode {
+	border: solid;
+	border-width: .5px;
+	height: 100px;
+}
+/********* MEDIA LIBRARY STYLING *********/
+
+
+
+
+
+
