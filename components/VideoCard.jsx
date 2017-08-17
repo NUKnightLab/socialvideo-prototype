@@ -9,8 +9,7 @@ class VideoCard extends React.Component {
 		super(props);
 		this.state = {
 			videoPath: '', 
-			dropped: false,
-			draggedPath: ''
+			//dropped: false,
 		};
 		this.dragDrop = this.dragDrop.bind(this);
 	}
@@ -19,7 +18,11 @@ class VideoCard extends React.Component {
 		e.preventDefault();
 		var data = e.dataTransfer.getData('text');
 		console.log(data);
-		this.setState({ draggedPath: e.dataTransfer.getData('text') });
+		this.setState({ videoPath: e.dataTransfer.getData('text') });
+		var videoObjects = this.props.videoObjects;
+		var position = this.props.position;
+		videoObjects[position].video_path = data;
+		this.props.updateVideoObjects[videoObjects];
 	}
 
 	render() {
@@ -35,7 +38,7 @@ class VideoCard extends React.Component {
             					//style={showVideo}
             					className='video-clip'
             					controls='true'
-            					src={ this.state.draggedPath }>
+            					src={ this.state.videoPath }>
             				</video>
   					</div>
 					<Flexbox flexDirection="column">
@@ -57,15 +60,3 @@ class VideoCard extends React.Component {
 }
 
 export default VideoCard;
-
-/*
-<Dropzone className="dropzone" onDrop={this.onDrop.bind(this)} style={dropzoneStyle}>
-            				<p style={showInstructions}> Drag and drop assets from media library </p>
-            				<video style={showVideo} className="video-clip" controls>
-            					<source src={ this.state.videoPath } />
-            				</video>
-          			</Dropzone>
-
-
- <p style={showInstructions}> Drag and drop assets from media library </p>
-*/
