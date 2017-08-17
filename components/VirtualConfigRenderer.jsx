@@ -12,10 +12,12 @@ class VirtualConfigRenderer extends React.Component {
     super(props);
     this.state = {
       videoObjects: [],
-      globalPresets: []
+      globalPresets: [],
+      mediaFiles: []
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
     this.updateVideoObjects = this.updateVideoObjects.bind(this);
+    this.trackMediaFiles = this.trackMediaFiles.bind(this);
     this.makeVideo = this.makeVideo.bind(this);
   }
 
@@ -27,6 +29,10 @@ class VirtualConfigRenderer extends React.Component {
     this.setState({ videoObjects: updatedVideoObjects });
   }
 
+  trackMediaFiles(uploadedFiles) {
+    this.setState({ mediaFiles: uploadedFiles })
+  }
+
   makeVideo() {
     makeVideo(this.state.videoObjects);
   }
@@ -36,7 +42,9 @@ class VirtualConfigRenderer extends React.Component {
       <div>
       <PresetBar />
       <TextChunker createVideoObjects={this.createVideoObjects} />
-      <MediaLibrary />
+      <MediaLibrary 
+        trackMediaFiles={this.trackMediaFiles}
+        mediaFiles={this.state.mediaFiles} />
       <EditorWindow
           videoObjects={this.state.videoObjects}
           updateVideoObjects={this.updateVideoObjects} />

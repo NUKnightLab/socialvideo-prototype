@@ -22,12 +22,11 @@ class VideoCard extends React.Component {
 		console.log(videoObjects);
 		this.setState({ videoPath: files[0].path });
 		this.setState({ dropped: true })
-
 	}
 
 	render() {
 		const dropzoneStyle = {
-			borderWidth: this.state.dropped ? '0px' : '2px',
+			borderWidth: this.state.dropped ? '0px' : '2px'
 		}
 
 		const showVideo = {
@@ -41,12 +40,18 @@ class VideoCard extends React.Component {
 		return (
 			<div className="Chunk">
 				<Flexbox flexDirection="row">
-					<Dropzone className="dropzone" onDrop={this.onDrop.bind(this)} style={dropzoneStyle}>
-            				<p style={showInstructions}> Drag and drop or click here to upload a media file </p>
-            				<video style={showVideo} className="video-clip" controls>
-            					<source src={ this.state.videoPath } />
+					<div 
+						className='dropzone' 
+						onDrop={this.onDrop.bind(this)}
+						style={dropzoneStyle}>
+            				<p style={showInstructions}> Drag and drop assets from media library </p>
+            				<video 
+            					style={showVideo}
+            					className="video-clip"
+            					controls='true'
+            					src={ this.state.videoPath }>
             				</video>
-          			</Dropzone>
+  					</div>
 					<Flexbox flexDirection="column">
 						<textarea
 							className="Chunk-text-chunk"
@@ -66,3 +71,12 @@ class VideoCard extends React.Component {
 }
 
 export default VideoCard;
+
+/*
+<Dropzone className="dropzone" onDrop={this.onDrop.bind(this)} style={dropzoneStyle}>
+            				<p style={showInstructions}> Drag and drop assets from media library </p>
+            				<video style={showVideo} className="video-clip" controls>
+            					<source src={ this.state.videoPath } />
+            				</video>
+          			</Dropzone>
+*/

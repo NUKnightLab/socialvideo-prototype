@@ -9,7 +9,6 @@ class TextChunker extends React.Component {
   handleChange(e) {
     splitSentences();
     var videoObjects = [];
-    this.props.createVideoObjects(videoObjects);
     var textSegmentsArray = [];
     var textSegments = this.refs.textArea.value;
     textSegmentsArray = textSegments.split('\n \n');
