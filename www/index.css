@@ -67,7 +67,7 @@ h1 {
 /********* CHUNK STYLING *********/
 
 .preset {
-	margin: 20px;
+	margin: 0 20px 10px 0;
 }
 
 /********* VIDEO CARD MEDIA DROP STYLING *********/
@@ -86,12 +86,19 @@ h1 {
 /********* MEDIA LIBRARY STYLING *********/
 .media-library {
 	border: solid;
-	width: 97%;
 	padding: 10px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	width: 200px;
+	margin: 0 15px 0 0;
+	height: 100%;
+	position: fixed;
+}
+
+div.media-lib-drop {
+	border-style: none;
 }
 
 #add-media-square {
@@ -106,6 +113,10 @@ h1 {
 	border: solid;
 	border-width: .5px;
 	height: 100px;
+}
+
+.editor-container {
+	margin-left: 240px;
 }
 /********* MEDIA LIBRARY STYLING *********/
 

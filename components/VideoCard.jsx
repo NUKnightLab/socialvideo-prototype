@@ -9,44 +9,38 @@ class VideoCard extends React.Component {
 		super(props);
 		this.state = {
 			videoPath: '', 
-			dropped: false
-		}
+			//dropped: false,
+		};
+		this.dragDrop = this.dragDrop.bind(this);
 	}
 
-	onDrop(files) {
+	dragDrop(e) {
+		e.preventDefault();
+		var data = e.dataTransfer.getData('text');
+		console.log(data);
+		this.setState({ videoPath: e.dataTransfer.getData('text') });
 		var videoObjects = this.props.videoObjects;
 		var position = this.props.position;
-		videoObjects[position].video_path = files[0].path;
+		videoObjects[position].video_path = data;
 		this.props.updateVideoObjects[videoObjects];
-		console.log(files[0].path);
-		console.log(videoObjects);
-		this.setState({ videoPath: files[0].path });
-		this.setState({ dropped: true })
-
 	}
 
 	render() {
-		const dropzoneStyle = {
-			borderWidth: this.state.dropped ? '0px' : '2px',
-		}
-
-		const showVideo = {
-			display: this.state.dropped ? 'inline' : 'none'
-		}
-
-		const showInstructions = {
-			display: this.state.dropped ? 'none' : 'inline'
-		}
-
 		return (
 			<div className="Chunk">
 				<Flexbox flexDirection="row">
-					<Dropzone className="dropzone" onDrop={this.onDrop.bind(this)} style={dropzoneStyle}>
-            				<p style={showInstructions}> Drag and drop or click here to upload a media file </p>
-            				<video style={showVideo} className="video-clip" controls>
-            					<source src={ this.state.videoPath } />
+					<div 
+						className='dropzone' 
+						//onDrop={this.onDrop.bind(this)}
+						//style={dropzoneStyle}
+						onDrop={this.dragDrop}>
+            				<video 
+            					//style={showVideo}
+            					className='video-clip'
+            					controls='true'
+            					src={ this.state.videoPath }>
             				</video>
-          			</Dropzone>
+  					</div>
 					<Flexbox flexDirection="column">
 						<textarea
 							className="Chunk-text-chunk"

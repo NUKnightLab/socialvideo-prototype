@@ -12,10 +12,12 @@ class VirtualConfigRenderer extends React.Component {
     super(props);
     this.state = {
       videoObjects: [],
-      globalPresets: []
+      globalPresets: [],
+      mediaFiles: []
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
     this.updateVideoObjects = this.updateVideoObjects.bind(this);
+    this.trackMediaFiles = this.trackMediaFiles.bind(this);
     this.makeVideo = this.makeVideo.bind(this);
   }
 
@@ -27,6 +29,10 @@ class VirtualConfigRenderer extends React.Component {
     this.setState({ videoObjects: updatedVideoObjects });
   }
 
+  trackMediaFiles(uploadedFiles) {
+    this.setState({ mediaFiles: uploadedFiles })
+  }
+
   makeVideo() {
     makeVideo(this.state.videoObjects);
   }
@@ -34,13 +40,21 @@ class VirtualConfigRenderer extends React.Component {
   render() {
     return (
       <div>
-      <PresetBar />
-      <TextChunker createVideoObjects={this.createVideoObjects} />
-      <MediaLibrary />
-      <EditorWindow
-          videoObjects={this.state.videoObjects}
-          updateVideoObjects={this.updateVideoObjects} />
-        <button onClick={this.makeVideo}> Make Video! </button>
+        <Flexbox flexDirection="row">
+          <div className="media-lib-container">
+            <MediaLibrary 
+              trackMediaFiles={this.trackMediaFiles}
+              mediaFiles={this.state.mediaFiles} />
+          </div>
+          <div className="editor-container">
+            <PresetBar />
+            <TextChunker createVideoObjects={this.createVideoObjects} />
+            <EditorWindow
+                videoObjects={this.state.videoObjects}
+                updateVideoObjects={this.updateVideoObjects} />
+              <button onClick={this.makeVideo}> Make Video! </button>
+            </div>
+          </Flexbox>
       </div>
     );
   }
