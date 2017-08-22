@@ -8,10 +8,11 @@ class VideoCard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			videoPath: '', 
+			videoPath: '',
 			//dropped: false,
 		};
 		this.dragDrop = this.dragDrop.bind(this);
+		this.setTextAlign = this.setTextAlign.bind(this);
 	}
 
 	dragDrop(e) {
@@ -25,15 +26,23 @@ class VideoCard extends React.Component {
 		this.props.updateVideoObjects[videoObjects];
 	}
 
+	setTextAlign(xPos, yPos) {
+		var videoObjects = this.props.videoObjects;
+		var position = this.props.position;
+		videoObjects[position].xPos = xPos;
+		videoObjects[position].yPos = yPos;
+		this.props.updateVideoObjects[videoObjects];
+	}
+
 	render() {
 		return (
 			<div className="videocard">
-				<div 
-					className='dropzone' 
+				<div
+					className='dropzone'
 					//onDrop={this.onDrop.bind(this)}
 					//style={dropzoneStyle}
 					onDrop={this.dragDrop}>
-        				<video 
+        				<video
         					//style={showVideo}
         					className='video-clip'
         					controls='true'
@@ -50,7 +59,7 @@ class VideoCard extends React.Component {
 						<textarea className="Chunk-video-start-input"></textarea>
 						<p className="Chunk-video-start-seconds"> seconds </p>
 					</div>
-					<TextAlignSquare />
+					<TextAlignSquare idPos={this.props.position} textAlign={this.setTextAlign}/>
 				</div>
 			</div>
 		)
