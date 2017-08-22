@@ -1,6 +1,5 @@
 var React = require('react');
 import '../www/index.css';
-import Flexbox from 'flexbox-react';
 import TextAlignSquare from './TextAlignSquare.jsx';
 import VideoCard from './VideoCard.jsx';
 
@@ -22,7 +21,6 @@ class EditorWindow extends React.Component {
 		}
 
   	render() {
-
     	return (
 				<div>
 					<button onClick={this.addVideoCard}> Add a Video Card </button>

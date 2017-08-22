@@ -1,5 +1,3 @@
-//DOESN'T LOAD COMPONENTS. FIX. 
-
 var path = require('path');
 var webpack = require('webpack');
 var express = require('express');
