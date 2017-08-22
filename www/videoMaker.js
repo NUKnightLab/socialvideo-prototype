@@ -25,8 +25,8 @@ function makeVideo(videoObjects) {
 							text: videoObject.text,
 							fontsize: 50,
 							fontcolor: 'white',
-							x: 50,
-							y: 50,
+							x: videoObject.xPos,
+							y: videoObject.yPos,
 							shadowcolor: 'black',
 							shadowx: 2,
 							shadowy: 2

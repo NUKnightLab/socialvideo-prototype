@@ -24,6 +24,8 @@ class TextChunker extends React.Component {
         text: segment,
         thumbnail: '',
         video_path: '',
+        xPos: 50,
+        yPos: 50,
       });
     });
     this.props.createVideoObjects(videoObjects);
