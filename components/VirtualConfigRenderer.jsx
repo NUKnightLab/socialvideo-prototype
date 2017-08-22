@@ -4,7 +4,7 @@ import Flexbox from 'flexbox-react';
 
 import TextChunker from './TextChunker.jsx';
 import EditorWindow from './EditorWindow.jsx';
-import PresetBar from './PresetBar.jsx';
+import PresetBar from './GlobalPresetBar.jsx';
 import MediaLibrary from './MediaLibrary.jsx';
 
 class VirtualConfigRenderer extends React.Component {

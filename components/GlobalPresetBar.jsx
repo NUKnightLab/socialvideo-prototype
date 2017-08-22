@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'react-widgets/lib/less/react-widgets.less';
-import DropdownList from 'react-widgets/lib/DropdownList';
+//import 'react-widgets/lib/less/react-widgets.less';
+//import DropdownList from 'react-widgets/lib/DropdownList';
+import ColorPreset from './GlobalColors.jsx';
+import FontPreset from './GlobalFonts.jsx';
+import DefaultTextPosition from './GlobalPositioning.jsx';
+import GlobalLogo from './GlobalLogo.jsx';
 import Flexbox from 'flexbox-react';
 import '../www/index.css';
 
@@ -15,15 +19,19 @@ class PresetBar extends React.Component {
 			<div className="global_presets">
 			<Flexbox flexDirection="row">
 				<ColorPreset colors/>
-				<HighlightPreset colors/>
 				<FontPreset />
+        <DefaultTextPosition />
+        <GlobalLogo />
 			</Flexbox>
 			</div>
 		);
 	}
 }
 
+export default PresetBar;
 
+
+/*
 class ColorPreset extends React.Component {
 	constructor(props) {
   		super(props);
@@ -35,14 +43,14 @@ class ColorPreset extends React.Component {
 	render() {
 		return (
 			<div className="preset">
-			<p>Text Color</p>
-      		<DropdownList
-        		data= {colors}
-        		value={this.state.value}
-        		onChange={value => this.setState({ value })}/>
-        	</div>
-        )
-  	}
+		    <p>Text Color</p>
+      	<DropdownList
+        	data= {colors}
+        	value={this.state.value}
+        	onChange={value => this.setState({ value })}/>
+      </div>
+    )
+  }
 }
 
 class HighlightPreset extends React.Component {
@@ -66,6 +74,7 @@ class HighlightPreset extends React.Component {
   	}
 }
 
+
 class FontPreset extends React.Component {
 	constructor(props) {
   		super(props);
@@ -86,5 +95,4 @@ class FontPreset extends React.Component {
         )
   	}
 }
-
-export default PresetBar;
+*/

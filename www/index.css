@@ -24,12 +24,20 @@ h1 {
 	margin: 0 20px 10px 0;
 }
 
+/********* GLOBAL PRESETS BAR *********/
+.global-logo-presets {
+	display: flex;
+	flex-direction: row;
+	margin-left: 10px;
+}
+
+
+
 /********* VIDEOCARDS *********/
 .videocard {
 	padding: 5px;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
 }
 
 .Chunk-thumbnail {
