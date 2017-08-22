@@ -27,33 +27,31 @@ class VideoCard extends React.Component {
 
 	render() {
 		return (
-			<div className="Chunk">
-				<Flexbox flexDirection="row">
-					<div 
-						className='dropzone' 
-						//onDrop={this.onDrop.bind(this)}
-						//style={dropzoneStyle}
-						onDrop={this.dragDrop}>
-            				<video 
-            					//style={showVideo}
-            					className='video-clip'
-            					controls='true'
-            					src={ this.state.videoPath }>
-            				</video>
-  					</div>
-					<Flexbox flexDirection="column">
-						<textarea
-							className="Chunk-text-chunk"
-							defaultValue={this.props.text} rows="4" cols="100">
-						</textarea>
-						<div className="Chunk-text-timing"></div>
-						<div className="Chunk-video-start">
-							<textarea className="Chunk-video-start-input"></textarea>
-							<p className="Chunk-video-start-seconds"> seconds </p>
-						</div>
-						<TextAlignSquare />
-					</Flexbox>
-				</Flexbox>
+			<div className="videocard">
+				<div 
+					className='dropzone' 
+					//onDrop={this.onDrop.bind(this)}
+					//style={dropzoneStyle}
+					onDrop={this.dragDrop}>
+        				<video 
+        					//style={showVideo}
+        					className='video-clip'
+        					controls='true'
+        					src={ this.state.videoPath }>
+        				</video>
+					</div>
+				<div className="videocard-text-info">
+					<textarea
+						className="Chunk-text-chunk"
+						defaultValue={this.props.text}>
+					</textarea>
+					<div className="Chunk-text-timing"></div>
+					<div className="Chunk-video-start">
+						<textarea className="Chunk-video-start-input"></textarea>
+						<p className="Chunk-video-start-seconds"> seconds </p>
+					</div>
+					<TextAlignSquare />
+				</div>
 			</div>
 		)
 	}
