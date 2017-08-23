@@ -42,13 +42,16 @@ class VirtualConfigRenderer extends React.Component {
       <div>
         <Flexbox flexDirection="row">
           <div className="media-lib-container">
-            <MediaLibrary 
+            <MediaLibrary
               trackMediaFiles={this.trackMediaFiles}
               mediaFiles={this.state.mediaFiles} />
           </div>
           <div className="editor-container">
             <PresetBar />
-            <TextChunker createVideoObjects={this.createVideoObjects} />
+            <TextChunker
+              createVideoObjects={this.createVideoObjects}
+              videoObjects={this.state.videoObjects}
+             />
             <EditorWindow
                 videoObjects={this.state.videoObjects}
                 updateVideoObjects={this.updateVideoObjects} />

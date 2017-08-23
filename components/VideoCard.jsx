@@ -36,7 +36,7 @@ class VideoCard extends React.Component {
 
 	render() {
 		return (
-			<div className="videocard">
+			<div className="videocard" id={this.props.position + "card"}>
 				<div
 					className='dropzone'
 					//onDrop={this.onDrop.bind(this)}
