@@ -1,27 +1,38 @@
 import React from 'react';
-import 'react-widgets/lib/less/react-widgets.less';
-import DropdownList from 'react-widgets/lib/DropdownList';
-import '../www/index.css';
-
-const colors = ['orange', 'red', 'blue', 'purple'];
+var ColorPicker = require('rc-color-picker');
+import 'rc-color-picker/assets/index.css';
 
 class ColorPreset extends React.Component {
-	constructor(props) {
-  		super(props);
-  		this.state = {
-    		value: colors[0]
-  		};
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: '#2D3545'
+    }
+    this.changeHandler = this.changeHandler.bind(this);
+  }
 
-	render() {
-		return (
-			<div className="preset">
-		    <p>Text Color</p>
-      	<DropdownList
-        	data= {colors}
-        	value={this.state.value}
-        	onChange={value => this.setState({ value })}/>
-      </div>
+  setColor() {
+    var globalPresets = this.props.globalPresets;
+    // some code to get color
+    this.props.updateGlobal(globalPresets);
+  }
+
+  changeHandler(colors) {
+    console.log(colors);
+    this.setState({ color: colors.color })
+  }
+
+
+  render() {
+    return (
+      <div style={{ textAlign: 'center' }}>
+      <ColorPicker
+        color={this.state.color}
+        onChange={this.changeHandler}
+      >
+        <span className="react-custom-trigger">choose color</span>
+      </ColorPicker>
+    </div>
     )
   }
 }

@@ -5,7 +5,7 @@ var tmp = require('tmp'); //Allows creation of temporary files + directories
 var tmpobj = tmp.dirSync({unsafeCleanup: true}); // Synchronous directory creation
 
 
-function makeVideo(videoObjects) {
+function makeVideo(videoObjects, globalPresets) {
 	var videoCount = videoObjects.length;
 	var ii = 0;
 	var jj = 0;
@@ -21,10 +21,10 @@ function makeVideo(videoObjects) {
 			.videoFilters({
 					filter: 'drawtext',
 					options: {
-							fontfile:'Verdana.ttf',
+							fontfile:'Verdana.ttf', //textOptions.font
 							text: videoObject.text,
 							fontsize: 50,
-							fontcolor: 'white',
+							fontcolor: 'white', //textOptions.color
 							x: videoObject.xPos,
 							y: videoObject.yPos,
 							shadowcolor: 'black',

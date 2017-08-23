@@ -18,7 +18,7 @@ class PresetBar extends React.Component {
 		return ( 
 			<div className="global_presets">
 			<Flexbox flexDirection="row">
-				<ColorPreset colors/>
+				<ColorPreset globalPresets={this.props.globalPresets} updateGlobal={this.props.updateGlobal} />
 				<FontPreset />
         <DefaultTextPosition />
         <GlobalLogo />
