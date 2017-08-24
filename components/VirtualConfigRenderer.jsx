@@ -4,7 +4,7 @@ import Flexbox from 'flexbox-react';
 
 import TextChunker from './TextChunker.jsx';
 import EditorWindow from './EditorWindow.jsx';
-import PresetBar from './GlobalPresetBar.jsx';
+import GlobalPresetBar from './GlobalPresetBar.jsx';
 import MediaLibrary from './MediaLibrary.jsx';
 
 class VirtualConfigRenderer extends React.Component {
@@ -12,12 +12,13 @@ class VirtualConfigRenderer extends React.Component {
     super(props);
     this.state = {
       videoObjects: [],
-      globalPresets: [],
+      globalPresets: {color: '#ffffff', font: 'Verdana.ttf',},
       mediaFiles: []
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
     this.updateVideoObjects = this.updateVideoObjects.bind(this);
     this.trackMediaFiles = this.trackMediaFiles.bind(this);
+    this.updateGlobal = this.updateGlobal.bind(this);
     this.makeVideo = this.makeVideo.bind(this);
   }
 
@@ -33,8 +34,12 @@ class VirtualConfigRenderer extends React.Component {
     this.setState({ mediaFiles: uploadedFiles })
   }
 
+  updateGlobal(updatedGlobals) {
+    this.setState({globalPresets: updatedGlobals});
+  }
+
   makeVideo() {
-    makeVideo(this.state.videoObjects);
+    makeVideo(this.state.videoObjects, this.state.globalPresets);
   }
 
   render() {
@@ -47,8 +52,11 @@ class VirtualConfigRenderer extends React.Component {
               mediaFiles={this.state.mediaFiles} />
           </div>
           <div className="editor-container">
-            <PresetBar />
-            <TextChunker createVideoObjects={this.createVideoObjects} />
+            <GlobalPresetBar 
+              globalPresets={this.state.globalPresets}
+              updateGlobal={this.updateGlobal} />
+            <TextChunker 
+              createVideoObjects={this.createVideoObjects} />
             <EditorWindow
                 videoObjects={this.state.videoObjects}
                 updateVideoObjects={this.updateVideoObjects} />
@@ -61,19 +69,3 @@ class VirtualConfigRenderer extends React.Component {
 }
 
 export default VirtualConfigRenderer;
-
-
-
-
-/*
-        <Grid fluid>
-          <Row>
-            <Col xs={3}>
-              <MediaLibrary />
-            </Col>
-            <Col xs={9}>
-              <TextChunker createVideoObjects={this.createVideoObjects} />
-            </Col>
-          </Row>
-        </Grid>
-*/

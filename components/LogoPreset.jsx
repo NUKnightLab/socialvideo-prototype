@@ -23,5 +23,3 @@ class GlobalLogo extends React.Component {
 }
 
 export default GlobalLogo;
-
-//onChange={showUploadedLogo}
