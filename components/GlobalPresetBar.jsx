@@ -13,13 +13,19 @@ import '../www/index.css';
 const colors = ['orange', 'red', 'blue', 'purple'];
 const fonts = ['Times New Roman', 'Avenir', 'Comic Sans'];
 
-class PresetBar extends React.Component {
+class GlobalPresetBar extends React.Component {
 	render() {
 		return ( 
 			<div className="global_presets">
 			<Flexbox flexDirection="row">
-				<ColorPreset globalPresets={this.props.globalPresets} updateGlobal={this.props.updateGlobal} />
-				<FontPreset />
+                <ColorPreset 
+                    globalPresets={this.props.globalPresets}
+                    updateGlobal={this.props.updateGlobal}
+                />
+				<FontPreset
+                    globalPresets={this.props.globalPresets}
+                    updateGlobal={this.props.updateGlobal}
+                />
         <DefaultTextPosition />
         <GlobalLogo />
 			</Flexbox>
@@ -28,7 +34,7 @@ class PresetBar extends React.Component {
 	}
 }
 
-export default PresetBar;
+export default GlobalPresetBar;
 
 
 /*

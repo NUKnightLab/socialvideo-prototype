@@ -4,7 +4,7 @@ import Flexbox from 'flexbox-react';
 
 import TextChunker from './TextChunker.jsx';
 import EditorWindow from './EditorWindow.jsx';
-import PresetBar from './GlobalPresetBar.jsx';
+import GlobalPresetBar from './GlobalPresetBar.jsx';
 import MediaLibrary from './MediaLibrary.jsx';
 
 class VirtualConfigRenderer extends React.Component {
@@ -12,7 +12,7 @@ class VirtualConfigRenderer extends React.Component {
     super(props);
     this.state = {
       videoObjects: [],
-      globalPresets: {color: '', font: '',},
+      globalPresets: {color: '#ffffff', font: '',},
       mediaFiles: []
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
@@ -52,7 +52,7 @@ class VirtualConfigRenderer extends React.Component {
               mediaFiles={this.state.mediaFiles} />
           </div>
           <div className="editor-container">
-            <PresetBar 
+            <GlobalPresetBar 
               globalPresets={this.state.globalPresets}
               updateGlobal={this.updateGlobal} />
             <TextChunker 
@@ -69,19 +69,3 @@ class VirtualConfigRenderer extends React.Component {
 }
 
 export default VirtualConfigRenderer;
-
-
-
-
-/*
-        <Grid fluid>
-          <Row>
-            <Col xs={3}>
-              <MediaLibrary />
-            </Col>
-            <Col xs={9}>
-              <TextChunker createVideoObjects={this.createVideoObjects} />
-            </Col>
-          </Row>
-        </Grid>
-*/

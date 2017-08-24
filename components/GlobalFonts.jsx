@@ -4,12 +4,6 @@ import DropdownList from 'react-widgets/lib/DropdownList';
 import '../www/index.css';
 
 class FontPreset extends React.Component {
-	constructor(props) {
-  		super(props);
-  		this.state = {
-    		value: ''
-  		};
-	}
 
     showFontOptions() {
         var systemFonts = grabFonts();
@@ -35,10 +29,21 @@ class FontPreset extends React.Component {
         return arr;
     }
 
+    recordSelectedFont() {
+        var globalPresets = this.props.globalPresets;
+        var fs = document.getElementById('font-selector');
+        var fspath = fs.options[fs.selectedIndex].value;
+        globalPresets.font = fspath;
+        this.props.updateGlobal(globalPresets);
+        console.log(fspath);
+    }
+
 	render() {
 		return (
             <div className="preset">
-                <select>
+                <select id="font-selector"
+                onChange={this.recordSelectedFont.bind(this)}
+                >
                     {this.showFontOptions()}
                 </select>
             </div>
@@ -47,9 +52,20 @@ class FontPreset extends React.Component {
 }
 
 export default FontPreset;
+//
+//onChange={this.recordSelectedFont.bind(this)}
+
+
+
+
+
+
 
 // style={setFontStyle + font.name}
+//onChange={this.recordSelectedFont()}
 
+//onChange={this.recordSelectedFont()}
+//onChange={this.recordSelectedFont('font-selector')}
 // <DropdownList
 //             data= {grabFonts()}
 //             //value={this.state.value}

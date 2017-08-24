@@ -13,6 +13,8 @@ function makeVideo(videoObjects, globalPresets) {
 
 	document.getElementById('processing').innerHTML = "We're making your video! Give us a few.";
 
+	console.log("about to loop videos: color: ", globalPresets.color)
+	console.log("about to loop videos - font: ", globalPresets.font)
 
 	videoObjects.forEach(function(videoObject){
 		var outStream = fs.createWriteStream(tmpobj.name +'/' + ii + '.mov');
@@ -21,10 +23,13 @@ function makeVideo(videoObjects, globalPresets) {
 			.videoFilters({
 					filter: 'drawtext',
 					options: {
-							fontfile:'Verdana.ttf', //textOptions.font
+							// fontfile: 'Verdana.ttf', //globalPresets.font
+							// fontfile: '/Library/Fonts/Microsoft/Wingdings.ttf',
+							fontfile: globalPresets.font,
 							text: videoObject.text,
 							fontsize: 50,
-							fontcolor: 'white', //textOptions.color
+							fontcolor: globalPresets.color, //textOptions.color
+							// fontcolor: '#ff0000', //textOptions.color
 							x: videoObject.xPos,
 							y: videoObject.yPos,
 							shadowcolor: 'black',
