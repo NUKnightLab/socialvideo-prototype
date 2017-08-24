@@ -13,7 +13,7 @@ class FontPreset extends React.Component {
             return (fontA < fontB) ? -1 : (fontA > fontB) ? 1 : 0;
         });
         const fontList = systemFonts.map((font, index) =>
-            <option value={font.path} key={index}> {font.name} </option>
+            <option value={font.path} key={index}> {font.name} – {font.style} </option>
         );
         return fontList;
     }
@@ -52,22 +52,3 @@ class FontPreset extends React.Component {
 }
 
 export default FontPreset;
-//
-//onChange={this.recordSelectedFont.bind(this)}
-
-
-
-
-
-
-
-// style={setFontStyle + font.name}
-//onChange={this.recordSelectedFont()}
-
-//onChange={this.recordSelectedFont()}
-//onChange={this.recordSelectedFont('font-selector')}
-// <DropdownList
-//             data= {grabFonts()}
-//             //value={this.state.value}
-//             onChange={value => this.setState({ value })}/>
-//           </div>

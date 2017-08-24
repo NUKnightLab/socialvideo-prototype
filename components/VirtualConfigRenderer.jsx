@@ -12,7 +12,7 @@ class VirtualConfigRenderer extends React.Component {
     super(props);
     this.state = {
       videoObjects: [],
-      globalPresets: {color: '#ffffff', font: '',},
+      globalPresets: {color: '#ffffff', font: 'Verdana.ttf',},
       mediaFiles: []
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);

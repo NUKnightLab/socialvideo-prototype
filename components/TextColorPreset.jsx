@@ -2,7 +2,7 @@ import React from 'react';
 var ColorPicker = require('rc-color-picker');
 import 'rc-color-picker/assets/index.css';
 
-class ColorPreset extends React.Component {
+class TextColorPreset extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,4 +31,4 @@ class ColorPreset extends React.Component {
     }
 }
 
-export default ColorPreset
+export default TextColorPreset
