@@ -3,10 +3,17 @@ import 'react-widgets/lib/less/react-widgets.less';
 import DropdownList from 'react-widgets/lib/DropdownList';
 import '../www/index.css';
 
-class FontPreset extends React.Component {
 
-    showFontOptions() {
-        var systemFonts = grabFonts();
+class FontPreset extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fonts: []
+        }
+        console.log('FontPreset constructor')
+    }
+
+    showFontOptions(systemFonts) {
         systemFonts = systemFonts.sort(function(a, b) {
             let fontA = a.name.toUpperCase();
             let fontB = b.name.toUpperCase();
@@ -15,18 +22,8 @@ class FontPreset extends React.Component {
         const fontList = systemFonts.map((font, index) =>
             <option value={font.path} key={index}> {font.name} – {font.style} </option>
         );
-        return fontList;
-    }
-
-    //unutilized function that should work on an alphabetized
-    //list to remove duplicates
-    removeDuplicates(arr, spec) {
-        for (var i = 1; i < arr.length; i++) {
-            if (arr[i-1].spec === arr[i].spec) {
-                arr.splice(i, 1)
-            }
-        }
-        return arr;
+        // instead of fontList, that JSX should be in render...
+        this.setState({fonts: fontList})
     }
 
     recordSelectedFont() {
@@ -38,17 +35,25 @@ class FontPreset extends React.Component {
         console.log(fspath);
     }
 
-    // componentWillReceiveProps(nextProps) {
-        
+    // updateFonts() {
+    //     this.setState({ fonts: this.showFontOptions() })
     // }
 
+    componentDidMount() {
+        var self = this;
+        grabFonts(function(fonts) { self.showFontOptions(fonts); })
+        console.log('FontPreset component mounted')
+        // this.setState({ fonts: this.showFontOptions() })
+    }
+
 	render() {
+        console.log('FontPreset render')
 		return (
             <div className="preset">
                 <select id="font-selector"
-                onChange={this.recordSelectedFont.bind(this)}
+                    onChange={this.recordSelectedFont.bind(this)}
                 >
-                    {this.showFontOptions()}
+                    {this.state.fonts}
                 </select>
             </div>
         )
