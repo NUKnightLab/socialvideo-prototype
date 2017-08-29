@@ -24,6 +24,7 @@ class TextChunker extends React.Component {
       videoObjects.push({
         id: numVideoObjects,
         text: segment,
+        text_timing: 0,
         thumbnail: '',
         video_path: '',
         xPos: globalPresets.xPos,

@@ -22,6 +22,7 @@ class EditorWindow extends React.Component {
 			updatedVideoObjects.push({
 				id: (numVideoObjects),
 				text: '',
+				text_timing: 0,
         video_path: '',
 				xPos: 50,
         yPos: 50,

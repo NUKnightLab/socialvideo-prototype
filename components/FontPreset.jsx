@@ -10,7 +10,7 @@ class FontPreset extends React.Component {
         this.state = {
             fonts: []
         }
-        console.log('FontPreset constructor')
+        //console.log('FontPreset constructor')
     }
 
     showFontOptions(systemFonts) {
