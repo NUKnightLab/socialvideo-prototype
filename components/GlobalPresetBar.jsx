@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //import 'react-widgets/lib/less/react-widgets.less';
 //import DropdownList from 'react-widgets/lib/DropdownList';
+import GlobalAlignSquare from './GlobalAlignSquare.jsx';
 import TextColorPreset from './TextColorPreset.jsx';
 import FontPreset from './FontPreset.jsx';
-import PositioningPreset from './PositioningPreset.jsx';
 import LogoPreset from './LogoPreset.jsx';
 import Flexbox from 'flexbox-react';
 import '../www/index.css';
 
 class GlobalPresetBar extends React.Component {
 	render() {
-		return ( 
+		return (
 			<div className="global_presets">
 			<Flexbox flexDirection="row">
                 <TextColorPreset 
@@ -22,12 +22,18 @@ class GlobalPresetBar extends React.Component {
                     globalPresets={this.props.globalPresets}
                     updateGlobal={this.props.updateGlobal}
                 />
-        <PositioningPreset />
+        <GlobalAlignSquare
+					videoObjects={this.props.videoObjects}
+					updateVideoObjects={this.props.updateVideoObjects}
+					globalPresets={this.props.globalPresets}
+					updateGlobalPresets={this.props.updateGlobalPresets}
+				/>
         <LogoPreset />
 			</Flexbox>
 			</div>
 		);
 	}
 }
+
 
 export default GlobalPresetBar;

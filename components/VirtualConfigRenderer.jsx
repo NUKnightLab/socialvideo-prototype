@@ -12,10 +12,11 @@ class VirtualConfigRenderer extends React.Component {
     super(props);
     this.state = {
       videoObjects: [],
-      globalPresets: {color: '#ffffff', font: 'Verdana.ttf',},
+      globalPresets: {color: '#ffffff', font: 'Verdana.ttf', defaultAlign: 'middle-center-align', xPos: '(main_w/2-text_w/2)', yPos: '(main_h/2-text_h/2)'},
       mediaFiles: []
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
+    this.updateGlobalPresets = this.updateGlobalPresets.bind(this);
     this.updateVideoObjects = this.updateVideoObjects.bind(this);
     this.trackMediaFiles = this.trackMediaFiles.bind(this);
     this.updateGlobal = this.updateGlobal.bind(this);
@@ -24,6 +25,10 @@ class VirtualConfigRenderer extends React.Component {
 
   createVideoObjects(newVideoObjects) {
     this.setState({ videoObjects: newVideoObjects });
+  }
+
+  updateGlobalPresets(updatedGlobalPresets) {
+    this.setState({ globalPresets: updatedGlobalPresets });
   }
 
   updateVideoObjects(updatedVideoObjects) {
@@ -47,19 +52,28 @@ class VirtualConfigRenderer extends React.Component {
       <div>
         <Flexbox flexDirection="row">
           <div className="media-lib-container">
-            <MediaLibrary 
+            <MediaLibrary
               trackMediaFiles={this.trackMediaFiles}
               mediaFiles={this.state.mediaFiles} />
           </div>
-          <div className="editor-container">
+          <div className="editor-container"
             <GlobalPresetBar 
+              videoObjects={this.state.videoObjects}
+              updateVideoObjects={this.updateVideoObjects}
               globalPresets={this.state.globalPresets}
-              updateGlobal={this.updateGlobal} />
+              updateGlobal={this.updateGlobal} 
+              updateGlobalPresets={this.updateGlobalPresets}
+              />
             <TextChunker 
-              createVideoObjects={this.createVideoObjects} />
+              createVideoObjects={this.createVideoObjects} 
+              videoObjects={this.state.videoObjects}
+              globalPresets={this.state.globalPresets}
+             />
             <EditorWindow
                 videoObjects={this.state.videoObjects}
-                updateVideoObjects={this.updateVideoObjects} />
+                updateVideoObjects={this.updateVideoObjects}
+                globalPresets={this.state.globalPresets}
+              />
               <button onClick={this.makeVideo}> Make Video! </button>
             </div>
           </Flexbox>

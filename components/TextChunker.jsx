@@ -8,9 +8,11 @@ class TextChunker extends React.Component {
 
   handleChange(e) {
     splitSentences();
-    var videoObjects = [];
+    var videoObjects = this.props.videoObjects;
+    var globalPresets = this.props.globalPresets;
     var textSegmentsArray = [];
     var textSegments = this.refs.textArea.value;
+    var numVideoObjects = this.props.videoObjects.length;
     textSegmentsArray = textSegments.split('\n \n');
     for (var i = (textSegmentsArray.length - 1); i >= 0; i--) {
       if (textSegmentsArray[i] === "") {
@@ -20,13 +22,14 @@ class TextChunker extends React.Component {
     }
     textSegmentsArray.forEach(function(segment, index) {
       videoObjects.push({
-        id: index,
+        id: numVideoObjects,
         text: segment,
         thumbnail: '',
         video_path: '',
-        xPos: 50,
-        yPos: 50,
+        xPos: globalPresets.xPos,
+        yPos: globalPresets.yPos,
       });
+      numVideoObjects++;
     });
     this.props.createVideoObjects(videoObjects);
   }
