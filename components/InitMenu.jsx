@@ -11,7 +11,8 @@ class InitMenu extends React.Component {
 				<div className="file-styling">
 					<FileType
 						fileName={this.props.fileName}
-						nameFile={this.props.nameFile} />
+						nameFile={this.props.nameFile} 
+					/>
 				</div>
 			</div>
 		)

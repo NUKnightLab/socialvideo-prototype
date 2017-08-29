@@ -38,6 +38,10 @@ class FontPreset extends React.Component {
         console.log(fspath);
     }
 
+    // componentWillReceiveProps(nextProps) {
+        
+    // }
+
 	render() {
 		return (
             <div className="preset">

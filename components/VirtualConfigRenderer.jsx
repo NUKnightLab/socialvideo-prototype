@@ -14,7 +14,7 @@ class VirtualConfigRenderer extends React.Component {
     this.state = {
       videoObjects: [],
 
-      globalPresets: {color: '#ffffff', font: 'Verdana.ttf',},
+      globalPresets: {color: '#ffffff', font: 'Verdana.ttf', defaultAlign: 'middle-center-align', xPos: '(main_w/2-text_w/2)', yPos: '(main_h/2-text_h/2)',},
       mediaFiles: [],
       fileName: 'video.mov'
 
@@ -71,7 +71,7 @@ class VirtualConfigRenderer extends React.Component {
               trackMediaFiles={this.trackMediaFiles}
               mediaFiles={this.state.mediaFiles} />
           </div>
-          <div className="editor-container"
+          <div className="editor-container">
             <GlobalPresetBar 
               videoObjects={this.state.videoObjects}
               updateVideoObjects={this.updateVideoObjects}
