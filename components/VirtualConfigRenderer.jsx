@@ -6,20 +6,25 @@ import TextChunker from './TextChunker.jsx';
 import EditorWindow from './EditorWindow.jsx';
 import GlobalPresetBar from './GlobalPresetBar.jsx';
 import MediaLibrary from './MediaLibrary.jsx';
+import InitMenu from './InitMenu.jsx';
 
 class VirtualConfigRenderer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       videoObjects: [],
-      globalPresets: {color: '#ffffff', font: 'Verdana.ttf', defaultAlign: 'middle-center-align', xPos: '(main_w/2-text_w/2)', yPos: '(main_h/2-text_h/2)'},
-      mediaFiles: []
+
+      globalPresets: {color: '#ffffff', font: 'Verdana.ttf',},
+      mediaFiles: [],
+      fileName: 'video.mov'
+
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
     this.updateGlobalPresets = this.updateGlobalPresets.bind(this);
     this.updateVideoObjects = this.updateVideoObjects.bind(this);
     this.trackMediaFiles = this.trackMediaFiles.bind(this);
     this.updateGlobal = this.updateGlobal.bind(this);
+    this.nameFile = this.nameFile.bind(this);
     this.makeVideo = this.makeVideo.bind(this);
   }
 
@@ -43,14 +48,24 @@ class VirtualConfigRenderer extends React.Component {
     this.setState({globalPresets: updatedGlobals});
   }
 
+  nameFile(inputtedName) {
+    this.setState({ fileName: inputtedName });
+  }
+
   makeVideo() {
-    makeVideo(this.state.videoObjects, this.state.globalPresets);
+    makeVideo(this.state.videoObjects, this.state.globalPresets, this.state.fileName)
+      //.then(addAudio(this.state.fileName), console.log('lol nope1'))
+      //.then(addLogo(this.state.fileName), console.log('lol nope2'))
   }
 
   render() {
     return (
       <div>
-        <Flexbox flexDirection="row">
+          <div className="init-menu-container">
+          <InitMenu 
+            fileName={this.state.fileName}
+            nameFile={this.nameFile} />
+          </div>
           <div className="media-lib-container">
             <MediaLibrary
               trackMediaFiles={this.trackMediaFiles}
@@ -76,7 +91,6 @@ class VirtualConfigRenderer extends React.Component {
               />
               <button onClick={this.makeVideo}> Make Video! </button>
             </div>
-          </Flexbox>
       </div>
     );
   }
