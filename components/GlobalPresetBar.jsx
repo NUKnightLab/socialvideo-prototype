@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 //import DropdownList from 'react-widgets/lib/DropdownList';
 import ColorPreset from './GlobalColors.jsx';
 import FontPreset from './GlobalFonts.jsx';
-import DefaultTextPosition from './GlobalPositioning.jsx';
+import GlobalAlignSquare from './GlobalAlignSquare.jsx';
 import GlobalLogo from './GlobalLogo.jsx';
 import Flexbox from 'flexbox-react';
 import '../www/index.css';
@@ -15,12 +15,17 @@ const fonts = ['Times New Roman', 'Avenir', 'Comic Sans'];
 
 class PresetBar extends React.Component {
 	render() {
-		return ( 
+		return (
 			<div className="global_presets">
 			<Flexbox flexDirection="row">
 				<ColorPreset colors/>
 				<FontPreset />
-        <DefaultTextPosition />
+        <GlobalAlignSquare
+					videoObjects={this.props.videoObjects}
+					updateVideoObjects={this.props.updateVideoObjects}
+					globalPresets={this.props.globalPresets}
+					updateGlobalPresets={this.props.updateGlobalPresets}
+				/>
         <GlobalLogo />
 			</Flexbox>
 			</div>

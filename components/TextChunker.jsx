@@ -9,6 +9,7 @@ class TextChunker extends React.Component {
   handleChange(e) {
     splitSentences();
     var videoObjects = this.props.videoObjects;
+    var globalPresets = this.props.globalPresets;
     var textSegmentsArray = [];
     var textSegments = this.refs.textArea.value;
     var numVideoObjects = this.props.videoObjects.length;
@@ -25,8 +26,8 @@ class TextChunker extends React.Component {
         text: segment,
         thumbnail: '',
         video_path: '',
-        xPos: 50,
-        yPos: 50,
+        xPos: globalPresets.xPos,
+        yPos: globalPresets.yPos,
       });
       numVideoObjects++;
     });
