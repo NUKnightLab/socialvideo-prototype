@@ -13,11 +13,14 @@ class VirtualConfigRenderer extends React.Component {
     super(props);
     this.state = {
       videoObjects: [],
+
       globalPresets: {color: '#ffffff', font: 'Verdana.ttf',},
       mediaFiles: [],
       fileName: 'video.mov'
+
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
+    this.updateGlobalPresets = this.updateGlobalPresets.bind(this);
     this.updateVideoObjects = this.updateVideoObjects.bind(this);
     this.trackMediaFiles = this.trackMediaFiles.bind(this);
     this.updateGlobal = this.updateGlobal.bind(this);
@@ -27,6 +30,10 @@ class VirtualConfigRenderer extends React.Component {
 
   createVideoObjects(newVideoObjects) {
     this.setState({ videoObjects: newVideoObjects });
+  }
+
+  updateGlobalPresets(updatedGlobalPresets) {
+    this.setState({ globalPresets: updatedGlobalPresets });
   }
 
   updateVideoObjects(updatedVideoObjects) {
@@ -54,27 +61,36 @@ class VirtualConfigRenderer extends React.Component {
   render() {
     return (
       <div>
-        <div className="init-menu-container">
+          <div className="init-menu-container">
           <InitMenu 
             fileName={this.state.fileName}
             nameFile={this.nameFile} />
-        </div>
-        <div className="media-lib-container">
-          <MediaLibrary 
-            mediaFiles={this.state.mediaFiles}
-            trackMediaFiles={this.trackMediaFiles} />
-        </div>
-        <div className="editor-container">
-          <GlobalPresetBar 
-            globalPresets={this.state.globalPresets}
-            updateGlobal={this.updateGlobal} />
-          <TextChunker 
-            createVideoObjects={this.createVideoObjects} />
-          <EditorWindow
-            videoObjects={this.state.videoObjects}
-            updateVideoObjects={this.updateVideoObjects} />
-            <button onClick={this.makeVideo}> Make Video! </button>
           </div>
+          <div className="media-lib-container">
+            <MediaLibrary
+              trackMediaFiles={this.trackMediaFiles}
+              mediaFiles={this.state.mediaFiles} />
+          </div>
+          <div className="editor-container"
+            <GlobalPresetBar 
+              videoObjects={this.state.videoObjects}
+              updateVideoObjects={this.updateVideoObjects}
+              globalPresets={this.state.globalPresets}
+              updateGlobal={this.updateGlobal} 
+              updateGlobalPresets={this.updateGlobalPresets}
+              />
+            <TextChunker 
+              createVideoObjects={this.createVideoObjects} 
+              videoObjects={this.state.videoObjects}
+              globalPresets={this.state.globalPresets}
+             />
+            <EditorWindow
+                videoObjects={this.state.videoObjects}
+                updateVideoObjects={this.updateVideoObjects}
+                globalPresets={this.state.globalPresets}
+              />
+              <button onClick={this.makeVideo}> Make Video! </button>
+            </div>
       </div>
     );
   }

@@ -5,7 +5,8 @@ class TextAlignSquare extends React.Component {
     constructor(props) {
     super(props);
         this.state = {
-            clicked: 'middle-center-align0',
+            clicked: props.globalPresets.defaultAlign + props.idPos,
+            default: props.globalPresets.defaultAlign,
         }
         this.topLeft = this.topLeft.bind(this);
         this.topCenter = this.topCenter.bind(this);
@@ -82,17 +83,44 @@ class TextAlignSquare extends React.Component {
     }
 
     render() {
+      const topLeft = {
+        backgroundColor: (this.state.default === 'top-left-align') ? 'black' : 'white',
+      }
+      const topCenter = {
+        backgroundColor: (this.state.default === 'top-center-align') ? 'black' : 'white',
+      }
+      const topRight = {
+        backgroundColor: (this.state.default === 'top-right-align') ? 'black' : 'white',
+      }
+      const middleLeft = {
+        backgroundColor: (this.state.default === 'middle-left-align') ? 'black' : 'white',
+      }
+      const middleCenter = {
+        backgroundColor: (this.state.default === 'middle-center-align') ? 'black' : 'white',
+      }
+      const middleRight = {
+        backgroundColor: (this.state.default === 'middle-right-align') ? 'black' : 'white',
+      }
+      const bottomLeft = {
+        backgroundColor: (this.state.default === 'bottom-left-align') ? 'black' : 'white',
+      }
+      const bottomCenter = {
+        backgroundColor: (this.state.default === 'bottom-center-align') ? 'black' : 'white',
+      }
+      const bottomRight = {
+        backgroundColor: (this.state.default === 'bottom-right-align') ? 'black' : 'white',
+      }
         return (
             <div className="Chunk-text-align" id="Chunk-text-align-parent">
-                <div className="Chunk-text-align-options" id={"top-left-align" + this.props.idPos} onClick={this.topLeft} ></div>
-                <div className="Chunk-text-align-options" id={"top-center-align" + this.props.idPos} onClick={this.topCenter} ></div>
-                <div className="Chunk-text-align-options" id={"top-right-align" + this.props.idPos} onClick={this.topRight} ></div>
-                <div className="Chunk-text-align-options" id={"middle-left-align" + this.props.idPos} onClick={this.middleLeft} ></div>
-                <div className="Chunk-text-align-options" id={"middle-center-align" + this.props.idPos} onClick={this.middleCenter} ></div>
-                <div className="Chunk-text-align-options" id={"middle-right-align" + this.props.idPos} onClick={this.middleRight} ></div>
-                <div className="Chunk-text-align-options" id={"bottom-left-align" + this.props.idPos} onClick={this.bottomLeft} ></div>
-                <div className="Chunk-text-align-options" id={"bottom-center-align" + this.props.idPos} onClick={this.bottomCenter} ></div>
-                <div className="Chunk-text-align-options" id={"bottom-right-align" + this.props.idPos} onClick={this.bottomRight} ></div>
+                <div className="Chunk-text-align-options" id={"top-left-align" + this.props.idPos} onClick={this.topLeft} style={topLeft}></div>
+                <div className="Chunk-text-align-options" id={"top-center-align" + this.props.idPos} onClick={this.topCenter} style={topCenter}></div>
+                <div className="Chunk-text-align-options" id={"top-right-align" + this.props.idPos} onClick={this.topRight} style={topRight}></div>
+                <div className="Chunk-text-align-options" id={"middle-left-align" + this.props.idPos} onClick={this.middleLeft} style={middleLeft}></div>
+                <div className="Chunk-text-align-options" id={"middle-center-align" + this.props.idPos} onClick={this.middleCenter} style={middleCenter}></div>
+                <div className="Chunk-text-align-options" id={"middle-right-align" + this.props.idPos} onClick={this.middleRight} style={topRight}></div>
+                <div className="Chunk-text-align-options" id={"bottom-left-align" + this.props.idPos} onClick={this.bottomLeft} style={bottomLeft}></div>
+                <div className="Chunk-text-align-options" id={"bottom-center-align" + this.props.idPos} onClick={this.bottomCenter} style={bottomCenter}></div>
+                <div className="Chunk-text-align-options" id={"bottom-right-align" + this.props.idPos} onClick={this.bottomRight} style={bottomRight}></div>
             </div>
         )
     }
