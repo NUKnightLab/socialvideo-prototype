@@ -6,6 +6,18 @@ class TextChunker extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  setTiming() {
+    var wpm = 180;
+    var word_length = 5;
+    var delay = 1500;
+    var bonus = 1000;
+
+    var words = (countWords(object.text))/word_length;
+    var words_time = ((words/wpm) * 60) * 1000;
+    var total_time = (delay + words_time + bonus)/100;
+    return total_time;
+  }
+
   handleChange(e) {
     splitSentences();
     var videoObjects = this.props.videoObjects;
