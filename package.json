@@ -33,13 +33,11 @@
     "electron": "^1.7.5",
     "electron-rebuild": "^1.6.0",
     "express": "^4.15.3",
-    "flexbox-react": "^4.4.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-flexbox-grid": "^1.1.4",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "tmp": "0.0.33",
@@ -49,6 +47,7 @@
     "webpack-hot-middleware": "^2.18.2"
   },
   "dependencies": {
+    "fluent-ffmpeg": "^2.1.2",
     "font-manager": "^0.2.2",
     "rc-color-picker": "^1.1.7",
     "react-dropzone": "^4.0.0",

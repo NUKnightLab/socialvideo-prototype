@@ -1,5 +1,19 @@
 var React = require('react');
 
+function setTiming(seg) {
+  var wpm = 180;
+  var delay = 1500;
+  var bonus = 1000;
+
+  var words = seg.split(' ').length;
+  var words_time = ((words/wpm) * 60) * 1000;
+  var total_time = Math.round(((delay + words_time + bonus)/1000)*100)/100;
+    console.log('seg: ', seg);
+    console.log('total_time: ', total_time);
+  return total_time;
+}
+
+
 class TextChunker extends React.Component {
   constructor(props) {
     super(props);
@@ -16,14 +30,22 @@ class TextChunker extends React.Component {
     textSegmentsArray = textSegments.split('\n \n');
     for (var i = (textSegmentsArray.length - 1); i >= 0; i--) {
       if (textSegmentsArray[i] === "") {
-        console.log(textSegmentsArray[i]);
+        //console.log(textSegmentsArray[i]);
         textSegmentsArray.splice(i, 1);
       }
     }
+    var textTiming = [];
+    textSegmentsArray.forEach(function(segment) {
+      var timing = setTiming(segment)
+      textTiming.push(timing)
+    });
+    console.log(textTiming)
+    console.log(textSegmentsArray)
     textSegmentsArray.forEach(function(segment, index) {
       videoObjects.push({
         id: numVideoObjects,
         text: segment,
+        text_timing: setTiming(segment),
         thumbnail: '',
         video_path: '',
         xPos: globalPresets.xPos,

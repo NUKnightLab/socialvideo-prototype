@@ -42,6 +42,7 @@ function makeVideo(videoObjects, globalPresets, fileName) {
     		//.audioCodec('libmp3lame')
 			.size('800x660')
 			.format('mov')
+			.duration(videoObject.text_timing)
 			.outputOptions('-movflags frag_keyframe+empty_moov')
 		  	.on('error', function(err) {
             	console.log('An error occurred: ' + err.message);
