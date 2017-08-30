@@ -51,9 +51,10 @@ class VideoCard extends React.Component {
 						className="Chunk-text-chunk"
 						defaultValue={this.props.text}>
 					</textarea>
-					
 					<ClipLengthDefault
  						timing={this.props.timing}
+ 						videoObjects={this.props.videoObjects}
+ 						updateVideoObjects={this.props.updateVideoObjects}
  					/>
 					<TextAlignSquare
 						idPos={this.props.position}

@@ -30,17 +30,9 @@ class TextChunker extends React.Component {
     textSegmentsArray = textSegments.split('\n \n');
     for (var i = (textSegmentsArray.length - 1); i >= 0; i--) {
       if (textSegmentsArray[i] === "") {
-        //console.log(textSegmentsArray[i]);
         textSegmentsArray.splice(i, 1);
       }
     }
-    var textTiming = [];
-    textSegmentsArray.forEach(function(segment) {
-      var timing = setTiming(segment)
-      textTiming.push(timing)
-    });
-    console.log(textTiming)
-    console.log(textSegmentsArray)
     textSegmentsArray.forEach(function(segment, index) {
       videoObjects.push({
         id: numVideoObjects,

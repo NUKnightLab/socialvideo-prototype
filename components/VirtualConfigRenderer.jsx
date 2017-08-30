@@ -51,8 +51,6 @@ class VirtualConfigRenderer extends React.Component {
 
   makeVideo() {
     makeVideo(this.state.videoObjects, this.state.globalPresets, this.state.fileName)
-      //.then(addAudio(this.state.fileName), console.log('lol nope1'))
-      //.then(addLogo(this.state.fileName), console.log('lol nope2'))
   }
 
   render() {
