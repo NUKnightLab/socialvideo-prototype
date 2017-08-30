@@ -1,17 +1,17 @@
 var React = require('react');
 
-function setTiming(seg) {
-  var wpm = 180;
-  var delay = 1500;
-  var bonus = 1000;
+// function setTiming(seg) {
+//   var wpm = 180;
+//   var delay = 1500;
+//   var bonus = 1000;
 
-  var words = seg.split(' ').length;
-  var words_time = ((words/wpm) * 60) * 1000;
-  var total_time = Math.round(((delay + words_time + bonus)/1000)*100)/100;
-    console.log('seg: ', seg);
-    console.log('total_time: ', total_time);
-  return total_time;
-}
+//   var words = seg.split(' ').length;
+//   var words_time = ((words/wpm) * 60) * 1000;
+//   var total_time = Math.round(((delay + words_time + bonus)/1000)*100)/100;
+//     console.log('seg: ', seg);
+//     console.log('total_time: ', total_time);
+//   return total_time;
+// }
 
 
 class TextChunker extends React.Component {
