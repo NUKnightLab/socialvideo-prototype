@@ -1,6 +1,5 @@
 var React = require('react');
 import '../www/index.css';
-import Flexbox from 'flexbox-react';
 import TextAlignSquare from './TextAlignSquare.jsx';
 import ClipLengthDefault from './ClipLengthDefault.jsx';
 import Dropzone from 'react-dropzone';

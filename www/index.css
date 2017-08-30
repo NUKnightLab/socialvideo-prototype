@@ -55,7 +55,10 @@
 	margin-left: 10px;
 }
 /********* GLOBAL PRESETS BAR *********/
-
+.global-presets-bar {
+	display: flex;
+	flex-direction: row;
+}
 
 
 /*							*/

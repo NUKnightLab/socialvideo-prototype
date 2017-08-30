@@ -1,6 +1,4 @@
 import React from 'react';
-//import { Grid, Row, Col } from 'react-flexbox-grid';
-//import Flexbox from 'flexbox-react';
 
 import TextChunker from './TextChunker.jsx';
 import EditorWindow from './EditorWindow.jsx';
