@@ -13,6 +13,7 @@ class VideoCard extends React.Component {
 		};
 		this.dragDrop = this.dragDrop.bind(this);
 		this.setTextAlign = this.setTextAlign.bind(this);
+		this.updateText = this.updateText.bind(this);
 	}
 
 	dragDrop(e) {
@@ -34,6 +35,13 @@ class VideoCard extends React.Component {
 		this.props.updateVideoObjects[videoObjects];
 	}
 
+	updateText() {
+		var videoObjects = this.props.videoObjects;
+		var position = this.props.position;
+		videoObjects[position].text =  this.refs.videoCard.value;
+		this.props.updateVideoObjects(videoObjects);
+	}
+
 	render() {
 		return (
 			<div className="videocard" id={this.props.position + "card"}>
@@ -52,8 +60,11 @@ class VideoCard extends React.Component {
 				<div className="videocard-text-info">
 					<textarea
 						className="Chunk-text-chunk"
-						defaultValue={this.props.text}>
+						defaultValue={this.props.text}
+						ref="videoCard"
+						>
 					</textarea>
+					<button onClick={this.updateText}> Update Text! </button>
 					<div className="Chunk-text-timing"></div>
 					<div className="Chunk-video-start">
 						<textarea className="Chunk-video-start-input"></textarea>
