@@ -45,6 +45,7 @@ class VideoCard extends React.Component {
 		document.getElementById(id).value = cardTiming;
 		this.props.updateVideoObjects(videoObjects);
 		console.log(typeof(cardTiming));
+
 	}
 
 	render() {
@@ -66,13 +67,16 @@ class VideoCard extends React.Component {
 						ref="videoCard"
 						>
 					</textarea>
+
 					<button onClick={this.updateCard}> Update Text! </button>
+
 					<ClipLengthDefault
  						timing={this.props.timing}
  						videoObjects={this.props.videoObjects}
  						updateVideoObjects={this.props.updateVideoObjects}
  						position={this.props.position}
  					/>
+					<button onClick={this.updateText}> Update Text! </button>
 					<TextAlignSquare
 						idPos={this.props.position}
 						textAlign={this.setTextAlign}
