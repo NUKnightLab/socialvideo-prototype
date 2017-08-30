@@ -23,9 +23,9 @@ class EditorWindow extends React.Component {
 				id: (numVideoObjects),
 				text: '',
 				text_timing: 0,
-        video_path: '',
+        		video_path: '',
 				xPos: 50,
-        yPos: 50,
+        		yPos: 50,
 			})
 			this.props.updateVideoObjects(updatedVideoObjects);
 		}
@@ -83,6 +83,7 @@ class EditorWindow extends React.Component {
 							<VideoCard
 								key={videoObject.id}
 								text={videoObject.text}
+								timing={videoObject.text_timing}
 							 	videoObjects={this.props.videoObjects}
 								globalPresets={this.props.globalPresets}
 								position={videoObject.id}

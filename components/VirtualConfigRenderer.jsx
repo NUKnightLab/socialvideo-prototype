@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import Flexbox from 'flexbox-react';
+//import { Grid, Row, Col } from 'react-flexbox-grid';
+//import Flexbox from 'flexbox-react';
 
 import TextChunker from './TextChunker.jsx';
 import EditorWindow from './EditorWindow.jsx';
@@ -13,10 +13,9 @@ class VirtualConfigRenderer extends React.Component {
     super(props);
     this.state = {
       videoObjects: [],
-
       globalPresets: {color: '#ffffff', font: 'Verdana.ttf', defaultAlign: 'middle-center-align', xPos: '(main_w/2-text_w/2)', yPos: '(main_h/2-text_h/2)',},
       mediaFiles: [],
-      fileName: 'video.mov'
+      fileName: 'video.2mov'
 
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
@@ -64,7 +63,8 @@ class VirtualConfigRenderer extends React.Component {
           <div className="init-menu-container">
           <InitMenu 
             fileName={this.state.fileName}
-            nameFile={this.nameFile} />
+            nameFile={this.nameFile}
+            videoObjects={this.state.videoObjects} />
           </div>
           <div className="media-lib-container">
             <MediaLibrary

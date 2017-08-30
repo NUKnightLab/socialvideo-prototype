@@ -49,6 +49,7 @@
     "webpack-hot-middleware": "^2.18.2"
   },
   "dependencies": {
+    "fluent-ffmpeg": "^2.1.2",
     "font-manager": "^0.2.2",
     "rc-color-picker": "^1.1.7",
     "react-dropzone": "^4.0.0",

@@ -40,24 +40,28 @@ class VideoCard extends React.Component {
 			<div className="videocard" id={this.props.position + "card"}>
 				<div
 					className='dropzone'
-					//onDrop={this.onDrop.bind(this)}
-					//style={dropzoneStyle}
 					onDrop={this.dragDrop}>
         				<video
-        					//style={showVideo}
         					className='video-clip'
         					controls='true'
         					src={ this.state.videoPath }>
         				</video>
-					</div>
+				</div>
 				<div className="videocard-text-info">
 					<textarea
 						className="Chunk-text-chunk"
 						defaultValue={this.props.text}>
 					</textarea>
-					<ClipLengthDefault 
-						videoObjects={this.props.videoObjects}
-					/>
+					
+					<ClipLengthDefault
+ 						timing={this.props.timing}
+ 					/>
+ 					<textarea
+					 	className="text"
+					 	defaultValue={this.props.timing}>
+					 </textarea>
+
+
 					<TextAlignSquare
 						idPos={this.props.position}
 						textAlign={this.setTextAlign}
@@ -72,3 +76,15 @@ class VideoCard extends React.Component {
 export default VideoCard;
 
 //<div className="Chunk-text-timing"></div>
+/*
+<ClipLengthDefault
+ 	videoObjects={this.props.videoObjects}
+ />
+
+
+
+ <textarea
+ 	className="text"
+ 	defaultValue={this.props.timing}>
+ </textarea>
+ */

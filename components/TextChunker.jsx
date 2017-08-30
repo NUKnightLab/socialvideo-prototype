@@ -6,15 +6,14 @@ class TextChunker extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  setTiming() {
+  setTiming(seg) {
     var wpm = 180;
-    var word_length = 5;
     var delay = 1500;
     var bonus = 1000;
 
-    var words = (countWords(object.text))/word_length;
+    var words = seg.split(' ').length;
     var words_time = ((words/wpm) * 60) * 1000;
-    var total_time = (delay + words_time + bonus)/100;
+    var total_time = Math.round(((delay + words_time + bonus)/1000)*100)/100;
     return total_time;
   }
 
@@ -32,11 +31,12 @@ class TextChunker extends React.Component {
         textSegmentsArray.splice(i, 1);
       }
     }
+    console.log(textSegmentsArray)
     textSegmentsArray.forEach(function(segment, index) {
       videoObjects.push({
         id: numVideoObjects,
         text: segment,
-        text_timing: 0,
+        text_timing: setTiming(segment),
         thumbnail: '',
         video_path: '',
         xPos: globalPresets.xPos,
