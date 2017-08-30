@@ -35,10 +35,6 @@ class FontPreset extends React.Component {
         console.log(fspath);
     }
 
-    // updateFonts() {
-    //     this.setState({ fonts: this.showFontOptions() })
-    // }
-
     componentDidMount() {
         var self = this;
         grabFonts(function(fonts) { self.showFontOptions(fonts); })

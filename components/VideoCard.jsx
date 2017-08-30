@@ -55,7 +55,6 @@ class VideoCard extends React.Component {
 						className="Chunk-text-chunk"
 						defaultValue={this.props.text}>
 					</textarea>
-					<div className="Chunk-text-timing"></div>
 					<ClipLengthDefault 
 						videoObjects={this.props.videoObjects}
 					/>
@@ -71,3 +70,5 @@ class VideoCard extends React.Component {
 }
 
 export default VideoCard;
+
+//<div className="Chunk-text-timing"></div>
