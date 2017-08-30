@@ -1,7 +1,7 @@
 var React = require('react');
 import '../www/index.css';
-import Flexbox from 'flexbox-react';
 import TextAlignSquare from './TextAlignSquare.jsx';
+import ClipLengthDefault from './ClipLengthDefault.jsx';
 import Dropzone from 'react-dropzone';
 
 class VideoCard extends React.Component {
@@ -47,16 +47,13 @@ class VideoCard extends React.Component {
 			<div className="videocard" id={this.props.position + "card"}>
 				<div
 					className='dropzone'
-					//onDrop={this.onDrop.bind(this)}
-					//style={dropzoneStyle}
 					onDrop={this.dragDrop}>
         				<video
-        					//style={showVideo}
         					className='video-clip'
         					controls='true'
         					src={ this.state.videoPath }>
         				</video>
-					</div>
+				</div>
 				<div className="videocard-text-info">
 					<textarea
 						className="Chunk-text-chunk"
@@ -65,11 +62,11 @@ class VideoCard extends React.Component {
 						>
 					</textarea>
 					<button onClick={this.updateText}> Update Text! </button>
-					<div className="Chunk-text-timing"></div>
-					<div className="Chunk-video-start">
-						<textarea className="Chunk-video-start-input"></textarea>
-						<p className="Chunk-video-start-seconds"> seconds </p>
-					</div>
+					<ClipLengthDefault
+ 						timing={this.props.timing}
+ 						videoObjects={this.props.videoObjects}
+ 						updateVideoObjects={this.props.updateVideoObjects}
+ 					/>
 					<TextAlignSquare
 						idPos={this.props.position}
 						textAlign={this.setTextAlign}

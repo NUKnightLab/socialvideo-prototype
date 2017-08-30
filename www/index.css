@@ -55,7 +55,10 @@
 	margin-left: 10px;
 }
 /********* GLOBAL PRESETS BAR *********/
-
+.global-presets-bar {
+	display: flex;
+	flex-direction: row;
+}
 
 
 /*							*/
@@ -109,9 +112,9 @@
 }
 
 .Chunk-video-start-input {
-	width: 20px;
-	height: 10px;
-	margin-right: 5px;
+	width: 30px;
+    height: 12px;
+    margin: 0 5px;
 }
 
 .Chunk-video-start-seconds {
