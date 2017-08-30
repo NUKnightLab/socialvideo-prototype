@@ -54,7 +54,7 @@ function makeVideo(videoObjects, globalPresets, fileName) {
 				mergedVideo = mergedVideo.addInput(tmpobj.name + '/' + jj + '.mov');
 				jj++;
 				if (jj == videoCount) {
-					mergedVideo.mergeToFile('0'+fileName, './tmp/')
+					mergedVideo.mergeToFile(tmpobj.name +'/0'+fileName, './tmp/')
 					.videoCodec('libx264')
 		    		.audioCodec('libmp3lame')
 					.format('mov')
@@ -65,7 +65,6 @@ function makeVideo(videoObjects, globalPresets, fileName) {
 					.on('end', function() {
 					    document.getElementById('processing').innerHTML = "Finished!";
 					    addAudio(fileName);
-					    tmpobj.removeCallback(); //trashes temporary directory
 					});
 				}
 			})
@@ -76,13 +75,13 @@ function makeVideo(videoObjects, globalPresets, fileName) {
 
 function addAudio(fileName) {
 	fluent_ffmpeg()
-		.input('0'+fileName)
+		.input(tmpobj.name +'/0'+fileName)
 		.input('./music.mp3')
 		.outputOptions([
 			'-codec copy',
 			'-shortest'
 			])
-		.save('1'+fileName)
+		.save(tmpobj.name + '/1'+fileName)
    		.on('end', function() {
    			addLogo(fileName);
    			console.log('adding logo!');
@@ -91,10 +90,13 @@ function addAudio(fileName) {
 
 function addLogo(fileName) {
 	fluent_ffmpeg()
-		.input('1'+fileName)
+		.input(tmpobj.name + '/1'+fileName)
 		.input('logo.png')
 		.complexFilter('[0:v][1:v] overlay=25:25')
 		.save(fileName)
+		.on('end', function() {
+			tmpobj.removeCallback(); //trashes temporary directory
+		})
 		.on('progress', function(progress) {
    		  	console.log('Processing: ' + progress.percent + '% done');
    		})

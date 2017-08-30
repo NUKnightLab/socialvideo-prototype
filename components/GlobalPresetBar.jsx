@@ -10,6 +10,7 @@ import '../www/index.css';
 class GlobalPresetBar extends React.Component {
 	render() {
 		return (
+
 			<div className="global-presets-bar">
                 <TextColorPreset 
                     globalPresets={this.props.globalPresets}
