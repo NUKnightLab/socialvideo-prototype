@@ -13,7 +13,7 @@ class VirtualConfigRenderer extends React.Component {
       videoObjects: [],
       globalPresets: {color: '#ffffff', font: 'Verdana.ttf', defaultAlign: 'middle-center-align', xPos: '(main_w/2-text_w/2)', yPos: '(main_h/2-text_h/2)',},
       mediaFiles: [],
-      fileName: 'video.2mov'
+      fileName: 'video.mov'
 
     }
     this.createVideoObjects = this.createVideoObjects.bind(this);
@@ -76,12 +76,12 @@ class VirtualConfigRenderer extends React.Component {
               globalPresets={this.state.globalPresets}
               updateGlobal={this.updateGlobal} 
               updateGlobalPresets={this.updateGlobalPresets}
-              />
+            />
             <TextChunker 
               createVideoObjects={this.createVideoObjects} 
               videoObjects={this.state.videoObjects}
               globalPresets={this.state.globalPresets}
-             />
+            />
             <EditorWindow
                 videoObjects={this.state.videoObjects}
                 updateVideoObjects={this.updateVideoObjects}

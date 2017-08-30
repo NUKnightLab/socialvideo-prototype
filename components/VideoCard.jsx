@@ -55,12 +55,6 @@ class VideoCard extends React.Component {
 					<ClipLengthDefault
  						timing={this.props.timing}
  					/>
- 					<textarea
-					 	className="text"
-					 	defaultValue={this.props.timing}>
-					 </textarea>
-
-
 					<TextAlignSquare
 						idPos={this.props.position}
 						textAlign={this.setTextAlign}
@@ -73,17 +67,3 @@ class VideoCard extends React.Component {
 }
 
 export default VideoCard;
-
-//<div className="Chunk-text-timing"></div>
-/*
-<ClipLengthDefault
- 	videoObjects={this.props.videoObjects}
- />
-
-
-
- <textarea
- 	className="text"
- 	defaultValue={this.props.timing}>
- </textarea>
- */
