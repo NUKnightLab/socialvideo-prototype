@@ -2,13 +2,6 @@ import React from 'react';
 import '../www/index.css';
 
 class ClipLengthDefault extends React.Component {
-	// constructor(props) {
-	// 	super(props);
-	// 	this.state = {
-	// 		//text_timing: 0,
-	// 	}
-	// }
-
 	render() {
 		return (
 			<div className="Chunk-video-start">

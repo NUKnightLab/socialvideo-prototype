@@ -218,7 +218,7 @@ function formSegment(segmentArray) {
 }
 
 
-// function setTimingblah(array) {
+// function setTimingbleheheheh(array) {
 // 	var wpm = 180;
 // 	var word_length = 5;
 // 	var delay = 1500;
