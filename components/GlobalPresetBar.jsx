@@ -14,14 +14,11 @@ class GlobalPresetBar extends React.Component {
 		return (
 			<div className="global_presets">
 			<Flexbox flexDirection="row">
-                <TextColorPreset 
+                <TextColorPreset
                     globalPresets={this.props.globalPresets}
                     updateGlobal={this.props.updateGlobal}
                 />
-				<FontPreset
-                    globalPresets={this.props.globalPresets}
-                    updateGlobal={this.props.updateGlobal}
-                />
+				
         <GlobalAlignSquare
 					videoObjects={this.props.videoObjects}
 					updateVideoObjects={this.props.updateVideoObjects}
