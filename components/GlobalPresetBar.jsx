@@ -28,7 +28,10 @@ class GlobalPresetBar extends React.Component {
 	            </div>
 	            <div className="global-presets-name-container">
 					<div className="global-preset-label"> Aspect Ratio </div>
-                	<AspectRatio />
+                	<AspectRatio 
+                		presetOptions={this.props.presetOptions}
+                		updatePresetOptions={this.props.updatePresetOptions}
+                	/>
                	</div>
                	<div className="global-presets-name-container">
 					<div className="global-preset-label"> Align Text </div>

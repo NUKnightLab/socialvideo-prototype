@@ -11,7 +11,14 @@ class VirtualConfigRenderer extends React.Component {
     super(props);
     this.state = {
       videoObjects: [],
-      globalPresets: {color: '#ffffff', font: 'Verdana.ttf', defaultAlign: 'middle-center-align', xPos: '(main_w/2-text_w/2)', yPos: '(main_h/2-text_h/2)',},
+      globalPresets: {
+        color: '#ffffff',
+        font: 'Verdana.ttf',
+        defaultAlign: 'middle-center-align',
+        xPos: '(main_w/2-text_w/2)',
+        yPos: '(main_h/2-text_h/2)',
+      },
+      presetOptions: {logo: '', music: '', aspect: '16:9'},
       mediaFiles: [],
       fileName: 'video.mov'
 
@@ -21,6 +28,7 @@ class VirtualConfigRenderer extends React.Component {
     this.updateVideoObjects = this.updateVideoObjects.bind(this);
     this.trackMediaFiles = this.trackMediaFiles.bind(this);
     this.updateGlobal = this.updateGlobal.bind(this);
+    this.updatePresetOptions = this.updatePresetOptions.bind(this);
     this.nameFile = this.nameFile.bind(this);
     this.makeVideo = this.makeVideo.bind(this);
   }
@@ -45,12 +53,17 @@ class VirtualConfigRenderer extends React.Component {
     this.setState({globalPresets: updatedGlobals});
   }
 
+  updatePresetOptions(updatedPresetOptions) {
+    //console.log(updatedPresetOptions.logo);
+    this.setState({ presetOptions: updatedPresetOptions });
+  }
+
   nameFile(inputtedName) {
     this.setState({ fileName: inputtedName });
   }
 
   makeVideo() {
-    makeVideo(this.state.videoObjects, this.state.globalPresets, this.state.fileName)
+    makeVideo(this.state.videoObjects, this.state.globalPresets, this.state.fileName, this.state.presetOptions)
   }
 
   render() {
@@ -74,6 +87,8 @@ class VirtualConfigRenderer extends React.Component {
               globalPresets={this.state.globalPresets}
               updateGlobal={this.updateGlobal} 
               updateGlobalPresets={this.updateGlobalPresets}
+              presetOptions={this.state.presetOptions}
+              updatePresetOptions={this.updatePresetOptions}
             />
             <TextChunker 
               createVideoObjects={this.createVideoObjects} 
