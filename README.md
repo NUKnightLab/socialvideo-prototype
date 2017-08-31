@@ -46,46 +46,45 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 
 
 
-# INTERFACE README
+# JAM README
+
+**Purpose**
+
+This program automates the video making process of social videos. Editing these
+videos manually can take anywhere from a single hour to an entire day. JAM
+cuts that time down to however long it takes to write a paragraph and to select
+media assets.
 
 My Project
 ---
- 
+
+
+
 Welcome.
 
 Style
 ---
-* Tabs = 4 spaces
-* Write detailed comments for each pull request and wait for someone on the project to give it a thumbs up to merge 
+Rather than focusing on make the application look good, we just made sure that
+it worked, so this is in no way a visually appealing application.
+
+Development rules to follow and take note of:
+- Write detailed comments for each pull request and wait for someone on the project to give it a thumbs up to merge
+- Keep all components in the component directory
+- Make a separate CSS file for each individual component for easy styling changes
+
+
+Setup
+---
+Clone the project and run `npm install` in the terminal. Start the development server with this `npm start`.
 
 
 Usage
 ---
- 
-Start the development server with this command:
- 
-```
-npm start
-```
- 
-  
-Setup
----
- 
-```
-npm install
-```
- 
- 
- 
+Ideally, the best way to use the app currently is to have a paragraph of text ready to go. On the start of the server input the paragraph into the text area and click the 'chunk me' button. This will initialize the individual video cards that represent each slide of the video. There is a presets bar at the top to manage small video characteristics. Once the video cards have been initialized import (you can drag and drop) your media assets (only video for now) into the media bar that is fixed on the left side of the app. You can then drag and drop the videos into its corresponding video card. Each video card is equipped with a text alignment square and the ability to update the timing of a video and the individual text. For text that is longer than 8 words or so, it is higly recommended to break it up with a combination of `shift` + `enter` so that the text does not flow off of the screen. When you are ready to make the video simply click on the 'make video' button that is located at the bottom of the app. 
+
+
 Compile
 ---
- 
+
 ```
 npm run compile
-
-
-
-
-
-
