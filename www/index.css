@@ -4,7 +4,7 @@
 }
 
 .project-title {
-	color: green;
+	color: red;
 	font-family: 'Avenir';
 	font-size: 20px;
 	margin: 0;
@@ -49,17 +49,22 @@
 
 
 /********* GLOBAL PRESETS BAR *********/
+.global-presets-bar {
+	display: flex;
+	flex-direction: row;
+}
+
 .global-logo-presets {
 	display: flex;
 	flex-direction: row;
 	margin-left: 10px;
-	width: 350px;
-	height: 100px;
+	width: 150px;
+	height: 50px;
 }
 
 .global-music-presets {
-	width: 350px;
-	height: 100px;
+	width: 150px;
+	height: 50px;
 }
 
 .logo-drop {
@@ -91,16 +96,11 @@
 #music {
 	height: 75%;
 }
-=======
-.global-presets-bar {
-	display: flex;
-	flex-direction: row;
-}
 
 .global-presets-name-container {
 	display: flex;
 	flex-direction: column;
-	background-color: rgba(100, 100, 100, .5);
+	/*background-color: rgba(100, 100, 100, .5);*/
 	padding: 5px;
 	margin:5px;
 	width: fit-content;
