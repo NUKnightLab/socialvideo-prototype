@@ -1,6 +1,3 @@
-
-//TOO MANY GLOBAL VARIABLES. CLEANING UP TODAY.
-
 var paragraph = "3 ways your online shopping impacts the environment. E-commerce can lead to more trucks on the road and more greenhouse gas.";
 var listOfCutWords = ["which", "after", "with", "for", "despite", "simply"];
 var cutWords;
@@ -10,9 +7,6 @@ var sentenceArray;
 var timingArray;
 var count;
 
-/*
-Mike Korsa built one of the first WNUR sites, site playlist playlist editor linked to discogs (online database) through an API. Auto-populates fields. He is using the playlist editor to create a WNUR database/discogs page based off of that so we can start to know what we have in the stacks."
-*/
 
 // Takes a string in paragraph form and splits it up into coherent segments using helper functions:
 // First it calls a function that takes the given text and creates an array of all the sentences in the paragraph
@@ -22,6 +16,7 @@ function splitSentences() {
 	timingArray = [];
 	var text = document.getElementById("textField").value;
 	var array = sentenceSplits(text);
+	//setTiming(array);
     var numberOfSentences = array.length;
     var i = 0;
     while (i < numberOfSentences) {
@@ -222,56 +217,21 @@ function formSegment(segmentArray) {
 }
 
 
-function setTiming(array) {
-	var wpm = 180;
-	var word_length = 5;
-	var delay = 1500;
-	var bonus = 1000;
+function setTiming(seg) {
+  var wpm = 180;
+  var delay = 1500;
+  var bonus = 1000;
 
-	for (var i = 0; i <= array.length - 1; i++) {
-		var words = (countWords(array[i]))/word_length;
-		var words_time = ((words/wpm) * 60) * 1000;
-		total_time = (delay + words_time + bonus)/100;
-		timingArray.push(total_time);
-	}
+  var words = seg.split(' ').length;
+  var words_time = ((words/wpm) * 60) * 1000;
+  var total_time = Math.round(((delay + words_time + bonus)/1000)*100)/100;
+    console.log('seg: ', seg);
+    console.log('total_time: ', total_time);
+  return total_time;
 }
 
-/*
 function outputChunks() {
-	timingArray = [];
-	setTiming(chunkArray);
-
-	for (var i = 0; i <= chunkArray.length - 1; i++) {
-		var chunkDiv = document.createElement("div");
-		chunkDiv.setAttribute("class", "chunk-part")
-
-		var chunkP = document.createElement("TEXTAREA");
-		chunkP.setAttribute("class", "chunk-sentence");
-		chunkP.innerHTML = chunkArray[i];
-
-		var timeP = document.createElement("P");
-		timeP.setAttribute("class", "chunk-timing");
-		timeP.innerHTML = Math.round(100*timingArray[i])/1000 + " seconds";
-
-		var videoInput = document.createElement("div");
-		videoInput.setAttribute("class", "holdVideo");
-		videoInput.setAttribute('ondragenter', "setDragEnv()");
-		videoInput.setAttribute('ondragover', 'maintainDragEnv(event)');
-		videoInput.setAttribute('ondrop', 'maintainDragEnv(event)');
-		videoInput.setAttribute('ondrop', 'doDrop(event)');
-
-		chunkDiv.appendChild(chunkP)
-		chunkDiv.appendChild(timeP)
-
-		document.getElementById("chunkedArea").appendChild(chunkDiv);
-		document.getElementById('output').appendChild(videoInput);
-	}
-}
-*/
-function outputChunks() {
-	timingArray = [];
 	var textOutput;
-	//setTiming(chunkArray);
 	document.getElementById('textField').value = '';
 	for (var i = 0; i < chunkArray.length; i++) {
 		if (i === 0) {

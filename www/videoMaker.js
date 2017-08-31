@@ -40,8 +40,11 @@ function makeVideo(videoObjects, globalPresets, fileName, presetOptions) {
 			.videoCodec('libx264')
     		.noAudio()
     		//.audioCodec('libmp3lame')
-			.size('800x660')
+    		.size('1200x?')
+			.aspect(presetOptions.aspect) //presetOptions.aspect
+			.autopad()
 			.format('mov')
+			.duration(videoObject.text_timing)
 			.outputOptions('-movflags frag_keyframe+empty_moov')
 		  	.on('error', function(err) {
             	console.log('An error occurred: ' + err.message);
@@ -107,7 +110,8 @@ function addLogo(fileName, presetOptions) {
 	fluent_ffmpeg()
 		.input(input)
 		.input(presetOptions.logo)
-		.complexFilter('[0:v][1:v] overlay=25:25')
+		.complexFilter('[1:v]scale=100:-1[fg];[0:v][fg] overlay=(main_w-overlay_w)-25:(main_h-overlay_h)-25')
+		//.complextFilter('-vf scale=100:-1')
 		.save(fileName)
 		.on('end', function() {
 			console.log('Finished!');

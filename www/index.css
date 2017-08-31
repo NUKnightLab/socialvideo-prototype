@@ -61,7 +61,6 @@
 	width: 350px;
 	height: 100px;
 }
-/********* GLOBAL PRESETS BAR *********/
 
 .logo-drop {
 	text-align: center;
@@ -92,6 +91,28 @@
 #music {
 	height: 75%;
 }
+=======
+.global-presets-bar {
+	display: flex;
+	flex-direction: row;
+}
+
+.global-presets-name-container {
+	display: flex;
+	flex-direction: column;
+	background-color: rgba(100, 100, 100, .5);
+	padding: 5px;
+	margin:5px;
+	width: fit-content;
+}
+
+.global-preset-label {
+	margin: 5px auto;
+	font-family: sans-serif;
+	white-space: nowrap;
+
+}
+/********* GLOBAL PRESETS BAR *********/
 
 
 /*							*/
@@ -149,9 +170,9 @@
 }
 
 .Chunk-video-start-input {
-	width: 20px;
-	height: 10px;
-	margin-right: 5px;
+	width: 40px;
+    height: 12px;
+    margin: 0 5px;
 }
 
 .Chunk-video-start-seconds {

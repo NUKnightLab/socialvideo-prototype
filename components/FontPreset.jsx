@@ -10,7 +10,7 @@ class FontPreset extends React.Component {
         this.state = {
             fonts: []
         }
-        console.log('FontPreset constructor')
+        //console.log('FontPreset constructor')
     }
 
     showFontOptions(systemFonts) {
@@ -34,10 +34,6 @@ class FontPreset extends React.Component {
         this.props.updateGlobal(globalPresets);
         console.log(fspath);
     }
-
-    // updateFonts() {
-    //     this.setState({ fonts: this.showFontOptions() })
-    // }
 
     componentDidMount() {
         var self = this;

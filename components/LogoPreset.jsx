@@ -22,7 +22,6 @@ class LogoPreset extends React.Component {
     render() {
         return (
         	<div className="global-logo-presets">
-        		<GlobalAlignSquare className="position-logo" />
             <Dropzone className="logo-drop" onDrop={this.onDrop}>
   						Add Logo
   					</Dropzone>
