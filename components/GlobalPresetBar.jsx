@@ -11,6 +11,7 @@ import '../www/index.css';
 class GlobalPresetBar extends React.Component {
 	render() {
 		return (
+
 			<div className="global-presets-bar">
 				<div className="global-presets-name-container">
 					<div className="global-preset-label"> Text Color </div>
