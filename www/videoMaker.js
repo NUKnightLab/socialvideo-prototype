@@ -94,7 +94,7 @@ function addLogo(fileName) {
 	fluent_ffmpeg()
 		.input(tmpobj.name + '/1'+fileName)
 		.input('logo.png') //presetOptions.logo
-		.complexFilter('[1:v]scale=100:-1[fg];[0:v][fg] overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2')
+		.complexFilter('[1:v]scale=100:-1[fg];[0:v][fg] overlay=(main_w-overlay_w)-25:(main_h-overlay_h)-25')
 		//.complextFilter('-vf scale=100:-1')
 		.save(fileName)
 		.on('end', function() {
