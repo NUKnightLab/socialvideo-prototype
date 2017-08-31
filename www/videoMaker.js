@@ -40,7 +40,8 @@ function makeVideo(videoObjects, globalPresets, fileName) {
 			.videoCodec('libx264')
     		.noAudio()
     		//.audioCodec('libmp3lame')
-			.size('800x660')
+			.aspect('4:3')
+			.autopad()
 			.format('mov')
 			.duration(videoObject.text_timing)
 			.outputOptions('-movflags frag_keyframe+empty_moov')
@@ -92,7 +93,8 @@ function addLogo(fileName) {
 	fluent_ffmpeg()
 		.input(tmpobj.name + '/1'+fileName)
 		.input('logo.png')
-		.complexFilter('[0:v][1:v] overlay=25:25')
+		.complexFilter('[1:v]scale=100:-1[fg];[0:v][fg] overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2')
+		//.complextFilter('-vf scale=100:-1')
 		.save(fileName)
 		.on('end', function() {
 			tmpobj.removeCallback(); //trashes temporary directory
