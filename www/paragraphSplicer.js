@@ -218,19 +218,18 @@ function formSegment(segmentArray) {
 }
 
 
-// function setTimingbleheheheh(array) {
-// 	var wpm = 180;
-// 	var word_length = 5;
-// 	var delay = 1500;
-// 	var bonus = 1000;
+function setTiming(seg) {
+  var wpm = 180;
+  var delay = 1500;
+  var bonus = 1000;
 
-// 	for (var i = 0; i < array.length; i++) {
-// 		var words = (countWords(array[i]));
-// 		var words_time = ((words/wpm) * 60) * 1000;
-// 		var total_time = Math.round((delay + words_time + bonus)/1000);
-// 		timingArray.push(total_time);
-// 	}
-// }
+  var words = seg.split(' ').length;
+  var words_time = ((words/wpm) * 60) * 1000;
+  var total_time = Math.round(((delay + words_time + bonus)/1000)*100)/100;
+    console.log('seg: ', seg);
+    console.log('total_time: ', total_time);
+  return total_time;
+}
 
 function outputChunks() {
 	var textOutput;

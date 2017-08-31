@@ -5,7 +5,7 @@ var tmp = require('tmp'); //Allows creation of temporary files + directories
 var tmpobj = tmp.dirSync({unsafeCleanup: true}); // Synchronous directory creation
 
 
-function makeVideo(videoObjects, globalPresets, fileName) {
+function makeVideo(videoObjects, globalPresets, fileName, presetOptions) {
 	var videoCount = videoObjects.length;
 	var ii = 0;
 	var jj = 0;
@@ -40,7 +40,9 @@ function makeVideo(videoObjects, globalPresets, fileName) {
 			.videoCodec('libx264')
     		.noAudio()
     		//.audioCodec('libmp3lame')
-			.size('800x660')
+    		.size('1200x?')
+			.aspect(presetOptions.aspect) //presetOptions.aspect
+			.autopad()
 			.format('mov')
 			.duration(videoObject.text_timing)
 			.outputOptions('-movflags frag_keyframe+empty_moov')
@@ -76,7 +78,7 @@ function makeVideo(videoObjects, globalPresets, fileName) {
 function addAudio(fileName) {
 	fluent_ffmpeg()
 		.input(tmpobj.name +'/0'+fileName)
-		.input('./music.mp3')
+		.input('./music.mp3') //presetOptions.music
 		.outputOptions([
 			'-codec copy',
 			'-shortest'
@@ -91,8 +93,9 @@ function addAudio(fileName) {
 function addLogo(fileName) {
 	fluent_ffmpeg()
 		.input(tmpobj.name + '/1'+fileName)
-		.input('logo.png')
-		.complexFilter('[0:v][1:v] overlay=25:25')
+		.input('logo.png') //presetOptions.logo
+		.complexFilter('[1:v]scale=100:-1[fg];[0:v][fg] overlay=(main_w-overlay_w)-25:(main_h-overlay_h)-25')
+		//.complextFilter('-vf scale=100:-1')
 		.save(fileName)
 		.on('end', function() {
 			tmpobj.removeCallback(); //trashes temporary directory

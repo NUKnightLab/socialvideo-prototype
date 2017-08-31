@@ -13,7 +13,8 @@ class VideoCard extends React.Component {
 		};
 		this.dragDrop = this.dragDrop.bind(this);
 		this.setTextAlign = this.setTextAlign.bind(this);
-		this.updateText = this.updateText.bind(this);
+
+		this.updateCard = this.updateCard.bind(this);
 	}
 
 	dragDrop(e) {
@@ -35,10 +36,14 @@ class VideoCard extends React.Component {
 		this.props.updateVideoObjects[videoObjects];
 	}
 
-	updateText() {
+	updateCard() {
 		var videoObjects = this.props.videoObjects;
 		var position = this.props.position;
+		var id = String(position) + "text-input";
 		videoObjects[position].text =  this.refs.videoCard.value;
+		var cardTiming = setTiming(this.refs.videoCard.value);
+		videoObjects[position].text_timing = cardTiming;
+		document.getElementById(id).value = cardTiming;
 		this.props.updateVideoObjects(videoObjects);
 	}
 
@@ -61,8 +66,14 @@ class VideoCard extends React.Component {
 						ref="videoCard"
 						>
 					</textarea>
+
+					<button onClick={this.updateCard}> Update Text! </button>
+
 					<ClipLengthDefault
  						timing={this.props.timing}
+ 						videoObjects={this.props.videoObjects}
+ 						updateVideoObjects={this.props.updateVideoObjects}
+ 						position={this.props.position}
  					/>
 					<button onClick={this.updateText}> Update Text! </button>
 					<TextAlignSquare

@@ -15,7 +15,6 @@ class GlobalLogo extends React.Component {
     render() {
         return (
         	<div className="global-logo-presets">
-        		<GlobalAlignSquare className="position-logo" />
         		<input type="file" className="upload-logo" />
         	</div>
         )
