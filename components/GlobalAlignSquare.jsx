@@ -102,6 +102,7 @@ class GlobalAlignSquare extends React.Component {
       globalPresets.yPos = yPos;
       this.props.updateGlobalPresets(globalPresets);
   		this.props.updateVideoObjects(videoObjects);
+
   	}
 
     render() {

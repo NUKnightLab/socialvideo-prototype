@@ -1,34 +1,33 @@
 import React from 'react';
-import GlobalAlignSquare from './GlobalAlignSquare.jsx';
 import Dropzone from 'react-dropzone';
 import '../www/index.css';
 
-class LogoPreset extends React.Component {
+class MusicPreset extends React.Component {
     constructor(props) {
 	    super(props);
 	    this.state = {
-	    	logo_path: ''
+	    	song_path: ''
 	    }
       this.onDrop = this.onDrop.bind(this);
     }
 
     onDrop(files) {
-      this.setState({logo_path: files[0].path});
+      this.setState({song_path: files[0].name});
       var presetOptions = this.props.presetOptions;
-      presetOptions.logo = files[0].path;
+      presetOptions.music = files[0].path;
       this.props.updatePresetOptions(presetOptions);
   	}
 
     render() {
         return (
-        	<div className="global-logo-presets">
-            <Dropzone className="logo-drop" onDrop={this.onDrop}>
-  						Add Logo
+        	<div className="global-music-presets">
+            <Dropzone className="music-drop" onDrop={this.onDrop}>
+  						Add Music
   					</Dropzone>
-            <img src={this.state.logo_path} id="logo" />
+            <p>{this.state.song_path}</p>
         	</div>
         )
     }
 }
 
-export default LogoPreset;
+export default MusicPreset;

@@ -53,10 +53,12 @@ function makeVideo(videoObjects, globalPresets, fileName, presetOptions) {
 		    	console.log('Processing finished !');
 
 				console.log(ii, jj);
+
 				mergedVideo = mergedVideo.addInput(tmpobj.name + '/' + jj + '.mov');
 				jj++;
 				if (jj == videoCount) {
-					mergedVideo.mergeToFile(tmpobj.name +'/0'+fileName, './tmp/')
+					var videoName = (presetOptions.logo !== '' || presetOptions.music !== '') ? tmpobj.name +'/0'+fileName : fileName;
+					mergedVideo.mergeToFile(videoName, './tmp/')
 					.videoCodec('libx264')
 		    		.audioCodec('libmp3lame')
 					.format('mov')
@@ -65,8 +67,15 @@ function makeVideo(videoObjects, globalPresets, fileName, presetOptions) {
 					    console.log('Error ' + err.message);
 					})
 					.on('end', function() {
-					    document.getElementById('processing').innerHTML = "Finished!";
-					    addAudio(fileName);
+					    document.getElementById('processing').innerHTML = "Finished merging!";
+					   	if (presetOptions.music !== '') {
+								addAudio(fileName, presetOptions);
+								console.log('Adding Music!');
+							}
+							else if (presetOptions.logo !== '') {
+								console.log('Adding Logo!');
+								addLogo(fileName, presetOptions);
+							}
 					});
 				}
 			})
@@ -75,29 +84,37 @@ function makeVideo(videoObjects, globalPresets, fileName, presetOptions) {
 	})
 }
 
-function addAudio(fileName) {
+function addAudio(fileName, presetOptions) {
+	var videoName = (presetOptions.logo !== '') ? tmpobj.name +'/1'+fileName : fileName;
 	fluent_ffmpeg()
 		.input(tmpobj.name +'/0'+fileName)
-		.input('./music.mp3') //presetOptions.music
+		.input(presetOptions.music)
 		.outputOptions([
 			'-codec copy',
 			'-shortest'
 			])
-		.save(tmpobj.name + '/1'+fileName)
+		.save(videoName)
    		.on('end', function() {
-   			addLogo(fileName);
-   			console.log('adding logo!');
+				if (presetOptions.logo !== '') {
+					addLogo(fileName, presetOptions);
+					console.log('adding logo!');
+				}
+				else {
+					console.log('Finished!')
+				}
    		})
 }
 
-function addLogo(fileName) {
+function addLogo(fileName, presetOptions) {
+	var input = (presetOptions.music !== '') ? tmpobj.name + '/1'+fileName : tmpobj.name +'/0'+fileName;
 	fluent_ffmpeg()
-		.input(tmpobj.name + '/1'+fileName)
-		.input('logo.png') //presetOptions.logo
+		.input(input)
+		.input(presetOptions.logo)
 		.complexFilter('[1:v]scale=100:-1[fg];[0:v][fg] overlay=(main_w-overlay_w)-25:(main_h-overlay_h)-25')
 		//.complextFilter('-vf scale=100:-1')
 		.save(fileName)
 		.on('end', function() {
+			console.log('Finished!');
 			tmpobj.removeCallback(); //trashes temporary directory
 		})
 		.on('progress', function(progress) {

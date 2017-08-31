@@ -53,8 +53,45 @@
 	display: flex;
 	flex-direction: row;
 	margin-left: 10px;
+	width: 350px;
+	height: 100px;
 }
 
+.global-music-presets {
+	width: 350px;
+	height: 100px;
+}
+
+.logo-drop {
+	text-align: center;
+	width: 80px;
+	height: 18px;
+	border: 1px solid black;
+	margin-left: 10px;
+	border-radius: 5px;
+	background-color: #999999;
+	cursor: pointer;
+}
+
+.music-drop {
+	text-align: center;
+	width: 80px;
+	height: 18px;
+	border: 1px solid black;
+	margin-left: 10px;
+	border-radius: 5px;
+	background-color: #999999;
+	cursor: pointer;
+}
+
+#logo {
+	height: 75%;
+}
+
+#music {
+	height: 75%;
+}
+=======
 .global-presets-bar {
 	display: flex;
 	flex-direction: row;
@@ -107,15 +144,19 @@
 }
 
 .Chunk-text-align {
-	width: 100px;
-    height: 100px;
+	width: 131.5px;
+	height: 110px;
 }
 
 .Chunk-text-align-options {
     width: 33px;
     height: 33px;
     outline: 1px solid;
-    float: left;
+		float: left;
+}
+
+#text-align {
+	width: 101px;
 }
 
 .Chunk-text-timing {

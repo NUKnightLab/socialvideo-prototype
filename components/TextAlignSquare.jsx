@@ -5,7 +5,7 @@ class TextAlignSquare extends React.Component {
     constructor(props) {
     super(props);
         this.state = {
-            clicked: props.globalPresets.defaultAlign + props.idPos,
+            clicked: props.globalPresets.defaultAlign + this.props.idPos,
             default: props.globalPresets.defaultAlign,
         }
         this.topLeft = this.topLeft.bind(this);

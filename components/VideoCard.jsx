@@ -80,6 +80,8 @@ class VideoCard extends React.Component {
 						idPos={this.props.position}
 						textAlign={this.setTextAlign}
 						globalPresets={this.props.globalPresets}
+						updateGlobal={this.props.updateGlobal}
+						updateGlobalPresets={this.props.updateGlobalPresets}
 					/>
 				</div>
 			</div>

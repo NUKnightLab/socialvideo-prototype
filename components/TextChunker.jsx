@@ -46,11 +46,12 @@ class TextChunker extends React.Component {
       numVideoObjects++;
     });
     this.props.createVideoObjects(videoObjects);
+    document.getElementById('textChunkerArea').style.display = 'none';
   }
 
   render() {
     return (
-      <div>
+      <div id="textChunkerArea">
         <div className="input-text-area">
             <textarea
               id="textField"

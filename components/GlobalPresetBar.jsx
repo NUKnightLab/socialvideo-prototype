@@ -4,6 +4,7 @@ import GlobalAlignSquare from './GlobalAlignSquare.jsx';
 import TextColorPreset from './TextColorPreset.jsx';
 import FontPreset from './FontPreset.jsx';
 import LogoPreset from './LogoPreset.jsx';
+import MusicPreset from './MusicPreset.jsx';
 import AspectRatio from './AspectRatio/AspectRatio.jsx';
 //import Flexbox from 'flexbox-react';
 import '../www/index.css';
@@ -11,7 +12,6 @@ import '../www/index.css';
 class GlobalPresetBar extends React.Component {
 	render() {
 		return (
-
 			<div className="global-presets-bar">
 				<div className="global-presets-name-container">
 					<div className="global-preset-label"> Text Color </div>
@@ -42,12 +42,13 @@ class GlobalPresetBar extends React.Component {
 						globalPresets={this.props.globalPresets}
 						updateGlobalPresets={this.props.updateGlobalPresets}
 					/>
-				</div>
 				<div className="global-presets-name-container">
 					<div className="global-preset-label"> Upload Logo </div>
-        			<LogoPreset />
+        			<LogoPreset presetOptions={this.props.presetOptions} updatePresetOptions={this.props.updatePresetOptions}/>
+				      <MusicPreset presetOptions={this.props.presetOptions} updatePresetOptions={this.props.updatePresetOptions}/>
         		</div>
 			</div>
+      </div>
 		);
 	}
 }
