@@ -28,6 +28,7 @@ class MediaLibrary extends React.Component {
 	render() {
 		return (
 			<div>
+				<div className="project-title">Codename Delaware</div>
 				<div className="media-library" id="media-library">
 					<Dropzone className="media-lib-drop" onDrop={this.onDrop.bind(this)}>
 						Click or drag and drop here to add media
