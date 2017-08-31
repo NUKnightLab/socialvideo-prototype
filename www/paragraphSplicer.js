@@ -21,7 +21,6 @@ function splitSentences() {
 	chunkArray = [];
 	timingArray = [];
 	var text = document.getElementById("textField").value;
-	console.log(text);
 	var array = sentenceSplits(text);
     var numberOfSentences = array.length;
     var i = 0;
@@ -271,7 +270,6 @@ function outputChunks() {
 */
 function outputChunks() {
 	timingArray = [];
-	console.log(chunkArray);
 	var textOutput;
 	//setTiming(chunkArray);
 	document.getElementById('textField').value = '';

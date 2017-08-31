@@ -38,6 +38,7 @@ class EditorWindow extends React.Component {
 			console.log(droppedPos, currentPos);
 			var videoObjects = this.state.videoObjects.slice(0);
 			this.setState({droppedPos: droppedPos});
+			//pos = currentPos > droppedPos ? 1 : -1
 			if (currentPos > droppedPos) {
 				videoObjects[currentPos].id = droppedPos;
 				videoObjects.splice(droppedPos, 0, videoObjects.splice(currentPos, 1)[0]);
@@ -55,6 +56,7 @@ class EditorWindow extends React.Component {
 					videoObjects[i].text = videoObjects[i].text + ' ';
 				}
 			}
+			console.log('reorder event detected')
 			this.setState({videoObjects: videoObjects});
 			this.props.updateVideoObjects(videoObjects);
 		}
@@ -71,7 +73,9 @@ class EditorWindow extends React.Component {
     	return (
 				<div>
 					<button onClick={this.addVideoCard}> Add a Video Card </button>
-					{this.state.videoObjects.map(videoObject =>
+					{this.state.videoObjects.map(videoObject => {
+						console.log('reorder')
+						return (
 						<div className="videoCardContainer" id={"card" + videoObject.id} key={"card" + videoObject.id + 50} draggable="true" onDragStart={this.drag} onDrop={this.acceptDrop}>
 							<div
 								className="card-drag"
@@ -82,11 +86,13 @@ class EditorWindow extends React.Component {
 							<VideoCard
 								key={videoObject.id}
 								text={videoObject.text}
-							 	videoObjects={this.props.videoObjects}
+							 	videoObjects={this.state.videoObjects}
 								globalPresets={this.props.globalPresets}
 								position={videoObject.id}
-								updateVideoObjects={this.props.updateVideoObjects}/>
+								updateVideoObjects={this.props.updateVideoObjects}
+							/>
 						</div>
+					)}
 					)}
 				</div>
     	);

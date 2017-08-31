@@ -6,6 +6,7 @@ import GlobalAlignSquare from './GlobalAlignSquare.jsx';
 import TextColorPreset from './TextColorPreset.jsx';
 import FontPreset from './FontPreset.jsx';
 import LogoPreset from './LogoPreset.jsx';
+import MusicPreset from './MusicPreset.jsx';
 import Flexbox from 'flexbox-react';
 import '../www/index.css';
 
@@ -22,13 +23,16 @@ class GlobalPresetBar extends React.Component {
 	        globalPresets={this.props.globalPresets}
           updateGlobal={this.props.updateGlobal}
         />
-        <GlobalAlignSquare
-					videoObjects={this.props.videoObjects}
-					updateVideoObjects={this.props.updateVideoObjects}
-					globalPresets={this.props.globalPresets}
-					updateGlobalPresets={this.props.updateGlobalPresets}
-				/>
-        <LogoPreset />
+				<div id="text-align">
+	        <GlobalAlignSquare
+						videoObjects={this.props.videoObjects}
+						updateVideoObjects={this.props.updateVideoObjects}
+						globalPresets={this.props.globalPresets}
+						updateGlobalPresets={this.props.updateGlobalPresets}
+					/>
+				</div>
+        <LogoPreset presetOptions={this.props.presetOptions} updatePresetOptions={this.props.updatePresetOptions}/>
+				<MusicPreset presetOptions={this.props.presetOptions} updatePresetOptions={this.props.updatePresetOptions}/>
 			</Flexbox>
 			</div>
 		);
