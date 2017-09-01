@@ -21,7 +21,7 @@ class TextAlignSquare extends React.Component {
         this.bottomRight = this.bottomRight.bind(this);
     }
     topLeft() {
-      this.props.textAlign('(main_w/2.75-text_w/2)', '(main_h/3-text_h/2)');
+      this.props.textAlign('(main_w/5-text_w/2)', '(main_h/3-text_h/2)');
       document.getElementById(this.state.clicked).style.backgroundColor = 'white';
       this.setState({clicked: ('top-left-align' + this.props.idPos)});
       document.getElementById(('top-left-align' + this.props.idPos)).style.backgroundColor = 'black';
@@ -42,7 +42,7 @@ class TextAlignSquare extends React.Component {
     }
 
     middleLeft() {
-      this.props.textAlign('(main_w/2.75-text_w/2)', '(main_h/2-text_h/2)');
+      this.props.textAlign('(main_w/5-text_w/2)', '(main_h/2-text_h/2)');
       document.getElementById(this.state.clicked).style.backgroundColor = 'white';
       this.setState({clicked: ('middle-left-align' + this.props.idPos)});
       document.getElementById(('middle-left-align' + this.props.idPos)).style.backgroundColor = 'black';
@@ -63,7 +63,7 @@ class TextAlignSquare extends React.Component {
     }
 
     bottomLeft() {
-      this.props.textAlign('(main_w/2.75-text_w/2)', '(main_h/1.25-text_h/2)');
+      this.props.textAlign('(main_w/5-text_w/2)', '(main_h/1.25-text_h/2)');
       document.getElementById(this.state.clicked).style.backgroundColor = 'white';
       this.setState({clicked: ('bottom-left-align' + this.props.idPos)});
       document.getElementById(('bottom-left-align' + this.props.idPos)).style.backgroundColor = 'black';

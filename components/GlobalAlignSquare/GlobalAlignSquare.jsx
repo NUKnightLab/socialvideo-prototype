@@ -24,7 +24,7 @@ class GlobalAlignSquare extends React.Component {
       var clicked = 'top-left-align';
       this.setState({clicked: clicked});
       document.getElementById('top-left-align').style.backgroundColor = 'black';
-      this.setTextAlign('(main_w/2.75-text_w/2)', '(main_h/3-text_h/2)', clicked);
+      this.setTextAlign('(main_w/5-text_w/2)', '(main_h/3-text_h/2)', clicked);
     }
 
     topCenter() {
@@ -48,7 +48,7 @@ class GlobalAlignSquare extends React.Component {
       var clicked = 'middle-left-align';
       this.setState({clicked: clicked});
       document.getElementById('middle-left-align').style.backgroundColor = 'black';
-      this.setTextAlign('(main_w/2.75-text_w/2)', '(main_h/2-text_h/2)', clicked);
+      this.setTextAlign('(main_w/5-text_w/2)', '(main_h/2-text_h/2)', clicked);
     }
 
     middleCenter() {
@@ -72,7 +72,7 @@ class GlobalAlignSquare extends React.Component {
       var clicked = 'bottom-left-align';
       this.setState({clicked: clicked});
       document.getElementById('bottom-left-align').style.backgroundColor = 'black';
-      this.setTextAlign('(main_w/2.75-text_w/2)', '(main_h/1.25-text_h/2)', clicked);
+      this.setTextAlign('(main_w/5-text_w/2)', '(main_h/1.25-text_h/2)', clicked);
     }
 
     bottomCenter() {
