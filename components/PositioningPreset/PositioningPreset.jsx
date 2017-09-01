@@ -1,5 +1,7 @@
 import React from 'react';
-import GlobalAlignSquare from './GlobalAlignSquare.jsx';
+import GlobalAlignSquare from '../GlobalAlignSquare/GlobalAlignSquare.jsx';
+import './PositioningPreset.css';
+
 
 class DefaultTextPosition extends React.Component {
     constructor(props) {

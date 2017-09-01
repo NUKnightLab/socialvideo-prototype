@@ -1,5 +1,7 @@
 var React = require('react');
-import '../www/index.css';
+import '../../www/styles.css';
+import './TextAlignSquare.css';
+
 
 class TextAlignSquare extends React.Component {
     constructor(props) {

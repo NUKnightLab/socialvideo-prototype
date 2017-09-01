@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../www/styles.css';
 import './AspectRatio.css';
 
 class AspectRatio extends React.Component {

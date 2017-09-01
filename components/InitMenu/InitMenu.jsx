@@ -1,7 +1,8 @@
 import React from 'react';
-import '../www/index.css';
+import '../../www/styles.css';
+import './InitMenu.css';
 //import FileName from './FileName.jsx';
-import FileType from './FileType.jsx';
+import FileType from '../FileType/FileType.jsx';
 
 class InitMenu extends React.Component {
 	render() {

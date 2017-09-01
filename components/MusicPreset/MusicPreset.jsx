@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import '../www/index.css';
+import '../../www/styles.css';
+import './MusicPreset.css';
 
 class MusicPreset extends React.Component {
     constructor(props) {

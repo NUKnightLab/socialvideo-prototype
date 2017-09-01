@@ -12,7 +12,7 @@ module.exports = {
   context: __dirname,
   entry: [
     './components/index.js',
-    './www/index.css',
+    './www/styles.css',
     'babel-polyfill',
     path.resolve(__dirname, './components/index.js'),
     `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr`,

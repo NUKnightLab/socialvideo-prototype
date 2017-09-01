@@ -1,7 +1,8 @@
 var React = require('react');
-import '../www/index.css';
-import TextAlignSquare from './TextAlignSquare.jsx';
-import ClipLengthDefault from './ClipLengthDefault.jsx';
+import '../../www/styles.css';
+import './VideoCard.css';
+import TextAlignSquare from '../TextAlignSquare/TextAlignSquare.jsx';
+import ClipLengthDefault from '../ClipLengthDefault/ClipLengthDefault.jsx';
 import Dropzone from 'react-dropzone';
 
 class VideoCard extends React.Component {

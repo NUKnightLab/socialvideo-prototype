@@ -1,5 +1,6 @@
 var React = require('react');
-import '../www/index.css';
+import '../../www/styles.css';
+import './GlobalAlignSquare.css';
 
 class GlobalAlignSquare extends React.Component {
     constructor(props) {

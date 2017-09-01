@@ -1,7 +1,8 @@
 import React from 'react';
 import 'react-widgets/lib/less/react-widgets.less';
 import DropdownList from 'react-widgets/lib/DropdownList';
-import '../www/index.css';
+import '../../www/styles.css';
+import './FontPreset.css';
 
 
 class FontPreset extends React.Component {

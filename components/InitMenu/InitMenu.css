@@ -1,0 +1,38 @@
+.init-menu-container {
+	display: flex;
+}
+
+.project-title {
+	color: red;
+	font-family: 'Avenir';
+	font-size: 20px;
+	margin: 0;
+}
+
+#title-input-area {
+	border: none;
+  	border-bottom: 1px solid black;
+	background-color: transparent;
+	color: black;
+	font-size: 1.5em;
+	outline: none;
+	shadow: none;
+}
+
+#title-input-area:focus {
+	border-bottom: 1px solid black;
+}
+
+
+.preset {
+	margin: 0 20px 10px 0;
+}
+
+.file-styling {
+	margin: 10px 10px 30px 70px;
+}
+
+.file-type-bar {
+	display: flex;
+	align-items: baseline;
+}

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import TextChunker from './TextChunker.jsx';
-import EditorWindow from './EditorWindow.jsx';
-import GlobalPresetBar from './GlobalPresetBar.jsx';
-import MediaLibrary from './MediaLibrary.jsx';
-import InitMenu from './InitMenu.jsx';
+import TextChunker from './TextChunker/TextChunker.jsx';
+import EditorWindow from './EditorWindow/EditorWindow.jsx';
+import GlobalPresetBar from './GlobalPresetBar/GlobalPresetBar.jsx';
+import MediaLibrary from './MediaLibrary/MediaLibrary.jsx';
+import InitMenu from './InitMenu/InitMenu.jsx';
 
 class VirtualConfigRenderer extends React.Component {
   constructor(props) {
