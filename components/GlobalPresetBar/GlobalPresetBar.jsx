@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import GlobalAlignSquare from './GlobalAlignSquare.jsx';
-import TextColorPreset from './TextColorPreset.jsx';
-import FontPreset from './FontPreset.jsx';
-import LogoPreset from './LogoPreset.jsx';
-import MusicPreset from './MusicPreset.jsx';
-import AspectRatio from './AspectRatio/AspectRatio.jsx';
+import GlobalAlignSquare from '../GlobalAlignSquare/GlobalAlignSquare.jsx';
+import TextColorPreset from '../TextColorPreset/TextColorPreset.jsx';
+import FontPreset from '../FontPreset/FontPreset.jsx';
+import LogoPreset from '../LogoPreset/LogoPreset.jsx';
+import MusicPreset from '../MusicPreset/MusicPreset.jsx';
+import AspectRatio from '../AspectRatio/AspectRatio.jsx';
 //import Flexbox from 'flexbox-react';
-import '../www/index.css';
+import '../../www/styles.css';
+import './GlobalPresetBar.css';
 
 class GlobalPresetBar extends React.Component {
 	render() {

@@ -1,6 +1,6 @@
 # JamJS
 
-An application built with [Electron](), [React](), and [node-fluent-ffmpeg]() built to ease the process of social video creation.
+An application built with [Electron](https://github.com/electron/electron), [React](https://facebook.github.io/react/), and [node-fluent-ffmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg) to ease the process of social video creation.
 
 **Purpose**
 
@@ -19,6 +19,7 @@ Development rules to follow and take note of:
 - Only put global styles in `www/styles.css`.
 - Create a CSS file for each component to make styling easier and more modularized. Put the CSS file and the corresponding component in a folder within the `components` directory. Name the subfolder, CSS file, and component the same thing.
 
+
 Setup
 ---
 Currently, setup for developers and prospective users is the same. As we get closer to completing the project's full build, we'll create a downloadable application for non-developers.
@@ -31,6 +32,7 @@ npm start
 `
 
 A full video can be fully created on the development server launched with `npm start`.
+
 
 Make a video
 ---
@@ -53,9 +55,9 @@ See this document's Style section (above) for best contribut practices. See belo
 
 **Project structure**
 
-This project was built on top of the [electron-quick-start]() guide and postfitted to work with Fluent FFmpeg/pure JavaScript logic from previous build iterations.
+This project was built on top of the [electron-quick-start](https://github.com/electron/electron-quick-start) guide and postfitted to work with Fluent FFmpeg/pure JavaScript logic from previous build iterations.
 
-All React components are in the `components` folder. `VirtualConfigRenderer.jsx` is the state management file of the project. All state is passed down and back up through this file. The React documentation about passing around/passing up state may be very helpful for working with this project's format.
+All React components are in the `components` folder. `VirtualConfigRenderer.jsx` is the state management file of the project. All state is passed down and back up through this file. The React documentation about [lifting up state](https://facebook.github.io/react/docs/lifting-state-up.html) may be very helpful for working with this project's format.
 
 `index.html` is located in the root directory. It requires three scripts, making the contents of each of those files, all located in the `www` directory, globally defined. While this isn't the most secure build long-term, it worked well for us as we added a React interface. Quickly skim those files to avoid using any function names similar to the ones in those files.
 
@@ -64,12 +66,11 @@ All React components are in the `components` folder. `VirtualConfigRenderer.jsx`
 - Separate CSS into per-component sheets
 - Interface design
 - Drag-drop functionality
+- Create downloadable app version of project
 
 **Common bugs**
 
-The project uses the [`font-manager`]() npm package to find all available fonts on a local system. It has previously caused errors due to different Node versions. If you get an error about dissonant Node versions, use [electron-rebuild]() to sync all packages' run versions. 
-
-!!explain how to do electron-rebuild!!
+The project uses the [font-manager](https://www.npmjs.com/package/font-manager) npm package to find all available fonts on a local system. It has previously caused errors due to different Node versions. If you get an error about dissonant Node versions, use [electron-rebuild](https://github.com/electron/electron-rebuild) to sync all packages' run versions with Electron's.
 
 
 Maintainers

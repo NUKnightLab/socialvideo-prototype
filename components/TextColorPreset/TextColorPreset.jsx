@@ -1,6 +1,8 @@
 import React from 'react';
 var ColorPicker = require('rc-color-picker');
 import 'rc-color-picker/assets/index.css';
+import './TextColorPreset.css';
+
 
 class TextColorPreset extends React.Component {
     constructor(props) {
