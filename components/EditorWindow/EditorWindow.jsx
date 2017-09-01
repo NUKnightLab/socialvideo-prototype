@@ -1,7 +1,8 @@
 var React = require('react');
-import '../www/index.css';
-import TextAlignSquare from './TextAlignSquare.jsx';
-import VideoCard from './VideoCard.jsx';
+import '../../www/styles.css';
+import './EditorWindow.css';
+import TextAlignSquare from '../TextAlignSquare/TextAlignSquare.jsx';
+import VideoCard from '../VideoCard/VideoCard.jsx';
 
 class EditorWindow extends React.Component {
 	constructor(props) {

@@ -1,4 +1,6 @@
 var React = require('react');
+import './TextChunker.css';
+
 
 // function setTiming(seg) {
 //   var wpm = 180;

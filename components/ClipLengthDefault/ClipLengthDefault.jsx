@@ -1,5 +1,6 @@
 import React from 'react';
-import '../www/index.css';
+import '../../www/styles.css';
+import './ClipLengthDefault.css';
 
 class ClipLengthDefault extends React.Component {
 	constructor(props) {

@@ -1,5 +1,6 @@
 var React = require('react');
-import '../www/index.css';
+import '../../www/styles.css';
+import './MediaLibrary.css';
 import Dropzone from 'react-dropzone';
 
 class MediaLibrary extends React.Component {

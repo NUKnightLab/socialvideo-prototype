@@ -1,7 +1,8 @@
 import React from 'react';
-import GlobalAlignSquare from './GlobalAlignSquare.jsx';
+import GlobalAlignSquare from '../GlobalAlignSquare/GlobalAlignSquare.jsx';
 import Dropzone from 'react-dropzone';
-import '../www/index.css';
+import '../../www/styles.css';
+import './LogoPreset.css';
 
 class LogoPreset extends React.Component {
     constructor(props) {
